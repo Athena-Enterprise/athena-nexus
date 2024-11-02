@@ -2,11 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
-const { Server } = require('../models'); // Correctly import Server from models
-const { ensureAuthenticated } = require('../middleware/auth'); // Import from middleware/auth
+const { Server, ServerStats, User } = require('../models'); // Correctly import models
+const { isAuthenticated } = require('../middleware/auth'); // Correctly import middleware
 
 // Get all servers for the authenticated user
-router.get('/', ensureAuthenticated, async (req, res) => {
+router.get('/', isAuthenticated, async (req, res) => {
   try {
     console.log('Authenticated user ID:', req.user.id); // Log user ID
 
@@ -21,12 +21,12 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 });
 
 // Get stats for a specific server
-router.get('/:id/stats', ensureAuthenticated, async (req, res) => {
+router.get('/:id/stats', isAuthenticated, async (req, res) => {
   const { id } = req.params;
   try {
     const server = await Server.findOne({
       where: { id },
-      include: [{ model: require('../models').ServerStats, as: 'stats' }],
+      include: [{ model: ServerStats, as: 'stats' }],
     });
 
     if (!server) {
@@ -41,19 +41,19 @@ router.get('/:id/stats', ensureAuthenticated, async (req, res) => {
 });
 
 // Update server stats (can be called by the bot)
-router.put('/:id/stats', ensureAuthenticated, async (req, res) => { // Added ensureAuthenticated
+router.put('/:id/stats', isAuthenticated, async (req, res) => {
   const { id } = req.params;
   const { memberCount, onlineMembers } = req.body;
 
   try {
     const server = await Server.findOne({ where: { id } });
     if (!server) {
-      return res.status(404).json({ message: 'Server not found.' });
+      return res.status(404).json({ message: 'Server not found' });
     }
 
-    let stats = await require('../models').ServerStats.findOne({ where: { ServerId: server.id } });
+    let stats = await ServerStats.findOne({ where: { ServerId: server.id } });
     if (!stats) {
-      stats = await require('../models').ServerStats.create({ ServerId: server.id });
+      stats = await ServerStats.create({ ServerId: server.id });
     }
 
     if (memberCount !== undefined) stats.memberCount = memberCount;
@@ -64,6 +64,33 @@ router.put('/:id/stats', ensureAuthenticated, async (req, res) => { // Added ens
   } catch (error) {
     console.error('Error updating server stats:', error);
     res.status(500).json({ message: 'Failed to update server stats.', error: error.message });
+  }
+});
+
+// GET /api/servers/me/users - Fetch users on the authenticated user's server
+router.get('/me/users', isAuthenticated, async (req, res) => {
+  try {
+    const serverId = req.user.serverId; // Ensure you have serverId in user context
+    if (!serverId) {
+      return res.status(400).json({ error: 'Server ID not associated with the user.' });
+    }
+
+    // Fetch server-specific command settings if needed
+    // ...
+
+    // Fetch server-specific feature settings if needed
+    // ...
+
+    // Fetch server users
+    const users = await User.findAll({
+      where: { serverId: serverId },
+      attributes: ['id', 'username', 'discriminator'],
+    });
+
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching server users:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

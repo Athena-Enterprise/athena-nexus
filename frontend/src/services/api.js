@@ -3,8 +3,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
-  withCredentials: true, // This ensures cookies are sent
+  baseURL: '/api', // Proxy handles the baseURL
+  withCredentials: true, // Send cookies with every request
 });
 
 export default api;

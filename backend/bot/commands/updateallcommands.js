@@ -2,7 +2,7 @@
 
 const { SlashCommandBuilder } = require('discord.js');
 const path = require('path');
-const { updateAllGuildCommands } = require('../utils/updateAllGuildCommands');
+const { updateAllGuildCommands } = require('../../utils/updateAllGuildCommands');
 const { Server } = require('../../models/index');
 
 module.exports = {

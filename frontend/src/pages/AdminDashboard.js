@@ -10,6 +10,8 @@ import AdminManagement from '../components/AdminManagement';
 import BotManagement from '../components/BotManagement';
 import DeveloperSection from '../components/DeveloperSection';
 import DocsSection from '../components/DocsSection';
+import DocEditor from '../components/DocEditor';
+import DocViewer from '../components/DocViewer';
 
 const AdminDashboard = () => {
   return (
@@ -22,7 +24,12 @@ const AdminDashboard = () => {
         <Route path="admins" element={<AdminManagement />} />
         <Route path="bot" element={<BotManagement />} />
         <Route path="developer" element={<DeveloperSection />} />
+
+        {/* Documentation Routes */}
         <Route path="docs" element={<DocsSection />} />
+        <Route path="docs/create" element={<DocEditor />} />
+        <Route path="docs/edit/:id" element={<DocEditor />} />
+        <Route path="docs/view/:id" element={<DocViewer />} />
       </Routes>
     </DashboardLayout>
   );

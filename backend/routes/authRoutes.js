@@ -46,7 +46,7 @@ router.get('/logout', (req, res) => {
         return res.status(500).json({ error: 'Failed to destroy session' });
       }
       res.clearCookie('connect.sid'); // Replace 'connect.sid' if your session cookie name is different
-      res.status(200).json({ message: 'Logout successful' });
+      res.redirect('http://localhost:3000'); // Redirect to homepage after logout
     });
   });
 });

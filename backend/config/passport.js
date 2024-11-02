@@ -3,6 +3,7 @@
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const { User } = require('../models'); // Correctly import User from models/index.js
+const crypto = require('crypto'); // Ensure crypto is imported
 
 passport.serializeUser((user, done) => {
   done(null, user.id); // Serialize by User's primary key

@@ -8,8 +8,11 @@ const path = require('path');
 const dotenv = require('dotenv');
 const passport = require('passport');
 
+// Load environment variables **before** using them
+dotenv.config({ path: path.resolve(__dirname, './.env') });
+
 // Import models and Sequelize
-const { sequelize, Sequelize, Server, ServerStats, User, Command } = require('./models/index');
+const { sequelize } = require('./models/index');
 
 // Import routes
 const serverRoutes = require('./routes/serverRoutes');
@@ -18,42 +21,31 @@ const commandRoutes = require('./routes/commandRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const documentationRoutes = require('./routes/documentationRoutes');
+const serverCommandRoutes = require('./routes/serverCommandRoutes');
 
-// Load environment variables **before** using them
-dotenv.config({ path: path.resolve(__dirname, './.env') });
-
-// Determine if the environment is development or production
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
-// Set up Express app **before** using it in middleware or routes
 const app = express();
 
-// Middleware
-app.use(express.json());
+// CORS Configuration
+const corsOptions = {
+  origin: 'http://localhost:3000', // Frontend URL
+  credentials: true, // Allow cookies
+};
+app.use(cors(corsOptions));
 
-// Configure CORS to allow credentials and handle preflight requests
-app.use(
-  cors({
-    origin: 'http://localhost:3000', // Frontend URL
-    credentials: true, // Allow cookies
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    optionsSuccessStatus: 200, // For legacy browser support
-  })
-);
-// Handle preflight requests
-app.options('*', cors());
+// Body Parser
+app.use(express.json());
 
 // Define custom session model to control the table name
 const SessionModel = sequelize.define(
   'SessionStore',
   {
     sid: {
-      type: Sequelize.STRING, // Now Sequelize is defined
+      type: sequelize.Sequelize.STRING, // Ensure Sequelize is correctly referenced
       primaryKey: true,
     },
-    expires: Sequelize.DATE,
-    data: Sequelize.TEXT,
+    expires: sequelize.Sequelize.DATE,
+    data: sequelize.Sequelize.TEXT,
   },
   {
     tableName: 'SessionStore',
@@ -77,7 +69,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: isDevelopment ? false : true, // Set to true if using HTTPS in production
+      secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
       httpOnly: true,
       sameSite: 'lax', // Adjust sameSite attribute as needed
       maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
@@ -92,13 +84,15 @@ app.use(passport.session());
 // Passport configuration
 require('./config/passport');
 
-// Use routes **after** defining `app`
+// Use routes **before** the catch-all route
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/servers', serverRoutes);
+app.use('/api/servers', serverCommandRoutes);
 app.use('/api/premium', premiumRoutes);
 app.use('/api/commands', commandRoutes);
-app.use('/api/admins', adminRoutes); // Use adminRoutes with /api prefix
+app.use('/api/admins', adminRoutes);
+app.use('/api/docs', documentationRoutes);
 
 // Logout route (if not handled in authRoutes)
 app.get('/api/auth/logout', (req, res) => {
@@ -118,22 +112,29 @@ app.get('/api/auth/logout', (req, res) => {
   });
 });
 
-// Home route
-app.get('/', (req, res) => {
-  res.send('Welcome to Athena Nexus Backend!');
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  // If the request starts with /api, return 404
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'API route not found' });
+  }
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
 // Test database connection and start the server
 sequelize
   .authenticate()
   .then(() => {
-    if (isDevelopment) {
+    if (process.env.NODE_ENV !== 'production') {
       console.log('Database connected...');
     }
 
     // Sync the models to the database
     sequelize.sync({ alter: true }).then(() => { // Using alter: true for non-destructive sync
-      if (isDevelopment) {
+      if (process.env.NODE_ENV !== 'production') {
         console.log('Database synced');
       }
 

@@ -1,8 +1,7 @@
-// src/pages/Signup.js
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api'; // Use the configured api instance
+import { toast } from 'react-toastify'; // Optional: For better notifications
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -28,10 +27,11 @@ function Signup() {
     if (formData.password !== formData.confirmPassword) {
       setErrorMessage('Passwords do not match.');
       setSuccessMessage('');
+      toast.error('Passwords do not match.');
       return;
     }
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', formData);
+      const res = await api.post('/auth/signup', formData);
       setSuccessMessage('Signup successful! You can now log in.');
       setErrorMessage('');
       setFormData({
@@ -40,9 +40,11 @@ function Signup() {
         password: '',
         confirmPassword: '',
       });
+      toast.success('Signup successful! You can now log in.');
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Signup failed');
       setSuccessMessage('');
+      toast.error(error.response?.data?.message || 'Signup failed');
     }
   };
 

@@ -11,7 +11,7 @@ const AdminSidebar = () => {
     { name: 'Admin Management', path: '/admin/admins' },
     { name: 'Bot Management', path: '/admin/bot' },
     { name: 'Developer Section', path: '/admin/developer' },
-    { name: 'Documentation', path: '/admin/docs' },
+    { name: 'Documentation', path: '/admin/docs' }, // Correct path
     { name: 'Back to Main', path: '/dashboard' }, // Link back to the main dashboard
   ];
 

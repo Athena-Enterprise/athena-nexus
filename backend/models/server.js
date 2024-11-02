@@ -11,14 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ownerId: { // Foreign key referencing User
-      type: DataTypes.STRING,
+    ownerId: {
+      type: DataTypes.STRING, // Foreign key referencing User
       allowNull: false,
       references: {
-        model: 'Users', // Ensure the Users table is correctly named
+        model: 'Users',
         key: 'id',
       },
       onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     premium: {
       type: DataTypes.BOOLEAN,
@@ -46,6 +47,8 @@ module.exports = (sequelize, DataTypes) => {
     Server.belongsTo(models.User, { as: 'owner', foreignKey: 'ownerId' });
     Server.hasOne(models.ServerStats, { as: 'stats', foreignKey: 'ServerId' });
     Server.hasMany(models.Command, { as: 'commands', foreignKey: 'ServerId' });
+    Server.belongsToMany(models.Feature, { through: 'ServerFeatures', as: 'features', foreignKey: 'ServerId' });
+    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' });
     // Define other associations if necessary
   };
 

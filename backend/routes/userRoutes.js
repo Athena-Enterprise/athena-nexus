@@ -7,7 +7,7 @@ const isAdmin = require('../middleware/isAdmin');
 const { param, validationResult } = require('express-validator');
 const isAuthenticated = require('../middleware/isAuthenticated'); // Middleware to check authentication
 
-// Apply isAdmin middleware to all routes in this router
+// Apply isAdmin middleware to admin-specific routes
 router.use(isAdmin);
 
 // Get all users
@@ -42,7 +42,7 @@ router.delete(
       }
 
       // Prevent deleting yourself
-      if (user.discordId === '228658618684276736') {
+      if (user.discordId === req.user.discordId) {
         return res.status(400).json({ error: 'Cannot delete yourself.' });
       }
 
@@ -86,15 +86,15 @@ router.post(
   }
 );
 
-// Middleware to protect routes
+// Apply isAuthenticated middleware to protect routes
 router.use(isAuthenticated);
 
 // GET /api/users/me - Fetch the authenticated user's data
 router.get('/me', async (req, res) => {
   try {
     const user = await User.findOne({
-      where: { discordId: req.user.discordId },
-      attributes: ['id', 'username', 'discriminator', 'discordId', 'avatar', 'isAdmin'], // Select necessary fields
+      where: { id: req.user.id },
+      attributes: ['id', 'username', 'email', 'isAdmin', 'isPremium', 'avatar', 'discriminator'],
     });
 
     if (!user) {

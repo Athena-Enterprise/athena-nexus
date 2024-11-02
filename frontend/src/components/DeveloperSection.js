@@ -38,7 +38,7 @@ const DeveloperSection = () => {
   };
 
   return (
-    <div className="bg-white shadow rounded-lg p-6">
+    <div className="pt-20 shadow rounded-lg p-6">
       <h2 className="text-2xl font-semibold mb-4">Developer Section</h2>
       <div className="mb-4">
         <label className="label">

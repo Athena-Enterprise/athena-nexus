@@ -4,7 +4,8 @@ import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
-import axios from 'axios';
+import axios from '../services/api'; // Ensure correct import
+import { toast } from 'react-toastify';
 
 function Navbar() {
   const { user, setUser } = useContext(AuthContext);
@@ -20,20 +21,7 @@ function Navbar() {
   const themeBackgrounds = {
     'athena-light': 'bg-white shadow-lg',
     'athena-dark': 'bg-gray-800 shadow-lg',
-    'default-light': 'bg-white shadow-lg',
-    'default-dark': 'bg-gray-800 shadow-lg',
-    'ocean-blue-light': 'bg-blue-100 shadow-lg',
-    'ocean-blue-dark': 'bg-blue-900 shadow-lg',
-    'teal-light': 'bg-teal-100 shadow-lg',
-    'teal-dark': 'bg-teal-900 shadow-lg',
-    'sunrise-light': 'bg-yellow-100 shadow-lg',
-    'sunrise-dark': 'bg-yellow-900 shadow-lg',
-    'midnight-light': 'bg-gray-100 shadow-lg',
-    'midnight-dark': 'bg-gray-900 shadow-lg',
-    'emerald-light': 'bg-emerald-100 shadow-lg',
-    'emerald-dark': 'bg-emerald-900 shadow-lg',
-    'cyberpunk-light': 'bg-pink-100 shadow-lg',
-    'cyberpunk-dark': 'bg-pink-900 shadow-lg',
+    // ... other themes
   };
 
   // Determine Navbar background based on theme and scroll position
@@ -70,12 +58,13 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/logout', { withCredentials: true });
+      const response = await axios.get('/auth/logout', { withCredentials: true }); // Use relative path
       console.log('Logout response:', response.data);
       setUser(null);
       navigate('/');
     } catch (error) {
       console.error('Logout error:', error);
+      toast.error('Logout failed.');
     }
   };
 

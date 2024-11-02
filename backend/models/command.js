@@ -1,5 +1,7 @@
 // backend/models/command.js
 
+const { Op } = require('sequelize'); // Import Sequelize operators if needed
+
 module.exports = (sequelize, DataTypes) => {
   const Command = sequelize.define('Command', {
     id: {
@@ -11,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true, // Ensure command names are unique
     },
     description: {
       type: DataTypes.STRING,
@@ -28,14 +31,31 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('development', 'active', 'deprecated'),
       defaultValue: 'development',
     },
-    // Add other command-related fields as necessary
+    tier: {
+      type: DataTypes.ENUM('free', 'community', 'enterprise'),
+      defaultValue: 'free',
+    },
+    featureId: {
+      type: DataTypes.INTEGER,
+      allowNull: false, // Now NOT NULL after migration
+      references: {
+        model: 'Features',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
   }, {
     tableName: 'Commands',
     timestamps: true,
   });
 
   Command.associate = (models) => {
-    Command.belongsTo(models.Server, { foreignKey: 'ServerId' });
+    Command.belongsTo(models.Server, { foreignKey: 'ServerId', as: 'server' });
+    Command.belongsTo(models.Feature, { foreignKey: 'featureId', as: 'feature' });
+    // Remove association with User
+    // Command.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+    Command.hasMany(models.ServerCommand, { foreignKey: 'commandId', as: 'serverCommands' });
   };
 
   return Command;

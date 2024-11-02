@@ -8,13 +8,30 @@ const { User } = require('../models');
 
 exports.getUser = async (req, res) => {
   try {
-    const user = await User.findByPk(req.user.id); // Ensure User is correctly imported
+    const user = await User.findByPk(req.user.id, {
+      include: [{
+        model: Server,
+        as: 'ownedServers',
+        attributes: ['id', 'name'],
+      }],
+    });
+
     if (!user) {
       return res.status(404).json({ error: 'User not found.' });
     }
-    res.json(user);
+
+    const servers = user.ownedServers;
+
+    res.json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      servers: servers.map(server => ({ id: server.id, name: server.name })),
+      // Remove serverId or handle accordingly
+    });
   } catch (error) {
-    console.error('Error fetching user:', error);
+    logger.error(`Error fetching user: ${error.message}`);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

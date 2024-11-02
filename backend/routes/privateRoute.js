@@ -1,17 +1,17 @@
-// frontend/src/components/AdminRoute.js
+// frontend/src/components/PrivateRoute.js
 
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const AdminRoute = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
     return <div>Loading...</div>; // Or a spinner
   }
 
-  return user && user.isAdmin ? children : <Navigate to="/login" replace />;
+  return user ? children : <Navigate to="/login" replace />;
 };
 
-export default AdminRoute;
+export default PrivateRoute;

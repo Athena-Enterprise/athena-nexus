@@ -9,8 +9,8 @@ import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import Signup from './pages/Signup';
 import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute';
+import PrivateRoute from './components/PrivateRoute'; // Ensure this file exists
+import AdminRoute from './components/AdminRoute'; // Ensure this file exists
 import VerifyEmail from './pages/VerifyEmail';
 import Navbar from './components/Navbar';
 import ThemeSelector from './components/ThemeSelector';
@@ -19,6 +19,10 @@ import { ThemeProvider } from './context/ThemeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Documentation Components
+import DocsSection from './components/DocsSection';
+import DocViewer from './components/DocViewer';
+import DocEditor from './components/DocEditor';
 
 function App() {
   return (
@@ -39,14 +43,16 @@ function App() {
             theme="colored"
           />
 
+          {/* Navbar and ThemeSelector are placed outside Routes to persist across pages */}
+          <Navbar />
+          <ThemeSelector />
+
           <Routes>
             {/* Public Routes */}
             <Route
               path="/"
               element={
                 <>
-                  <Navbar />
-                  <ThemeSelector />
                   <LandingPage />
                   <Footer />
                 </>
@@ -56,8 +62,6 @@ function App() {
               path="/login"
               element={
                 <>
-                  <Navbar />
-                  <ThemeSelector />
                   <Login />
                   <Footer />
                 </>
@@ -67,8 +71,6 @@ function App() {
               path="/signup"
               element={
                 <>
-                  <Navbar />
-                  <ThemeSelector />
                   <Signup />
                   <Footer />
                 </>
@@ -78,8 +80,6 @@ function App() {
               path="/verify-email"
               element={
                 <>
-                  <Navbar />
-                  <ThemeSelector />
                   <VerifyEmail />
                   <Footer />
                 </>
@@ -91,16 +91,13 @@ function App() {
               path="/dashboard/*"
               element={
                 <PrivateRoute>
-                  <>
-                    <Navbar />
-                    <ThemeSelector />
-                    <Dashboard />
-                    <Footer />
-                  </>
+                  <Dashboard />
+                  <Footer />
                 </PrivateRoute>
               }
             />
 
+            {/* Admin Routes */}
             <Route
               path="/admin/*"
               element={

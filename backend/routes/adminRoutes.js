@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models'); // Adjust the path as necessary
+const { User, Server } = require('../models'); // Import Server model
 const isAdmin = require('../middleware/isAdmin'); // Middleware to check admin privileges
 const { body, validationResult } = require('express-validator');
 const adminController = require('../controllers/adminController');
@@ -90,6 +90,34 @@ router.delete('/:discordId', async (req, res) => {
 
 // GET /api/admin/statistics - Fetch statistics
 router.get('/statistics', adminController.getStatistics);
+router.get('/servers', adminController.getAllServers);
+
+// GET /api/admins/servers - Fetch all servers
+router.get('/servers', async (req, res) => {
+  try {
+    const { page = 1, limit = 10 } = req.query;
+    const offset = (page - 1) * limit;
+
+    const { count, rows: servers } = await Server.findAndCountAll({
+      include: [
+        { model: User, as: 'owner', attributes: ['id', 'username'] },
+        // Include other associations if necessary
+      ],
+      limit: parseInt(limit),
+      offset: parseInt(offset),
+    });
+
+    res.json({
+      total: count,
+      pages: Math.ceil(count / limit),
+      currentPage: parseInt(page),
+      servers,
+    });
+  } catch (error) {
+    console.error('Error fetching servers:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 module.exports = router;

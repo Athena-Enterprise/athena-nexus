@@ -70,3 +70,18 @@ exports.getStatistics = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch statistics' });
   }
 };
+
+exports.getAllServers = async (req, res) => {
+  try {
+    const servers = await Server.findAll({
+      include: [
+        { model: User, as: 'owner', attributes: ['id', 'username'] },
+        // Include other associations if necessary
+      ],
+    });
+    res.json(servers);
+  } catch (error) {
+    console.error('Error fetching servers:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

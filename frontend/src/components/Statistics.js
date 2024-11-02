@@ -37,7 +37,7 @@ const Statistics = () => {
   }
 
   return (
-    <div className="card shadow-lg p-6 bg-base-100">
+    <div className="pt-20 card shadow-lg p-6 bg-base-100">
       <h2 className="text-2xl font-semibold mb-4">Statistics</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="stat">

@@ -1,10 +1,9 @@
-// backend/bot/utils/deploy-commands.js
+// backend/utils/deployCommands.js
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const path = require('path');
-const fs = require('fs');
-const { Command } = require('../../models/index'); // Adjust path if necessary
+const { Command } = require('../models'); // Adjust path if necessary
 
 /**
  * Deploys commands to a guild based on premium status.
@@ -38,7 +37,7 @@ const deployCommands = async (clientId, guildId, token, isPremium) => {
 
     // Convert command data to JSON
     const commandData = commands.map(cmd => {
-      const command = require(path.join(__dirname, '../commands', `${cmd.name}.js`));
+      const command = require(path.join(__dirname, '../bot/commands', `${cmd.name}.js`));
       return command.data.toJSON();
     });
 

@@ -14,7 +14,7 @@ const ServerManagement = () => {
 
   const fetchServers = async () => {
     try {
-      const response = await axios.get('/api/admin/servers', { withCredentials: true });
+      const response = await axios.get('/api/admins/servers', { withCredentials: true });
       setServers(response.data);
     } catch (error) {
       console.error('Error fetching servers:', error);
@@ -25,7 +25,7 @@ const ServerManagement = () => {
   };
 
   return (
-    <div className="shadow rounded-lg p-6">
+    <div className="pt-20 shadow rounded-lg p-6">
       <h2 className="text-2xl font-semibold mb-4">Server Management</h2>
       {loading ? (
         <div className="flex items-center justify-center">

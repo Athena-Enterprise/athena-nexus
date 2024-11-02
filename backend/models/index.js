@@ -22,23 +22,33 @@ const User = require('./user')(sequelize, DataTypes);
 const Server = require('./server')(sequelize, DataTypes);
 const ServerStats = require('./serverStats')(sequelize, DataTypes);
 const Command = require('./command')(sequelize, DataTypes);
+const Documentation = require('./documentation')(sequelize, DataTypes);
+const Feature = require('./feature')(sequelize, DataTypes);
+const ServerCommand = require('./serverCommand')(sequelize, DataTypes);
+const ServerFeature = require('./serverFeature')(sequelize, DataTypes);
+const CustomCommand = require('./customCommand')(sequelize, DataTypes);
 
-// Define Associations
-User.hasMany(Server, { as: 'servers', foreignKey: 'ownerId' });
-Server.belongsTo(User, { as: 'owner', foreignKey: 'ownerId' });
+// Collect all models
+const models = {
+  User,
+  Server,
+  ServerStats,
+  Command,
+  Documentation,
+  Feature,
+  ServerCommand,
+  ServerFeature,
+  CustomCommand,
+};
 
-Server.hasOne(ServerStats, { as: 'stats', foreignKey: 'ServerId' });
-ServerStats.belongsTo(Server, { foreignKey: 'ServerId' });
-
-Server.hasMany(Command, { as: 'commands', foreignKey: 'ServerId' });
-Command.belongsTo(Server, { foreignKey: 'ServerId' });
+// Initialize associations defined in models
+Object.values(models)
+  .filter(model => typeof model.associate === 'function')
+  .forEach(model => model.associate(models));
 
 // Export Models and Sequelize Instance
 module.exports = {
   sequelize,
   Sequelize, // Export Sequelize
-  User,
-  Server,
-  ServerStats,
-  Command,
+  ...models,
 };

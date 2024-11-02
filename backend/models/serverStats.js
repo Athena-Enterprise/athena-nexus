@@ -17,12 +17,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: 'CASCADE',
     },
-    // Add other server stats fields as necessary
     memberCount: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    // etc.
+    onlineMembers: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    // Add other server stats fields as necessary
   }, {
     tableName: 'ServerStats',
     timestamps: true,

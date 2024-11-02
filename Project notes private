@@ -1,0 +1,102 @@
+I think it's a good idea to improve the documentation functionality. Nuclino is very powerful and a good option.
+But I need my own custom framework sort of for this.
+
+I'm thinking I want to use https://docusaurus.io/docs 
+Similar to https://create-react-app.dev/docs/updating-to-new-releases
+and https://github.com/facebook/create-react-app/tree/main/docusaurus/website
+
+This will make my life a lot easier later down the line.
+This would mean replacing all exisiting documentation work.
+
+
+
+
+
+
+
+
+#------------------- RECOMENDATIONS ---------------------#
+a. Implement Bulk Command Updates
+If you have many servers, updating commands individually can be inefficient. Consider implementing bulk updates or asynchronous job processing to handle command deployments efficiently.
+
+Example Using Background Jobs:
+
+Use a job queue like Bull or Agenda to manage command deployments asynchronously.
+
+javascript
+Copy code
+// Example using Bull
+
+const Queue = require('bull');
+const { updateAllGuildCommands } = require('../bot/utils/updateAllGuildCommands');
+
+const commandUpdateQueue = new Queue('command-update', {
+  redis: { port: 6379, host: '127.0.0.1' }, // Adjust Redis config
+});
+
+// Add a job to update commands
+exports.updateCommandsForAllServers = async (commands) => {
+  await commandUpdateQueue.add({ commands });
+};
+
+// Process jobs
+commandUpdateQueue.process(async (job) => {
+  const { commands } = job.data;
+  // Fetch all servers and their premium statuses
+  const servers = await Server.findAll();
+  const isPremiumMap = new Map();
+  servers.forEach(server => {
+    isPremiumMap.set(server.id, server.premium);
+  });
+
+  // Update commands on Discord for all servers
+  await updateAllGuildCommands(process.env.DISCORD_CLIENT_ID, process.env.BOT_TOKEN, isPremiumMap);
+});
+b. Enhance Error Handling and Logging
+Implement robust error handling and logging to facilitate easier debugging and maintenance.
+
+Example Using Winston:
+
+javascript
+Copy code
+// backend/utils/logger.js
+
+const { createLogger, format, transports } = require('winston');
+const path = require('path');
+
+const logger = createLogger({
+  level: 'info',
+  format: format.combine(
+    format.timestamp(),
+    format.printf(({ timestamp, level, message }) => `${timestamp} [${level.toUpperCase()}]: ${message}`)
+  ),
+  transports: [
+    new transports.Console(),
+    new transports.File({ filename: path.join(__dirname, '../logs/combined.log') }),
+    new transports.File({ filename: path.join(__dirname, '../logs/error.log'), level: 'error' }),
+  ],
+});
+
+module.exports = logger;
+Usage in Controllers:
+
+javascript
+Copy code
+// backend/controllers/commandController.js
+
+const logger = require('../utils/logger');
+
+// Replace console.error with logger.error
+catch (error) {
+  logger.error(`Error in getEnabledCommandsForServer: ${error.message}`);
+  res.status(500).json({ error: 'Internal server error' });
+}
+c. Secure API Endpoints
+Ensure that all API endpoints are secure, validating inputs thoroughly to prevent injection attacks and other vulnerabilities.
+
+Use express-validator: Validate and sanitize all incoming data.
+Implement Rate Limiting: Prevent abuse by limiting the number of requests per IP.
+Use HTTPS in Production: Ensure secure data transmission.
+d. Implement Role-Based Access Control (RBAC)
+As your application grows, consider implementing a more granular RBAC system to manage permissions beyond just admin and server owner roles.
+

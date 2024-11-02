@@ -8,7 +8,8 @@ const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { sequelize, Server, ServerStats, Command } = require(path.resolve(__dirname, '../models'));
-const { deployCommands } = require('./utils/deploy-commands'); // Ensure this path is correct
+const { deployCommands } = require(path.resolve(__dirname, '../utils/deploy-commands')); // Updated path
+const { updateAllGuildCommands } = require(path.resolve(__dirname, '../utils/updateAllGuildCommands')); // Updated path
 
 
 const clientId = process.env.DISCORD_CLIENT_ID;
@@ -16,13 +17,13 @@ const guildId = process.env.DISCORD_GUILD_ID; // Ensure this is set in your .env
 const token = process.env.BOT_TOKEN;
 
 // Initialize Discord Client with updated intents
-const client = new Client({ 
+const client = new Client({
   intents: [
-    GatewayIntentBits.Guilds, 
-    GatewayIntentBits.GuildMessages, 
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMembers, // To access member data
     GatewayIntentBits.GuildPresences, // To access presence data
-  ] 
+  ]
 });
 
 // Initialize commands collection
@@ -59,6 +60,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 })();
 
 // Handle interaction events
+
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
@@ -67,25 +69,42 @@ client.on('interactionCreate', async interaction => {
   if (!command) return;
 
   try {
+    // Fetch the server's command status
+    const serverId = interaction.guildId;
+    const serverCommand = await ServerCommand.findOne({
+      where: { serverId, commandId: command.id },
+    });
+
+    // If the command is disabled for this server, inform the user
+    if (serverCommand && !serverCommand.enabled) {
+      await interaction.reply({ content: 'This command is disabled on this server.', ephemeral: true });
+      return;
+    }
+
+    // Execute the command
     await command.execute(interaction, sequelize); // Pass sequelize if needed
   } catch (error) {
     console.error(error);
-    await interaction.reply({ content: 'There was an error executing that command!', ephemeral: true });
+    if (interaction.replied || interaction.deferred) {
+      await interaction.followUp({ content: 'There was an error executing that command!', ephemeral: true });
+    } else {
+      await interaction.reply({ content: 'There was an error executing that command!', ephemeral: true });
+    }
   }
 });
 
 // Handle when the bot joins a new server
 client.on('guildCreate', async (guild) => {
   console.log(`Joined new guild: ${guild.name} (ID: ${guild.id})`);
-  
+
   try {
     // Fetch all members to ensure accurate member counts
     await guild.members.fetch();
 
     // Check if the server already exists in the database
-    let server = await Server.findOne({ 
-      where: { id: guild.id }, 
-      include: [{ model: ServerStats, as: 'stats' }] 
+    let server = await Server.findOne({
+      where: { id: guild.id },
+      include: [{ model: ServerStats, as: 'stats' }]
     });
     if (!server) {
       // Create a new server entry
@@ -124,7 +143,7 @@ client.on('guildCreate', async (guild) => {
 // Handle when the bot is removed from a server
 client.on('guildDelete', async (guild) => {
   console.log(`Removed from guild: ${guild.name} (ID: ${guild.id})`);
-  
+
   try {
     // Remove the server and its stats from the database
     const server = await Server.findOne({ where: { id: guild.id } });
