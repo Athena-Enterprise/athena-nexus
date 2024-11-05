@@ -7,12 +7,13 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const passport = require('passport');
+const { Sequelize, DataTypes } = require('sequelize'); // Import DataTypes
 
 // Load environment variables **before** using them
 dotenv.config({ path: path.resolve(__dirname, './.env') });
 
-// Import models and Sequelize
-const { sequelize } = require('./models/index');
+// Import Sequelize instance
+const sequelize = require('./config/database');
 
 // Import routes
 const serverRoutes = require('./routes/serverRoutes');
@@ -29,7 +30,7 @@ const app = express();
 // CORS Configuration
 const corsOptions = {
   origin: 'http://localhost:3000', // Frontend URL
-  credentials: true, // Allow cookies
+  credentials: true, // Allow cookies to be sent
 };
 app.use(cors(corsOptions));
 
@@ -41,11 +42,11 @@ const SessionModel = sequelize.define(
   'SessionStore',
   {
     sid: {
-      type: sequelize.Sequelize.STRING, // Ensure Sequelize is correctly referenced
+      type: DataTypes.STRING, // Corrected
       primaryKey: true,
     },
-    expires: sequelize.Sequelize.DATE,
-    data: sequelize.Sequelize.TEXT,
+    expires: DataTypes.DATE, // Corrected
+    data: DataTypes.TEXT, // Corrected
   },
   {
     tableName: 'SessionStore',
@@ -84,11 +85,11 @@ app.use(passport.session());
 // Passport configuration
 require('./config/passport');
 
-// Use routes **before** the catch-all route
+// Use routes **after** initializing Passport
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/servers', serverRoutes);
-app.use('/api/servers', serverCommandRoutes);
+app.use('/api/servers', serverCommandRoutes); // Ensure correct placement
 app.use('/api/premium', premiumRoutes);
 app.use('/api/commands', commandRoutes);
 app.use('/api/admins', adminRoutes);

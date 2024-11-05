@@ -1,7 +1,5 @@
 // backend/models/command.js
 
-const { Op } = require('sequelize'); // Import Sequelize operators if needed
-
 module.exports = (sequelize, DataTypes) => {
   const Command = sequelize.define('Command', {
     id: {
@@ -51,11 +49,16 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Command.associate = (models) => {
-    Command.belongsTo(models.Server, { foreignKey: 'ServerId', as: 'server' });
     Command.belongsTo(models.Feature, { foreignKey: 'featureId', as: 'feature' });
-    // Remove association with User
-    // Command.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
     Command.hasMany(models.ServerCommand, { foreignKey: 'commandId', as: 'serverCommands' });
+
+    // Define belongsToMany association
+    Command.belongsToMany(models.Server, {
+      through: models.ServerCommand,
+      as: 'servers',
+      foreignKey: 'commandId',
+      otherKey: 'serverId',
+    });
   };
 
   return Command;

@@ -25,6 +25,8 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
       setServers(res.data.servers || []);
       setSelectedServerId(res.data.servers && res.data.servers.length > 0 ? res.data.servers[0].id : null);
+      console.log('Servers:', res.data.servers);
+      console.log('Selected Server ID:', res.data.servers && res.data.servers.length > 0 ? res.data.servers[0].id : null);
     } catch (error) {
       console.error('Error fetching user:', error);
       setUser(null);

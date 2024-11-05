@@ -46,10 +46,16 @@ module.exports = (sequelize, DataTypes) => {
   Server.associate = (models) => {
     Server.belongsTo(models.User, { as: 'owner', foreignKey: 'ownerId' });
     Server.hasOne(models.ServerStats, { as: 'stats', foreignKey: 'ServerId' });
-    Server.hasMany(models.Command, { as: 'commands', foreignKey: 'ServerId' });
     Server.belongsToMany(models.Feature, { through: 'ServerFeatures', as: 'features', foreignKey: 'ServerId' });
-    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' });
-    // Define other associations if necessary
+    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' }); // Existing association
+
+    // Define belongsToMany association
+    Server.belongsToMany(models.Command, {
+      through: models.ServerCommand,
+      as: 'commands',
+      foreignKey: 'serverId',
+      otherKey: 'commandId',
+    });
   };
 
   return Server;

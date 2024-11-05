@@ -7,7 +7,7 @@ const isAdmin = require('../middleware/isAdmin');
 const { body, validationResult } = require('express-validator');
 const { updateAllGuildCommands } = require('../utils/updateAllGuildCommands'); // Import the function
 const { isAuthenticated } = require('../middleware/auth');
-const { deployCommands } = require('../utils/deploy-commands'); // Adjust path if necessary
+const { deployCommands } = require('../utils/deployCommands'); // Adjust path if necessary
 
 // Apply isAdmin middleware to all routes in this router
 router.use(isAdmin);

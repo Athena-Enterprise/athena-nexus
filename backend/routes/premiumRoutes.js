@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const { Server } = require('../models/index');
-const { deployCommands } = require('../utils/deploy-commands');
+const { deployCommands } = require('../utils/deployCommands');
 require('dotenv').config();
 
 /**

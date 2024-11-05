@@ -4,6 +4,8 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const path = require('path');
 const { Command } = require('../models'); // Adjust path if necessary
+const logger = require('./logger'); // Ensure correct path
+const fs = require('fs'); // **Added**
 
 /**
  * Deploys commands to a guild based on premium status.
@@ -37,22 +39,28 @@ const deployCommands = async (clientId, guildId, token, isPremium) => {
 
     // Convert command data to JSON
     const commandData = commands.map(cmd => {
-      const command = require(path.join(__dirname, '../bot/commands', `${cmd.name}.js`));
-      return command.data.toJSON();
-    });
+      const commandPath = path.join(__dirname, '../bot/commands', `${cmd.name}.js`);
+      if (fs.existsSync(commandPath)) {
+        const command = require(commandPath);
+        return command.data.toJSON();
+      } else {
+        logger.warn(`Command file not found: ${commandPath}`);
+        return null;
+      }
+    }).filter(cmd => cmd !== null); // Remove null entries
 
     const rest = new REST({ version: '10' }).setToken(token);
 
-    console.log(`Started refreshing application (/) commands for guild ${guildId}.`);
+    logger.info(`Started refreshing application (/) commands for guild ${guildId}.`);
 
     await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
       { body: commandData },
     );
 
-    console.log(`Successfully reloaded application (/) commands for guild ${guildId}.`);
+    logger.info(`Successfully reloaded application (/) commands for guild ${guildId}.`);
   } catch (error) {
-    console.error(`Error deploying commands for guild ${guildId}:`, error);
+    logger.error(`Error deploying commands for guild ${guildId}:`, error);
   }
 };
 

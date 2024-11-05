@@ -5,52 +5,89 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
-exports.emailLogin = async (req, res, next) => {
-  // Passport LocalStrategy handles authentication
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      console.error('Authentication error:', err);
-      return res.status(500).json({ message: 'Internal server error' });
-    }
-    if (!user) {
-      return res.status(400).json({ message: info.message || 'Login failed' });
-    }
-    req.logIn(user, (err) => {
-      if (err) {
-        console.error('Login error:', err);
-        return res.status(500).json({ message: 'Login failed' });
-      }
-      // Send user data as response
-      return res.status(200).json({ message: 'Login successful', user: { id: user.id, username: user.username, email: user.email, isAdmin: user.isAdmin } });
-    });
-  })(req, res, next);
-};
-
 exports.emailSignup = async (req, res) => {
-  const { username, email, password } = req.body;
   try {
-    // Check if user already exists
-    let user = await User.findOne({ where: { email } });
-    if (user) {
-      return res.status(400).json({ message: 'User with this email already exists.' });
+    const { email, password, username } = req.body;
+
+    // Validate input
+    if (!email || !password || !username) {
+      return res.status(400).json({ error: 'Email, username, and password are required.' });
     }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.status(409).json({ error: 'Email already in use.' });
+    }
 
-    // Create new user
-    user = await User.create({
+    const passwordHash = await bcrypt.hash(password, 10);
+    const emailVerificationToken = crypto.randomBytes(32).toString('hex');
+
+    const newUser = await User.create({
+      id: crypto.randomUUID(), // Generate a unique ID if not using Discord ID
       username,
       email,
-      passwordHash: hashedPassword,
-      isAdmin: false, // Default to non-admin
-      isPremium: false,
+      passwordHash,
+      emailVerificationToken,
     });
 
-    res.status(201).json({ message: 'User registered successfully.' });
+    // Send verification email (configure transporter accordingly)
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail', // e.g., Gmail
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const verificationLink = `http://localhost:3000/verify-email?token=${emailVerificationToken}`;
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Verify your email',
+      html: `<p>Click <a href="${verificationLink}">here</a> to verify your email.</p>`,
+    });
+
+    res.status(201).json({ message: 'User registered successfully. Please verify your email.' });
   } catch (error) {
-    console.error('Signup error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error('Error during signup:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.emailLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validate input
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email and password are required.' });
+    }
+
+    const user = await User.findOne({ where: { email } });
+
+    if (!user || !user.passwordHash) {
+      return res.status(401).json({ error: 'Invalid email or password.' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid email or password.' });
+    }
+
+    // Authenticate user
+    req.login(user, (err) => {
+      if (err) {
+        console.error('Login error:', err);
+        return res.status(500).json({ error: 'Login failed.' });
+      }
+      console.log(`User logged in: ${user.id}`); // Debugging log
+      res.json({ message: 'Login successful.', user });
+    });
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 

@@ -6,17 +6,20 @@ const { User } = require('../models'); // Correctly import User from models/inde
 const crypto = require('crypto'); // Ensure crypto is imported
 
 passport.serializeUser((user, done) => {
+  console.log(`Serializing user: ${user.id}`); // Debugging log
   done(null, user.id); // Serialize by User's primary key
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findByPk(id); // Correctly using findByPk
+    console.log(`Deserializing user: ${user.id}`); // Debugging log
     return done(null, user); // The entire user object is available in req.user
   } catch (err) {
     return done(err, null);
   }
 });
+
 
 // Main Discord strategy for authentication
 passport.use(

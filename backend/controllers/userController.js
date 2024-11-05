@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
-const { User } = require('../models');
+const { User, Server } = require('../models');
+const logger = require('../utils/logger'); // Import the logger
 
 exports.getUser = async (req, res) => {
   try {
@@ -17,21 +18,26 @@ exports.getUser = async (req, res) => {
     });
 
     if (!user) {
+      logger.warn(`User not found with ID: ${req.user.id}`);
       return res.status(404).json({ error: 'User not found.' });
     }
 
-    const servers = user.ownedServers;
+    const servers = user.ownedServers || [];
+    logger.info(`User ${user.id} owns servers: ${JSON.stringify(servers)}`); // Debug log
 
     res.json({
       id: user.id,
       username: user.username,
       email: user.email,
       isAdmin: user.isAdmin,
+      isPremium: user.isPremium, // Include isPremium
+      avatar: user.avatar, // Include avatar
+      discriminator: user.discriminator, // Include discriminator
       servers: servers.map(server => ({ id: server.id, name: server.name })),
-      // Remove serverId or handle accordingly
     });
+    logger.info(`User data sent for user ID: ${user.id}`);
   } catch (error) {
-    logger.error(`Error fetching user: ${error.message}`);
+    logger.error(`Error fetching user (ID: ${req.user.id}): ${error.message}`);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -48,6 +54,7 @@ exports.updateUser = async (req, res) => {
       // Check if email is already in use
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
+        logger.warn(`Email update failed: Email already in use (${email})`);
         return res.status(400).json({ message: 'Email already in use.' });
       }
       user.email = email;
@@ -78,14 +85,17 @@ exports.updateUser = async (req, res) => {
       });
 
       emailChanged = true;
+      logger.info(`Email updated for user ID: ${user.id}. Verification email sent.`);
     }
 
     if (username) {
       user.username = username;
+      logger.info(`Username updated for user ID: ${user.id} to ${username}`);
     }
 
     if (newsletterSubscribed !== undefined) {
       user.newsletterSubscribed = newsletterSubscribed;
+      logger.info(`Newsletter subscription updated for user ID: ${user.id} to ${newsletterSubscribed}`);
     }
 
     await user.save();
@@ -97,7 +107,7 @@ exports.updateUser = async (req, res) => {
         : 'Settings updated successfully.',
     });
   } catch (error) {
-    console.error('Error updating user:', error);
+    logger.error(`Error updating user (ID: ${req.user.id}): ${error.message}`);
     res.status(500).json({ message: 'Failed to update user.' });
   }
 };
@@ -110,12 +120,14 @@ exports.changePassword = async (req, res) => {
     const user = await User.findByPk(userId);
 
     if (!user) {
+      logger.warn(`Password change failed: User not found (ID: ${userId})`);
       return res.status(404).json({ message: 'User not found.' });
     }
 
     // Check current password
     const isMatch = await bcrypt.compare(currentPassword, user.passwordHash);
     if (!isMatch) {
+      logger.warn(`Password change failed: Incorrect current password for user ID: ${userId}`);
       return res.status(400).json({ message: 'Current password is incorrect.' });
     }
 
@@ -123,9 +135,10 @@ exports.changePassword = async (req, res) => {
     user.passwordHash = newPassword; // Will be hashed by the beforeUpdate hook
     await user.save();
 
+    logger.info(`Password changed successfully for user ID: ${user.id}`);
     res.json({ message: 'Password changed successfully.' });
   } catch (error) {
-    console.error('Error changing password:', error);
+    logger.error(`Error changing password for user ID: ${req.user.id}: ${error.message}`);
     res.status(500).json({ message: 'Failed to change password.' });
   }
 };
@@ -137,6 +150,7 @@ exports.unlinkDiscord = async (req, res) => {
     const user = await User.findByPk(userId);
 
     if (!user) {
+      logger.warn(`Unlink Discord failed: User not found (ID: ${userId})`);
       return res.status(404).json({ error: 'User not found.' });
     }
 
@@ -148,9 +162,10 @@ exports.unlinkDiscord = async (req, res) => {
 
     await user.save();
 
+    logger.info(`Discord account unlinked successfully for user ID: ${user.id}`);
     res.json({ message: 'Discord account unlinked successfully.' });
   } catch (error) {
-    console.error('Error unlinking Discord account:', error);
+    logger.error(`Error unlinking Discord account for user ID: ${req.user.id}: ${error.message}`);
     res.status(500).json({ message: 'Failed to unlink Discord account.' });
   }
 };

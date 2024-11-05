@@ -1,6 +1,6 @@
 // backend/utils/updateAllGuildCommands.js
 
-const { deployCommands } = require('./deploy-commands');
+const { deployCommands } = require('./deployCommands');
 const { Server } = require('../models');
 
 /**

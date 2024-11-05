@@ -3,7 +3,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const path = require('path');
 const { Server } = require(path.resolve(__dirname, '../../models')); // Corrected path
-const { deployCommands } = require('../../utils/deploy-commands'); // Corrected path and naming
+const { deployCommands } = require('../../utils/deployCommands'); // Corrected path and naming
 
 module.exports = {
   data: new SlashCommandBuilder()

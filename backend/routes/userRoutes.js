@@ -89,23 +89,10 @@ router.post(
 // Apply isAuthenticated middleware to protect routes
 router.use(isAuthenticated);
 
+// Import userController
+const userController = require('../controllers/userController');
+
 // GET /api/users/me - Fetch the authenticated user's data
-router.get('/me', async (req, res) => {
-  try {
-    const user = await User.findOne({
-      where: { id: req.user.id },
-      attributes: ['id', 'username', 'email', 'isAdmin', 'isPremium', 'avatar', 'discriminator'],
-    });
-
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    res.json(user);
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+router.get('/me', userController.getUser);
 
 module.exports = router;

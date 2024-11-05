@@ -7,23 +7,22 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-const { sequelize, Server, ServerStats, Command } = require(path.resolve(__dirname, '../models'));
-const { deployCommands } = require(path.resolve(__dirname, '../utils/deploy-commands')); // Updated path
+const { sequelize, Server, ServerStats, Command, ServerCommand, User } = require(path.resolve(__dirname, '../models'));
+const { deployCommands } = require(path.resolve(__dirname, '../utils/deployCommands')); // Updated path
 const { updateAllGuildCommands } = require(path.resolve(__dirname, '../utils/updateAllGuildCommands')); // Updated path
-
+const logger = require(path.resolve(__dirname, '../utils/logger')); // Ensure logger is correctly imported
 
 const clientId = process.env.DISCORD_CLIENT_ID;
-const guildId = process.env.DISCORD_GUILD_ID; // Ensure this is set in your .env
 const token = process.env.BOT_TOKEN;
 
-// Initialize Discord Client with updated intents
+// Initialize Discord Client with necessary intents
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMembers, // To access member data
     GatewayIntentBits.GuildPresences, // To access presence data
-  ]
+  ],
 });
 
 // Initialize commands collection
@@ -33,34 +32,39 @@ client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-const commands = [];
 for (const file of commandFiles) {
   const command = require(path.join(commandsPath, file));
-  client.commands.set(command.data.name, command);
-  // Note: Initial registration is handled via database
+  if ('data' in command && 'execute' in command) {
+    client.commands.set(command.data.name, command);
+    logger.info(`Loaded command: ${command.data.name}`);
+  } else {
+    logger.warn(`The command at ${file} is missing a required "data" or "execute" property.`);
+  }
 }
 
-// Register commands to a guild on startup based on the database
+// Register commands to all guilds on startup based on the database
 const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
   try {
-    console.log('Started refreshing application (/) commands.');
+    logger.info('Started refreshing application (/) commands globally.');
 
-    // Fetch the guild's premium status
-    const server = await Server.findOne({ where: { id: guildId } });
-    const isPremium = server ? server.premium : false;
+    // Fetch all servers from the database
+    const servers = await Server.findAll();
 
-    await deployCommands(clientId, guildId, token, isPremium);
+    for (const server of servers) {
+      const isPremium = server.premium;
+      await deployCommands(clientId, server.id, token, isPremium);
+      logger.info(`Successfully deployed commands for guild: ${server.name} (${server.id})`);
+    }
 
-    console.log('Successfully reloaded application (/) commands for the guild.');
+    logger.info('Successfully reloaded application (/) commands globally.');
   } catch (error) {
-    console.error(error);
+    logger.error(`Error deploying global commands: ${error}`);
   }
 })();
 
 // Handle interaction events
-
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
@@ -78,13 +82,15 @@ client.on('interactionCreate', async interaction => {
     // If the command is disabled for this server, inform the user
     if (serverCommand && !serverCommand.enabled) {
       await interaction.reply({ content: 'This command is disabled on this server.', ephemeral: true });
+      logger.info(`Command "${command.id}" disabled on server "${serverId}". User attempted to execute it.`);
       return;
     }
 
     // Execute the command
     await command.execute(interaction, sequelize); // Pass sequelize if needed
+    logger.info(`Executed command "${command.id}" by user "${interaction.user.id}" on server "${serverId}".`);
   } catch (error) {
-    console.error(error);
+    logger.error(`Error executing command "${interaction.commandName}": ${error.message}`);
     if (interaction.replied || interaction.deferred) {
       await interaction.followUp({ content: 'There was an error executing that command!', ephemeral: true });
     } else {
@@ -95,54 +101,65 @@ client.on('interactionCreate', async interaction => {
 
 // Handle when the bot joins a new server
 client.on('guildCreate', async (guild) => {
-  console.log(`Joined new guild: ${guild.name} (ID: ${guild.id})`);
+  logger.info(`Joined new guild: ${guild.name} (ID: ${guild.id})`);
 
   try {
-    // Fetch all members to ensure accurate member counts
-    await guild.members.fetch();
+    // Fetch the owner of the guild
+    const owner = await guild.fetchOwner();
+    const discordOwnerId = owner.id;
 
-    // Check if the server already exists in the database
-    let server = await Server.findOne({
-      where: { id: guild.id },
-      include: [{ model: ServerStats, as: 'stats' }]
-    });
-    if (!server) {
-      // Create a new server entry
-      server = await Server.create({
+    // Find the user in the database by discordId
+    const user = await User.findOne({ where: { discordId: discordOwnerId } });
+
+    if (user) {
+      // Create a Server entry
+      const server = await Server.create({
         id: guild.id,
         name: guild.name,
-        ownerId: guild.ownerId,
-        premium: false, // Set default or based on your criteria
-        memberCount: guild.memberCount, // Initialize memberCount
-        onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size, // Initialize onlineMembers
-        iconUrl: guild.iconURL({ dynamic: true }) || null, // Store icon URL
+        ownerId: user.id,
+        premium: false, // Default value; adjust as necessary
+        memberCount: guild.memberCount,
+        onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size,
+        iconUrl: guild.iconURL({ dynamic: true }) || null,
       });
-      console.log(`Server ${guild.name} added to the database.`);
+
+      logger.info(`Server ${guild.name} (${guild.id}) added to the database.`);
 
       // Create corresponding ServerStats entry
       await ServerStats.create({
         ServerId: server.id,
-        memberCount: guild.memberCount,
-        onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size,
+        memberCount: server.memberCount,
+        onlineMembers: server.onlineMembers,
       });
-      console.log(`ServerStats for ${guild.name} created.`);
-    } else {
-      // Update existing server entry if needed
-      server.iconUrl = guild.iconURL({ dynamic: true }) || server.iconUrl;
-      await server.save();
-      console.log(`Server ${guild.name} updated in the database.`);
-    }
+      logger.info(`ServerStats for ${guild.name} created.`);
 
-    // Deploy commands based on premium status
-    await deployCommands(clientId, guild.id, token, server.premium);
+      // Fetch all existing commands
+      const allCommands = await Command.findAll();
+
+      // Create ServerCommands entries
+      const serverCommands = allCommands.map(cmd => ({
+        serverId: server.id,
+        commandId: cmd.id,
+        enabled: true, // Default to enabled; adjust as necessary
+      }));
+
+      await ServerCommand.bulkCreate(serverCommands);
+      logger.info(`ServerCommands for ${guild.name} created.`);
+
+      // Deploy commands based on premium status
+      await deployCommands(clientId, guild.id, token, server.premium);
+      logger.info(`Commands deployed for guild: ${guild.name} (${guild.id})`);
+    } else {
+      logger.warn(`Owner with Discord ID ${discordOwnerId} not found in the database.`);
+    }
   } catch (error) {
-    console.error('Error adding/updating guild in database:', error);
+    logger.error(`Error handling guildCreate for ${guild.name}: ${error.message}`);
   }
 });
 
 // Handle when the bot is removed from a server
 client.on('guildDelete', async (guild) => {
-  console.log(`Removed from guild: ${guild.name} (ID: ${guild.id})`);
+  logger.info(`Removed from guild: ${guild.name} (ID: ${guild.id})`);
 
   try {
     // Remove the server and its stats from the database
@@ -150,10 +167,11 @@ client.on('guildDelete', async (guild) => {
     if (server) {
       await ServerStats.destroy({ where: { ServerId: server.id } });
       await Server.destroy({ where: { id: guild.id } });
-      console.log(`Server ${guild.name} and its stats removed from the database.`);
+      await ServerCommand.destroy({ where: { serverId: guild.id } }); // Remove associated ServerCommands
+      logger.info(`Server ${guild.name} and its associated data removed from the database.`);
     }
   } catch (error) {
-    console.error('Error removing guild from database:', error);
+    logger.error(`Error removing guild from database: ${error.message}`);
   }
 });
 
@@ -173,11 +191,11 @@ client.on('guildMemberAdd', async (member) => {
         stats.memberCount = server.memberCount;
         stats.onlineMembers = server.onlineMembers;
         await stats.save();
-        console.log(`Updated memberCount and onlineMembers for guild: ${server.name}`);
+        logger.info(`Updated memberCount and onlineMembers for guild: ${server.name}`);
       }
     }
   } catch (error) {
-    console.error('Error updating member count on member join:', error);
+    logger.error(`Error updating member count on member join: ${error.message}`);
   }
 });
 
@@ -198,11 +216,11 @@ client.on('guildMemberRemove', async (member) => {
         stats.memberCount = server.memberCount;
         stats.onlineMembers = server.onlineMembers;
         await stats.save();
-        console.log(`Updated memberCount for guild: ${server.name}`);
+        logger.info(`Updated memberCount for guild: ${server.name}`);
       }
     }
   } catch (error) {
-    console.error('Error updating member count on member leave:', error);
+    logger.error(`Error updating member count on member leave: ${error.message}`);
   }
 });
 
@@ -231,11 +249,11 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       if (stats) {
         stats.onlineMembers = server.onlineMembers;
         await stats.save();
-        console.log(`Updated onlineMembers for guild: ${server.name}`);
+        logger.info(`Updated onlineMembers for guild: ${server.name}`);
       }
     }
   } catch (error) {
-    console.error('Error updating online members on presence update:', error);
+    logger.error(`Error updating online members on presence update: ${error.message}`);
   }
 });
 
@@ -245,17 +263,24 @@ client.on('messageCreate', message => {
 
   if (message.content === '!ping') {
     message.channel.send('Pong Chong!');
+    logger.info(`Responded to !ping command from user ${message.author.id} in guild ${message.guild.id}`);
   }
 });
 
 // Login to Discord
-client.login(token);
+client.login(token)
+  .then(() => {
+    logger.info('Bot logged in successfully.');
+  })
+  .catch(err => {
+    logger.error(`Bot login failed: ${err}`);
+  });
 
 // Synchronize the database
 sequelize.sync({ alter: true }) // Ensure fields are updated
   .then(() => {
-    console.log('Bot database synchronized.');
+    logger.info('Bot database synchronized.');
   })
   .catch(err => {
-    console.error('Error synchronizing bot database:', err);
+    logger.error(`Error synchronizing bot database: ${err}`);
   });

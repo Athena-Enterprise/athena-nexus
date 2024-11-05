@@ -18,7 +18,9 @@ const CommandsEnabled = () => {
     }
 
     try {
+      console.log(`Fetching commands for server ID: ${selectedServerId}`);
       const response = await axios.get(`/servers/${selectedServerId}/commands`, { withCredentials: true });
+      console.log('Commands fetched:', response.data);
       setCommands(response.data);
     } catch (error) {
       console.error('Error fetching commands:', error);
@@ -37,6 +39,7 @@ const CommandsEnabled = () => {
 
   const handleToggle = async (commandId, currentEnabled) => {
     try {
+      console.log(`Toggling command ID: ${commandId}, Current Enabled: ${currentEnabled}`);
       await axios.put(`/servers/${selectedServerId}/commands/${commandId}`, { enabled: !currentEnabled }, { withCredentials: true });
 
       // Optimistically update the state
@@ -46,6 +49,7 @@ const CommandsEnabled = () => {
         )
       );
       toast.success('Command status updated successfully.');
+      console.log(`Command ID: ${commandId} toggled to ${!currentEnabled}`);
     } catch (error) {
       console.error('Error toggling command:', error);
       toast.error('Failed to toggle command.');
@@ -54,6 +58,7 @@ const CommandsEnabled = () => {
 
   const handleServerChange = (e) => {
     const newServerId = e.target.value;
+    console.log(`Selected new server ID: ${newServerId}`);
     setSelectedServerId(newServerId);
     setLoading(true);
     fetchCommands();
@@ -64,7 +69,7 @@ const CommandsEnabled = () => {
   }
 
   return (
-    <div>
+    <div className="pt-20">
       <h2 className="text-xl font-semibold mb-4">Commands Enabled</h2>
       {servers.length > 1 && (
         <div className="mb-4">

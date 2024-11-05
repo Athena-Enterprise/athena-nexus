@@ -1,0 +1,37 @@
+2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:17:58 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:05 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
+    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
+    at Array.map (<anonymous>)
+    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
+    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
+    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
+    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
+2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
+    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
+    at Array.map (<anonymous>)
+    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
+    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
+    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
+    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
+2024-11-05 23:48:29 [error]: Error updating server-specific command: require(...) is not a function

@@ -1,0 +1,424 @@
+2024-11-05 21:33:31 [info]: Database connected successfully.
+2024-11-05 21:33:31 [info]: Session store synced successfully.
+2024-11-05 21:33:31 [info]: Database synced successfully.
+2024-11-05 21:33:31 [info]: Server running on port 5000
+2024-11-05 21:34:52 [info]: Database connected successfully.
+2024-11-05 21:34:52 [info]: Session store synced successfully.
+2024-11-05 21:34:52 [info]: Database synced successfully.
+2024-11-05 21:34:52 [info]: Server running on port 5000
+2024-11-05 21:34:55 [info]: Loaded command: ping
+2024-11-05 21:34:55 [info]: Loaded command: serverinfo
+2024-11-05 21:34:55 [info]: Loaded command: serverstats
+2024-11-05 21:34:55 [info]: Loaded command: setpremium
+2024-11-05 21:34:55 [info]: Loaded command: updateallcommands
+2024-11-05 21:34:55 [info]: Started refreshing application (/) commands globally.
+2024-11-05 21:34:55 [info]: Successfully reloaded application (/) commands globally.
+2024-11-05 21:34:55 [info]: Bot database synchronized.
+2024-11-05 21:34:56 [info]: Bot logged in successfully.
+2024-11-05 21:35:15 [info]: Joined new guild: Athena Network (ID: 771856739956031539)
+2024-11-05 21:35:15 [info]: Server Athena Network (771856739956031539) added to the database.
+2024-11-05 21:35:15 [info]: ServerStats for Athena Network created.
+2024-11-05 21:35:15 [info]: ServerCommands for Athena Network created.
+2024-11-05 21:35:15 [info]: Fetched 2 enabled commands for non-premium guild 771856739956031539.
+2024-11-05 21:35:15 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-05 21:35:15 [info]: Successfully reloaded application (/) commands for guild 771856739956031539.
+2024-11-05 21:35:15 [info]: Commands deployed for guild: Athena Network (771856739956031539)
+2024-11-05 21:35:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:35:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:36:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:36:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:36:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:24 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:37:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:38:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:39:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:39:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:39:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:39:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:39:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:40:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:34 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:41:51 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:42:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:42:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:42:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:42:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:44:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:45:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:46:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:46:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:47:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:47:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:47:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:48:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:48:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:49:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:50:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:50:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:50:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:51:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:51:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:51:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:51:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:52:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:53:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:54:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:54:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:54:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:54:54 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:55:24 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:56:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:56:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:57:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:58:02 [info]: Database connected successfully.
+2024-11-05 21:58:02 [info]: Session store synced successfully.
+2024-11-05 21:58:03 [info]: Database synced successfully.
+2024-11-05 21:58:03 [info]: Server running on port 5000
+2024-11-05 21:58:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:59:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:59:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 21:59:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:00:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:01:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:02:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:02:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:02:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:02:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:02:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:03:08 [info]: Database connected successfully.
+2024-11-05 22:03:08 [info]: Session store synced successfully.
+2024-11-05 22:03:09 [info]: Database synced successfully.
+2024-11-05 22:03:09 [info]: Server running on port 5000
+2024-11-05 22:03:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:03:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:03:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:04:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:05:21 [info]: Database connected successfully.
+2024-11-05 22:05:21 [info]: Session store synced successfully.
+2024-11-05 22:05:21 [info]: Database synced successfully.
+2024-11-05 22:05:21 [info]: Server running on port 5000
+2024-11-05 22:06:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:06:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:06:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:06:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:07:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:07:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:07:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:07:36 [info]: Loaded command: ping
+2024-11-05 22:07:36 [info]: Loaded command: serverinfo
+2024-11-05 22:07:36 [info]: Loaded command: serverstats
+2024-11-05 22:07:36 [info]: Loaded command: setpremium
+2024-11-05 22:07:36 [info]: Loaded command: updateallcommands
+2024-11-05 22:07:36 [info]: Started refreshing application (/) commands globally.
+2024-11-05 22:07:37 [info]: Successfully deployed commands for guild: Athena Network (771856739956031539)
+2024-11-05 22:07:37 [info]: Successfully reloaded application (/) commands globally.
+2024-11-05 22:07:37 [info]: Bot database synchronized.
+2024-11-05 22:07:37 [info]: Bot logged in successfully.
+2024-11-05 22:07:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:08:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:08:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:08:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:08:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:08:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:09:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:09:34 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:10:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:11:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:11:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:11:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:13:11 [info]: Loaded command: ping
+2024-11-05 22:13:11 [info]: Loaded command: serverinfo
+2024-11-05 22:13:11 [info]: Loaded command: serverstats
+2024-11-05 22:13:11 [info]: Loaded command: setpremium
+2024-11-05 22:13:11 [info]: Loaded command: updateallcommands
+2024-11-05 22:13:11 [info]: Started refreshing application (/) commands globally.
+2024-11-05 22:13:11 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-05 22:13:11 [info]: Successfully reloaded application (/) commands for guild 771856739956031539.
+2024-11-05 22:13:11 [info]: Successfully deployed commands for guild: Athena Network (771856739956031539)
+2024-11-05 22:13:11 [info]: Successfully reloaded application (/) commands globally.
+2024-11-05 22:13:11 [info]: Bot database synchronized.
+2024-11-05 22:13:11 [info]: Bot logged in successfully.
+2024-11-05 22:13:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:14:51 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:15:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:16:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:17:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:27 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:54 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:18:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:19:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:19:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:36 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:20:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:21:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:21:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:21:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:21:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:22:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:22:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:22:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:22:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:23:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:24:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:24:34 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:25:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:25:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:26:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:26:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:26:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:29:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:30:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:30:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:31:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:41:55 [info]: Loaded command: ping
+2024-11-05 22:41:55 [info]: Loaded command: serverinfo
+2024-11-05 22:41:55 [info]: Loaded command: serverstats
+2024-11-05 22:41:55 [info]: Loaded command: setpremium
+2024-11-05 22:41:55 [info]: Loaded command: updateallcommands
+2024-11-05 22:41:55 [info]: Started refreshing application (/) commands globally.
+2024-11-05 22:41:55 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-05 22:41:56 [info]: Successfully reloaded application (/) commands for guild 771856739956031539.
+2024-11-05 22:41:56 [info]: Successfully deployed commands for guild: Athena Network (771856739956031539)
+2024-11-05 22:41:56 [info]: Successfully reloaded application (/) commands globally.
+2024-11-05 22:41:56 [info]: Bot database synchronized.
+2024-11-05 22:41:56 [info]: Bot logged in successfully.
+2024-11-05 22:42:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:43:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:43:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:44:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:45:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:47:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:49:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:50:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:50:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:51:34 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:54:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:55:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:56:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:57:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:57:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:58:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 22:59:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:01:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:02:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:03:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:03:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:04:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:04:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:05:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:06:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:06:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:07:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:07:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:08:24 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:08:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:09:06 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:09:06 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:39 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:09:39 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:12:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:12:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:13:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:16:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:17:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:17:38 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:17:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:17:38 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:17:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:17:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:17:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:17:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:17:58 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:05 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:10 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:18:10 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:18:10 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:18:10 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2024-11-05 23:18:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:19:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:19:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:21:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:21:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:21:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:22:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:22:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:23:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:25:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:26:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:27:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:27:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:27:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:28:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:29:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:30:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:31:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:31:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:33:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:33:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:34:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:35:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:35:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:36:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+2024-11-05 23:37:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:38:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:38:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
+    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
+    at Array.map (<anonymous>)
+    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
+    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
+    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
+    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
+2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
+    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
+    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
+    at Array.map (<anonymous>)
+    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
+    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
+    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
+    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
+2024-11-05 23:39:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:40:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:40:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:41:36 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:43:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:46:36 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:46:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:48:03 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:48:03 [info]: Number of ServerCommands: 5
+2024-11-05 23:48:03 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"active","premiumOnly":false,"enabled":true},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:48:03 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:48:03 [info]: Number of ServerCommands: 5
+2024-11-05 23:48:03 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"active","premiumOnly":false,"enabled":true},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:48:29 [info]: ServerCommand updated: Server ID: 771856739956031539, Command ID: 2, Enabled: false
+2024-11-05 23:48:29 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-05 23:48:43 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:48:43 [info]: Number of ServerCommands: 5
+2024-11-05 23:48:43 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"active","premiumOnly":false,"enabled":false},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:48:43 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:48:43 [info]: Number of ServerCommands: 5
+2024-11-05 23:48:43 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"active","premiumOnly":false,"enabled":false},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:48:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:48:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:48:50 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:48:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:48:50 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:48:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:48:57 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-05 23:48:57 [info]: Successfully reloaded application (/) commands for guild 771856739956031539.
+2024-11-05 23:49:01 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:49:01 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:49:01 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:49:01 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:49:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:49:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-05 23:49:03 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:49:03 [info]: Number of ServerCommands: 5
+2024-11-05 23:49:03 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"deprecated","premiumOnly":false,"enabled":false},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:49:03 [info]: Server found: Athena Network (ID: 771856739956031539)
+2024-11-05 23:49:03 [info]: Number of ServerCommands: 5
+2024-11-05 23:49:03 [info]: Commands fetched for server ID: 771856739956031539: [{"id":2,"name":"ping","description":"Replies with Pong Chong!","status":"deprecated","premiumOnly":false,"enabled":false},{"id":3,"name":"serverinfo","description":"Displays information about the server.","status":"development","premiumOnly":false,"enabled":true},{"id":4,"name":"serverstats","description":"Displays statistics about the server.","status":"active","premiumOnly":false,"enabled":true},{"id":5,"name":"setpremium","description":"Set the server as premium.","status":"deprecated","premiumOnly":false,"enabled":true},{"id":6,"name":"updateallcommands","description":"Updates commands for all guilds based on their premium status.","status":"deprecated","premiumOnly":false,"enabled":true}]
+2024-11-05 23:49:15 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-05 23:49:15 [info]: Successfully reloaded application (/) commands for guild 771856739956031539.
+2024-11-05 23:49:18 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:49:18 [info]: User data sent for user ID: 228658618684276736
+2024-11-05 23:49:18 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-05 23:49:18 [info]: User data sent for user ID: 228658618684276736
