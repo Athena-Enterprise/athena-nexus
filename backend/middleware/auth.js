@@ -19,8 +19,6 @@ const isAuthenticated = (req, res, next) => {
  */
 const ownsServer = async (req, res, next) => {
   const { serverId } = req.params;
-  const userId = req.user.id;
-
   try {
     const server = await Server.findByPk(serverId);
     if (!server) {
@@ -28,12 +26,12 @@ const ownsServer = async (req, res, next) => {
       return res.status(404).json({ error: 'Server not found.' });
     }
 
-    if (server.ownerId !== userId) {
-      logger.warn(`User ID: ${userId} does not own server ID: ${serverId}`);
+    if (server.ownerId !== req.user.id) {
+      logger.warn(`User ${req.user.id} does not own server ${serverId}`);
       return res.status(403).json({ error: 'Forbidden: You do not own this server.' });
     }
 
-    // Attach server to request for later use if needed
+    // Attach server to req for later use
     req.server = server;
     next();
   } catch (error) {

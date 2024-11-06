@@ -5,11 +5,9 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') }); // Corre
 
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
-const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { sequelize, Server, ServerStats, Command, ServerCommand, User } = require(path.resolve(__dirname, '../models'));
-const { deployCommands } = require(path.resolve(__dirname, '../utils/deployCommands')); // Updated path
-const { updateAllGuildCommands } = require(path.resolve(__dirname, '../utils/updateAllGuildCommands')); // Updated path
+const deployCommands = require('../utils/deployCommands');
 const logger = require(path.resolve(__dirname, '../utils/logger')); // Ensure logger is correctly imported
 
 const clientId = process.env.DISCORD_CLIENT_ID;
@@ -43,24 +41,23 @@ for (const file of commandFiles) {
 }
 
 // Register commands to all guilds on startup based on the database
-const rest = new REST({ version: '10' }).setToken(token);
-
 (async () => {
   try {
-    logger.info('Started refreshing application (/) commands globally.');
+    logger.info('Started refreshing application (/) commands for each guild.');
 
     // Fetch all servers from the database
     const servers = await Server.findAll();
 
     for (const server of servers) {
       const isPremium = server.premium;
-      await deployCommands(clientId, server.id, token, isPremium);
+      const serverTier = server.tier; // Ensure 'tier' is a field in the Server model
+      await deployCommands(clientId, server.id, token, isPremium, serverTier);
       logger.info(`Successfully deployed commands for guild: ${server.name} (${server.id})`);
     }
 
-    logger.info('Successfully reloaded application (/) commands globally.');
+    logger.info('Successfully reloaded application (/) commands for all guilds.');
   } catch (error) {
-    logger.error(`Error deploying global commands: ${error}`);
+    logger.error(`Error deploying commands: ${error}`);
   }
 })();
 
@@ -68,29 +65,54 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
-  const command = client.commands.get(interaction.commandName);
-
-  if (!command) return;
+  const { commandName, guildId } = interaction;
 
   try {
+    // Fetch the command from the database using the command name
+    const commandRecord = await Command.findOne({ where: { name: commandName } });
+
+    if (!commandRecord) {
+      logger.warn(`Command not found in database: ${commandName}`);
+      await interaction.reply({ content: 'Command not found.', ephemeral: true });
+      return;
+    }
+
+    const commandId = commandRecord.id;
+
     // Fetch the server's command status
-    const serverId = interaction.guildId;
+    const serverId = guildId;
     const serverCommand = await ServerCommand.findOne({
-      where: { serverId, commandId: command.id },
+      where: { serverId, commandId },
     });
 
     // If the command is disabled for this server, inform the user
     if (serverCommand && !serverCommand.enabled) {
       await interaction.reply({ content: 'This command is disabled on this server.', ephemeral: true });
-      logger.info(`Command "${command.id}" disabled on server "${serverId}". User attempted to execute it.`);
+      logger.info(`Command "${commandId}" disabled on server "${serverId}". User attempted to execute it.`);
+      return;
+    }
+
+    // Retrieve the corresponding command handler file
+    const commandPath = path.join(__dirname, 'commands', `${commandName}.js`);
+    if (!fs.existsSync(commandPath)) {
+      logger.warn(`Command handler file not found: ${commandPath}`);
+      await interaction.reply({ content: 'Command handler not found.', ephemeral: true });
+      return;
+    }
+
+    const command = require(commandPath);
+
+    if (typeof command.execute !== 'function') {
+      logger.warn(`Command handler for ${commandName} does not have an execute function.`);
+      await interaction.reply({ content: 'Command handler is invalid.', ephemeral: true });
       return;
     }
 
     // Execute the command
-    await command.execute(interaction, sequelize); // Pass sequelize if needed
-    logger.info(`Executed command "${command.id}" by user "${interaction.user.id}" on server "${serverId}".`);
+    await command.execute(interaction);
+    logger.info(`Executed command "${commandName}" (ID: ${commandId}) by user "${interaction.user.id}" on server "${serverId}".`);
   } catch (error) {
-    logger.error(`Error executing command "${interaction.commandName}": ${error.message}`);
+    logger.error(`Error executing command "${commandName}":`, error);
     if (interaction.replied || interaction.deferred) {
       await interaction.followUp({ content: 'There was an error executing that command!', ephemeral: true });
     } else {
@@ -121,6 +143,7 @@ client.on('guildCreate', async (guild) => {
         memberCount: guild.memberCount,
         onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size,
         iconUrl: guild.iconURL({ dynamic: true }) || null,
+        tier: 'free', // Default tier; adjust as necessary
       });
 
       logger.info(`Server ${guild.name} (${guild.id}) added to the database.`);
@@ -146,8 +169,8 @@ client.on('guildCreate', async (guild) => {
       await ServerCommand.bulkCreate(serverCommands);
       logger.info(`ServerCommands for ${guild.name} created.`);
 
-      // Deploy commands based on premium status
-      await deployCommands(clientId, guild.id, token, server.premium);
+      // Deploy commands based on premium status and tier
+      await deployCommands(clientId, guild.id, token, server.premium, server.tier);
       logger.info(`Commands deployed for guild: ${guild.name} (${guild.id})`);
     } else {
       logger.warn(`Owner with Discord ID ${discordOwnerId} not found in the database.`);

@@ -3,42 +3,81 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const path = require('path');
-const { Command } = require('../models'); // Adjust path if necessary
-const logger = require('./logger'); // Ensure correct path
-const fs = require('fs'); // **Added**
+const { Command, ServerCommand } = require('../models'); // Include ServerCommand
+const logger = require('./logger');
+const fs = require('fs');
 
 /**
- * Deploys commands to a guild based on premium status.
+ * Deploys commands to a specific guild based on server status and tier.
  * @param {string} clientId - Discord application client ID.
  * @param {string} guildId - Discord guild ID.
  * @param {string} token - Discord bot token.
  * @param {boolean} isPremium - Whether the guild is premium.
+ * @param {string} serverTier - The tier of the server (free, community, enterprise).
  */
-const deployCommands = async (clientId, guildId, token, isPremium) => {
+const deployCommands = async (clientId, guildId, token, isPremium, serverTier) => {
   try {
-    // Fetch enabled commands from the database based on premium status
-    let commands;
+    // Define tier-based command inclusion
+    const tierCommandFilters = {
+      free: { premiumOnly: false },
+      community: { premiumOnly: false }, // Adjust based on your requirements
+      enterprise: { premiumOnly: true }, // Enterprise can access all commands
+    };
+
+    // Base filter for commands
+    const baseFilter = {
+      status: 'active',
+    };
+
+    // Fetch all ServerCommands for this server where enabled is true
+    const enabledServerCommands = await ServerCommand.findAll({
+      where: { serverId: guildId, enabled: true },
+      include: [{
+        model: Command,
+        as: 'command',
+        where: {
+          ...baseFilter,
+          ...tierCommandFilters[serverTier],
+        },
+        required: true,
+      }],
+    });
+
+    // Additionally, if the server is premium, include premiumOnly commands
+    let commands = enabledServerCommands.map(sc => sc.command);
+
     if (isPremium) {
-      // For premium guilds, fetch all enabled commands (both free and premium)
-      commands = await Command.findAll({
-        where: {
-          enabled: true,
-          status: 'active',
-        },
+      const premiumServerCommands = await ServerCommand.findAll({
+        where: { serverId: guildId, enabled: true },
+        include: [{
+          model: Command,
+          as: 'command',
+          where: {
+            ...baseFilter,
+            premiumOnly: true,
+          },
+          required: true,
+        }],
       });
-    } else {
-      // For non-premium guilds, fetch enabled commands that are not premium-only
-      commands = await Command.findAll({
-        where: {
-          enabled: true,
-          premiumOnly: false,
-          status: 'active',
-        },
+      // Merge premium commands, avoiding duplicates
+      premiumServerCommands.forEach(sc => {
+        if (!commands.some(cmd => cmd.name === sc.command.name)) {
+          commands.push(sc.command);
+        }
       });
     }
 
+    // Remove duplicate commands by name
+    const uniqueCommandsMap = new Map();
+    commands.forEach(cmd => {
+      if (!uniqueCommandsMap.has(cmd.name)) {
+        uniqueCommandsMap.set(cmd.name, cmd);
+      }
+    });
+    const uniqueCommands = Array.from(uniqueCommandsMap.values());
+
     // Convert command data to JSON
-    const commandData = commands.map(cmd => {
+    const commandData = uniqueCommands.map(cmd => {
       const commandPath = path.join(__dirname, '../bot/commands', `${cmd.name}.js`);
       if (fs.existsSync(commandPath)) {
         const command = require(commandPath);
@@ -49,19 +88,27 @@ const deployCommands = async (clientId, guildId, token, isPremium) => {
       }
     }).filter(cmd => cmd !== null); // Remove null entries
 
+    logger.info(`Commands to deploy to guild ${guildId}: ${JSON.stringify(commandData)}`);
+
     const rest = new REST({ version: '10' }).setToken(token);
 
     logger.info(`Started refreshing application (/) commands for guild ${guildId}.`);
 
-    await rest.put(
+    const discordResponse = await rest.put(
       Routes.applicationGuildCommands(clientId, guildId),
       { body: commandData },
     );
 
-    logger.info(`Successfully reloaded application (/) commands for guild ${guildId}.`);
+    logger.info(`Successfully reloaded application (/) commands for guild ${guildId}. Discord response:`, discordResponse);
   } catch (error) {
-    logger.error(`Error deploying commands for guild ${guildId}:`, error);
+    if (error.response) {
+      // Discord API responded with an error
+      logger.error(`Discord API error during deployCommands for guild ${guildId}:`, error.response.data);
+    } else {
+      // Other errors (network issues, etc.)
+      logger.error(`Error deploying commands for guild ${guildId}:`, error.message);
+    }
   }
 };
 
-module.exports = { deployCommands };
+module.exports = deployCommands;

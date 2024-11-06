@@ -35,3 +35,22 @@
     at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
     at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
 2024-11-05 23:48:29 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-06 21:25:48 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-06 21:26:32 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-06 21:27:46 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-06 21:42:41 [error]: Error updating server-specific command: require(...) is not a function
+2024-11-06 21:51:43 [error]: Error updating server-specific command: TypeError: deployCommands is not a function
+    at exports.updateServerCommand (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:113:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-11-06 21:56:43 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
+2024-11-06 21:56:58 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
+2024-11-06 21:57:01 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
+2024-11-06 21:58:29 [error]: Error deploying global commands: TypeError: deployCommands is not a function
+2024-11-06 21:59:07 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
+2024-11-06 21:59:22 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
+2024-11-06 23:01:35 [error]: Error fetching server stats: MessageEmbed is not a constructor
+2024-11-06 23:01:38 [error]: Error fetching server stats: MessageEmbed is not a constructor
+2024-11-06 23:03:01 [error]: Error fetching server stats: EmbedBuilder is not defined
+2024-11-06 23:05:31 [error]: Error executing command "serverstats": logger is not defined
+2024-11-06 23:05:41 [error]: Error executing command "serverstats": logger is not defined
+2024-11-06 23:08:40 [error]: Error executing command "serverstats": logger is not defined

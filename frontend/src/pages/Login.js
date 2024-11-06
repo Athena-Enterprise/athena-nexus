@@ -1,10 +1,9 @@
-// src/pages/Login.js
-
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../services/api'; // Use the configured api instance
 import { FaDiscord } from 'react-icons/fa';
+import { toast } from 'react-toastify'; // Optional: For better notifications
 
 function Login() {
   const { setUser } = useContext(AuthContext);
@@ -18,7 +17,7 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleDiscordLogin = () => {
-    window.location.href = 'http://localhost:5000/api/auth/discord';
+    window.location.href = '/api/auth/discord'; // Use relative path
   };
 
   const handleChange = (e) => {
@@ -31,13 +30,14 @@ function Login() {
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData, {
-        withCredentials: true,
-      });
+      const res = await api.post('/auth/login', formData);
+      // Assuming the backend returns user data upon successful login
       setUser(res.data.user);
+      toast.success('Logged in successfully');
       navigate('/dashboard');
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Login failed');
+      toast.error(error.response?.data?.message || 'Login failed');
     }
   };
 
