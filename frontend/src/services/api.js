@@ -1,10 +1,10 @@
-// frontend/src/services/api.js
+// src/services/api.js
 
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Backend URL
-  withCredentials: true, // Send cookies with requests
+  baseURL: 'http://localhost:5000', // Your backend API URL
+  withCredentials: true, // Include cookies in requests
 });
 
 export default api;

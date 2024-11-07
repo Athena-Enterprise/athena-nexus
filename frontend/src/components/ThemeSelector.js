@@ -1,13 +1,13 @@
 // src/components/ThemeSelector.js
 
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext';
 import { FaPalette } from 'react-icons/fa'; // Palette icon from react-icons
 import { CSSTransition } from 'react-transition-group'; // For transitions
 import './ThemeSelector.css'; // Import custom CSS for transitions
 
 function ThemeSelector() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const selectorRef = useRef(null);
 

@@ -22,7 +22,6 @@ const User = require('./user')(sequelize, DataTypes);
 const Server = require('./server')(sequelize, DataTypes);
 const ServerStats = require('./serverStats')(sequelize, DataTypes);
 const Command = require('./command')(sequelize, DataTypes);
-const Documentation = require('./documentation')(sequelize, DataTypes);
 const Feature = require('./feature')(sequelize, DataTypes);
 const ServerCommand = require('./serverCommand')(sequelize, DataTypes);
 const ServerFeature = require('./serverFeature')(sequelize, DataTypes);
@@ -34,7 +33,6 @@ const models = {
   Server,
   ServerStats,
   Command,
-  Documentation,
   Feature,
   ServerCommand,
   ServerFeature,

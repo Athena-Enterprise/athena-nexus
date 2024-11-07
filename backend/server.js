@@ -7,9 +7,8 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const { Sequelize, DataTypes } = require('sequelize'); // Import DataTypes
+const { Sequelize, DataTypes } = require('sequelize');
 
-// Load environment variables **before** using them
 dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 // Import Sequelize instance
@@ -22,16 +21,19 @@ const commandRoutes = require('./routes/commandRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
-const documentationRoutes = require('./routes/documentationRoutes');
 const serverCommandRoutes = require('./routes/serverCommandRoutes');
 
 const app = express();
 
 // CORS Configuration
 const corsOptions = {
-  origin: 'http://localhost:3000', // Frontend URL
-  credentials: true, // Allow cookies to be sent
+  origin: 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
+// Apply CORS middleware
 app.use(cors(corsOptions));
 
 // Body Parser
@@ -42,11 +44,11 @@ const SessionModel = sequelize.define(
   'SessionStore',
   {
     sid: {
-      type: DataTypes.STRING, // Corrected
+      type: DataTypes.STRING,
       primaryKey: true,
     },
-    expires: DataTypes.DATE, // Corrected
-    data: DataTypes.TEXT, // Corrected
+    expires: DataTypes.DATE,
+    data: DataTypes.TEXT,
   },
   {
     tableName: 'SessionStore',
@@ -56,7 +58,8 @@ const SessionModel = sequelize.define(
 // Initialize session store with custom model
 const sessionStore = new SequelizeStore({
   db: sequelize,
-  model: SessionModel,
+  table: 'SessionStore',
+  modelKey: 'SessionStore',
 });
 
 // Sync session store
@@ -72,7 +75,7 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
       httpOnly: true,
-      sameSite: 'lax', // Adjust sameSite attribute as needed
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
     },
   })
@@ -82,41 +85,19 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Passport configuration
-require('./config/passport');
-
-// Use routes **after** initializing Passport
+// Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/servers', serverRoutes);
-app.use('/api/servers', serverCommandRoutes); // Ensure correct placement
+app.use('/api/servers', serverCommandRoutes);
 app.use('/api/premium', premiumRoutes);
 app.use('/api/commands', commandRoutes);
 app.use('/api/admins', adminRoutes);
-app.use('/api/docs', documentationRoutes);
 
-// Logout route (if not handled in authRoutes)
-app.get('/api/auth/logout', (req, res) => {
-  req.logout(err => {
-    if (err) {
-      console.error('Logout error:', err);
-      return res.status(500).json({ error: 'Logout failed' });
-    }
-    req.session.destroy(err => {
-      if (err) {
-        console.error('Session destruction error:', err);
-        return res.status(500).json({ error: 'Failed to destroy session' });
-      }
-      res.clearCookie('connect.sid'); // Replace 'connect.sid' if your session cookie name is different
-      res.status(200).json({ message: 'Logout successful' });
-    });
-  });
-});
+// Serve static files from the React app (if needed)
+// app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'frontend/build')));
-
-// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+// The "catchall" handler: for any request that doesn't match one above
 app.get('*', (req, res) => {
   // If the request starts with /api, return 404
   if (req.path.startsWith('/api')) {
@@ -134,7 +115,7 @@ sequelize
     }
 
     // Sync the models to the database
-    sequelize.sync({ alter: true }).then(() => { // Using alter: true for non-destructive sync
+    sequelize.sync({ alter: true }).then(() => {
       if (process.env.NODE_ENV !== 'production') {
         console.log('Database synced');
       }

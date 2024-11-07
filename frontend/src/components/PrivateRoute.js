@@ -1,22 +1,23 @@
-// frontend/src/components/PrivateRoute.js
+// src/components/PrivateRoute.js
 
-import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useAuth();
 
-  if (user === undefined) {
-    // Authentication status is unknown, show a loading indicator
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
-      </div>
-    );
+  if (loading) {
+    return <div>Loading...</div>; // Or a spinner
   }
 
-  return user ? children : <Navigate to="/login" />;
+  if (!user) {
+    // Redirect to Discord OAuth with actual client ID and redirect URI
+    const redirectUri = encodeURIComponent('http://localhost:5000/api/auth/discord/callback');
+    window.location.href = `https://discord.com/oauth2/authorize?client_id=1283070994965069878&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
+    return null;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

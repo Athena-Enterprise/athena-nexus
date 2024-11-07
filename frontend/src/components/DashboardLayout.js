@@ -1,28 +1,31 @@
-// frontend/src/components/DashboardLayout.js
-
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
+import Sidebar from './Sidebar';
 import AdminSidebar from './AdminSidebar';
-import Footer from './Footer'; // Assuming you have a Footer component
-import Navbar from './Navbar'; // Include Navbar if needed
+import Footer from './Footer';
 
 const DashboardLayout = ({ children }) => {
+  const { user, isAdminMode } = useAuth();
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
-      <Navbar />
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      {user.isAdmin ? <AdminSidebar /> : <Sidebar />}
 
-      <div className="flex flex-1">
-        {/* Sidebar */}
-        <AdminSidebar />
-
-        {/* Main Content */}
-        <div className="flex-1 ml-64 p-6 bg-base-100">
+      {/* Main Content */}
+      <div className="flex flex-col flex-1 overflow-hidden">
+        {/* Content Area */}
+        <main className="flex-1 overflow-y-auto p-6 bg-base-100">
           {children}
-        </div>
-      </div>
+        </main>
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <footer className="p-4 bg-base-200 text-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} Athena Nexus. All rights reserved.
+          </p>
+        </footer>
+      </div>
     </div>
   );
 };

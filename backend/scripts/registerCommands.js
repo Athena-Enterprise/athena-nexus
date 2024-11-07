@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const { sequelize, Command } = require('../models/index');
+const { sequelize, Command, Feature } = require('../models');
 
 const registerCommands = async () => {
   try {
@@ -13,8 +13,15 @@ const registerCommands = async () => {
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
-      const command = require(path.join(commandsPath, file));
-      const { name, description, premiumOnly } = command.data.toJSON();
+      const commandModule = require(path.join(commandsPath, file));
+      const { name, description, premiumOnly } = commandModule.data.toJSON();
+
+      // Check if a feature is associated with the command
+      let feature = await Feature.findOne({ where: { name: commandModule.featureName } });
+      if (!feature && commandModule.featureName) {
+        // Create the feature if it doesn't exist
+        feature = await Feature.create({ name: commandModule.featureName });
+      }
 
       // Upsert command into the database
       await Command.upsert({
@@ -22,7 +29,8 @@ const registerCommands = async () => {
         description,
         premiumOnly: premiumOnly || false,
         enabled: true,
-        status: 'development', // Default status
+        status: 'active', // Default status
+        featureId: feature ? feature.id : null,
       });
 
       console.log(`Registered command: ${name}`);

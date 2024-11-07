@@ -1,57 +1,111 @@
 // frontend/src/pages/Dashboard.js
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import CommandsEnabled from '../components/CommandsEnabled';
-import ServerUsers from '../components/ServerUsers';
-import PublicDocs from '../components/PublicDocs';
-import { useAuth } from '../context/AuthContext';
-import { toast } from 'react-toastify';
+import useFetch from '../hooks/useFetch';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
+import { FaServer, FaUsers, FaChartLine, FaCircle } from 'react-icons/fa';
 
 const Dashboard = () => {
-  const { user, loading, fetchUser } = useAuth();
+  const { data: stats, loading, error } = useFetch('/api/users/me/stats');
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return <div>Loading Dashboard...</div>;
   }
 
-  if (!user) {
-    toast.error('You must be logged in to view the dashboard.');
-    return <div className="flex justify-center items-center h-screen">Please log in.</div>;
+  if (error) {
+    return <div>Error loading dashboard.</div>;
+  }
+
+  if (!stats) {
+    return <div>No data available.</div>;
   }
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 p-8 ml-64"> {/* Adjust ml-64 if Sidebar width changes */}
-        <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="commands" element={<CommandsEnabled />} />
-          <Route path="users" element={<ServerUsers />} />
-          <Route path="docs" element={<PublicDocs />} />
-          {/* Add more routes as needed */}
-        </Routes>
+    <div className="space-y-6">
+      {/* Welcome Message */}
+      <div className="bg-base-100 p-6 rounded-lg shadow">
+        <h1 className="text-3xl font-semibold">Welcome back, {stats.username}!</h1>
+        <p className="mt-2 text-gray-600">
+          Here's what's happening with your servers today.
+        </p>
       </div>
-    </div>
-  );
-};
 
-const Home = ({ user }) => {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">Welcome, {user.username}!</h1>
-      <img
-        src={
-          user.avatar
-            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-            : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`
-        }
-        alt="User Avatar"
-        className="w-24 h-24 rounded-full mb-4"
-      />
-      <p className="text-lg">Here's an overview of your server:</p>
-      {/* You can add more personalized content here */}
+      {/* Statistic Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-base-100 p-6 rounded-lg shadow flex items-center">
+          <div className="p-4 bg-primary rounded-full text-white">
+            <FaServer className="text-2xl" />
+          </div>
+          <div className="ml-4">
+            <p className="text-xl font-semibold">{stats.totalServers}</p>
+            <p className="text-gray-600">Your Servers</p>
+          </div>
+        </div>
+        <div className="bg-base-100 p-6 rounded-lg shadow flex items-center">
+          <div className="p-4 bg-secondary rounded-full text-white">
+            <FaUsers className="text-2xl" />
+          </div>
+          <div className="ml-4">
+            <p className="text-xl font-semibold">{stats.totalMembers}</p>
+            <p className="text-gray-600">Total Members</p>
+          </div>
+        </div>
+        <div className="bg-base-100 p-6 rounded-lg shadow flex items-center">
+          <div className="p-4 bg-accent rounded-full text-white">
+            <FaChartLine className="text-2xl" />
+          </div>
+          <div className="ml-4">
+            <p className="text-xl font-semibold">{stats.activeMembers}</p>
+            <p className="text-gray-600">Active Members</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Member Growth Chart */}
+      <div className="bg-base-100 p-6 rounded-lg shadow">
+        <h2 className="text-2xl font-semibold mb-4">Member Growth Over Time</h2>
+        {stats.memberGrowth && stats.memberGrowth.length > 0 ? (
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={stats.memberGrowth}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Line type="monotone" dataKey="members" stroke="#8884d8" />
+            </LineChart>
+          </ResponsiveContainer>
+        ) : (
+          <p>No member growth data available.</p>
+        )}
+      </div>
+
+      {/* Recent Activity */}
+      <div className="bg-base-100 p-6 rounded-lg shadow">
+        <h2 className="text-2xl font-semibold mb-4">Recent Activity</h2>
+        {stats.recentActivity && stats.recentActivity.length > 0 ? (
+          <ul className="space-y-2">
+            {stats.recentActivity.map((activity) => (
+              <li key={activity.id} className="flex items-center">
+                <FaCircle className="text-xs text-green-500 mr-2" />
+                <span>{activity.description}</span>
+                <span className="ml-auto text-sm text-gray-500">
+                  {new Date(activity.date).toLocaleString()}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No recent activity available.</p>
+        )}
+      </div>
     </div>
   );
 };

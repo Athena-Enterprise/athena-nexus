@@ -229,3 +229,19 @@ ReferenceError: Cannot access 'rest' before initialization
     at Module._load (node:internal/modules/cjs/loader:1023:12)
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
     at node:internal/main/run_main_module:28:49
+2024-11-07 21:58:10 [error]: uncaughtException: Cannot find module './routes/documentationRoutes'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js
+Error: Cannot find module './routes/documentationRoutes'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Module._load (node:internal/modules/cjs/loader:985:27)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)

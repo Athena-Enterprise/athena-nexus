@@ -1,14 +1,13 @@
 // backend/bot/bot.js
 
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') }); // Correct path to .env
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
-const { Routes } = require('discord-api-types/v10');
 const { sequelize, Server, ServerStats, Command, ServerCommand, User } = require(path.resolve(__dirname, '../models'));
 const deployCommands = require('../utils/deployCommands');
-const logger = require(path.resolve(__dirname, '../utils/logger')); // Ensure logger is correctly imported
+const logger = require(path.resolve(__dirname, '../utils/logger'));
 
 const clientId = process.env.DISCORD_CLIENT_ID;
 const token = process.env.BOT_TOKEN;
@@ -18,8 +17,9 @@ const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildMembers, // To access member data
-    GatewayIntentBits.GuildPresences, // To access presence data
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.MessageContent, // Needed to access message content
   ],
 });
 
@@ -88,23 +88,16 @@ client.on('interactionCreate', async interaction => {
     // If the command is disabled for this server, inform the user
     if (serverCommand && !serverCommand.enabled) {
       await interaction.reply({ content: 'This command is disabled on this server.', ephemeral: true });
-      logger.info(`Command "${commandId}" disabled on server "${serverId}". User attempted to execute it.`);
+      logger.info(`Command "${commandName}" disabled on server "${serverId}". User attempted to execute it.`);
       return;
     }
 
     // Retrieve the corresponding command handler file
-    const commandPath = path.join(__dirname, 'commands', `${commandName}.js`);
-    if (!fs.existsSync(commandPath)) {
-      logger.warn(`Command handler file not found: ${commandPath}`);
+    const command = client.commands.get(commandName);
+
+    if (!command) {
+      logger.warn(`Command handler for ${commandName} not found.`);
       await interaction.reply({ content: 'Command handler not found.', ephemeral: true });
-      return;
-    }
-
-    const command = require(commandPath);
-
-    if (typeof command.execute !== 'function') {
-      logger.warn(`Command handler for ${commandName} does not have an execute function.`);
-      await interaction.reply({ content: 'Command handler is invalid.', ephemeral: true });
       return;
     }
 
@@ -131,50 +124,56 @@ client.on('guildCreate', async (guild) => {
     const discordOwnerId = owner.id;
 
     // Find the user in the database by discordId
-    const user = await User.findOne({ where: { discordId: discordOwnerId } });
+    let user = await User.findOne({ where: { discordId: discordOwnerId } });
 
-    if (user) {
-      // Create a Server entry
-      const server = await Server.create({
-        id: guild.id,
-        name: guild.name,
-        ownerId: user.id,
-        premium: false, // Default value; adjust as necessary
-        memberCount: guild.memberCount,
-        onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size,
-        iconUrl: guild.iconURL({ dynamic: true }) || null,
-        tier: 'free', // Default tier; adjust as necessary
+    if (!user) {
+      // Create a new user if not found
+      user = await User.create({
+        id: discordOwnerId,
+        discordId: discordOwnerId,
+        username: owner.user.username,
+        discriminator: owner.user.discriminator,
+        avatar: owner.user.avatar,
+        email: null, // Discord doesn't provide email in this context
       });
-
-      logger.info(`Server ${guild.name} (${guild.id}) added to the database.`);
-
-      // Create corresponding ServerStats entry
-      await ServerStats.create({
-        ServerId: server.id,
-        memberCount: server.memberCount,
-        onlineMembers: server.onlineMembers,
-      });
-      logger.info(`ServerStats for ${guild.name} created.`);
-
-      // Fetch all existing commands
-      const allCommands = await Command.findAll();
-
-      // Create ServerCommands entries
-      const serverCommands = allCommands.map(cmd => ({
-        serverId: server.id,
-        commandId: cmd.id,
-        enabled: true, // Default to enabled; adjust as necessary
-      }));
-
-      await ServerCommand.bulkCreate(serverCommands);
-      logger.info(`ServerCommands for ${guild.name} created.`);
-
-      // Deploy commands based on premium status and tier
-      await deployCommands(clientId, guild.id, token, server.premium, server.tier);
-      logger.info(`Commands deployed for guild: ${guild.name} (${guild.id})`);
-    } else {
-      logger.warn(`Owner with Discord ID ${discordOwnerId} not found in the database.`);
     }
+
+    // Create a Server entry
+    const server = await Server.create({
+      id: guild.id,
+      name: guild.name,
+      ownerId: user.id,
+      premium: false, // Default value; adjust as necessary
+      tier: 'free', // Default tier; adjust as necessary
+      iconUrl: guild.iconURL({ dynamic: true }) || null,
+    });
+
+    logger.info(`Server ${guild.name} (${guild.id}) added to the database.`);
+
+    // Create corresponding ServerStats entry
+    await ServerStats.create({
+      ServerId: server.id,
+      memberCount: guild.memberCount,
+      onlineMembers: guild.members.cache.filter(member => member.presence?.status !== 'offline').size,
+    });
+    logger.info(`ServerStats for ${guild.name} created.`);
+
+    // Fetch all existing commands
+    const allCommands = await Command.findAll();
+
+    // Create ServerCommands entries
+    const serverCommands = allCommands.map(cmd => ({
+      serverId: server.id,
+      commandId: cmd.id,
+      enabled: true, // Default to enabled; adjust as necessary
+    }));
+
+    await ServerCommand.bulkCreate(serverCommands);
+    logger.info(`ServerCommands for ${guild.name} created.`);
+
+    // Deploy commands based on premium status and tier
+    await deployCommands(clientId, guild.id, token, server.premium, server.tier);
+    logger.info(`Commands deployed for guild: ${guild.name} (${guild.id})`);
   } catch (error) {
     logger.error(`Error handling guildCreate for ${guild.name}: ${error.message}`);
   }
@@ -189,8 +188,8 @@ client.on('guildDelete', async (guild) => {
     const server = await Server.findOne({ where: { id: guild.id } });
     if (server) {
       await ServerStats.destroy({ where: { ServerId: server.id } });
+      await ServerCommand.destroy({ where: { serverId: guild.id } });
       await Server.destroy({ where: { id: guild.id } });
-      await ServerCommand.destroy({ where: { serverId: guild.id } }); // Remove associated ServerCommands
       logger.info(`Server ${guild.name} and its associated data removed from the database.`);
     }
   } catch (error) {
@@ -201,21 +200,14 @@ client.on('guildDelete', async (guild) => {
 // Handle member join
 client.on('guildMemberAdd', async (member) => {
   try {
-    const server = await Server.findOne({ where: { id: member.guild.id } });
-    if (server) {
-      server.memberCount += 1;
+    const serverStats = await ServerStats.findOne({ where: { ServerId: member.guild.id } });
+    if (serverStats) {
+      serverStats.memberCount += 1;
       if (member.presence?.status !== 'offline') {
-        server.onlineMembers += 1;
+        serverStats.onlineMembers += 1;
       }
-      await server.save();
-
-      const stats = await ServerStats.findOne({ where: { ServerId: server.id } });
-      if (stats) {
-        stats.memberCount = server.memberCount;
-        stats.onlineMembers = server.onlineMembers;
-        await stats.save();
-        logger.info(`Updated memberCount and onlineMembers for guild: ${server.name}`);
-      }
+      await serverStats.save();
+      logger.info(`Updated memberCount and onlineMembers for guild: ${member.guild.name}`);
     }
   } catch (error) {
     logger.error(`Error updating member count on member join: ${error.message}`);
@@ -225,22 +217,14 @@ client.on('guildMemberAdd', async (member) => {
 // Handle member leave
 client.on('guildMemberRemove', async (member) => {
   try {
-    const server = await Server.findOne({ where: { id: member.guild.id } });
-    if (server) {
-      server.memberCount = Math.max(server.memberCount - 1, 0);
-      // If the member was online before leaving, decrement onlineMembers
+    const serverStats = await ServerStats.findOne({ where: { ServerId: member.guild.id } });
+    if (serverStats) {
+      serverStats.memberCount = Math.max(serverStats.memberCount - 1, 0);
       if (member.presence?.status !== 'offline') {
-        server.onlineMembers = Math.max(server.onlineMembers - 1, 0);
+        serverStats.onlineMembers = Math.max(serverStats.onlineMembers - 1, 0);
       }
-      await server.save();
-
-      const stats = await ServerStats.findOne({ where: { ServerId: server.id } });
-      if (stats) {
-        stats.memberCount = server.memberCount;
-        stats.onlineMembers = server.onlineMembers;
-        await stats.save();
-        logger.info(`Updated memberCount for guild: ${server.name}`);
-      }
+      await serverStats.save();
+      logger.info(`Updated memberCount for guild: ${member.guild.name}`);
     }
   } catch (error) {
     logger.error(`Error updating member count on member leave: ${error.message}`);
@@ -252,41 +236,43 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
   if (!newPresence.guild) return;
 
   try {
-    const server = await Server.findOne({ where: { id: newPresence.guild.id } });
-    if (server) {
-      const oldStatus = oldPresence?.status || 'offline';
-      const newStatus = newPresence.status;
+    const serverStats = await ServerStats.findOne({ where: { ServerId: newPresence.guild.id } });
+    if (!serverStats) return;
 
-      const wasOnline = oldStatus !== 'offline';
-      const isOnline = newStatus !== 'offline';
+    const oldStatus = oldPresence?.status || 'offline';
+    const newStatus = newPresence.status;
 
-      if (!wasOnline && isOnline) {
-        server.onlineMembers += 1;
-      } else if (wasOnline && !isOnline) {
-        server.onlineMembers = Math.max(server.onlineMembers - 1, 0);
-      }
-
-      await server.save();
-
-      const stats = await ServerStats.findOne({ where: { ServerId: server.id } });
-      if (stats) {
-        stats.onlineMembers = server.onlineMembers;
-        await stats.save();
-        logger.info(`Updated onlineMembers for guild: ${server.name}`);
-      }
+    if (oldStatus === 'offline' && newStatus !== 'offline') {
+      serverStats.onlineMembers += 1;
+    } else if (oldStatus !== 'offline' && newStatus === 'offline') {
+      serverStats.onlineMembers = Math.max(serverStats.onlineMembers - 1, 0);
     }
+
+    await serverStats.save();
+    logger.info(`Updated onlineMembers for guild: ${newPresence.guild.name}`);
   } catch (error) {
     logger.error(`Error updating online members on presence update: ${error.message}`);
   }
 });
 
 // Handle messages (for non-slash commands)
-client.on('messageCreate', message => {
+client.on('messageCreate', async message => {
   if (message.author.bot) return;
 
   if (message.content === '!ping') {
-    message.channel.send('Pong Chong!');
+    message.channel.send('Pong!');
     logger.info(`Responded to !ping command from user ${message.author.id} in guild ${message.guild.id}`);
+  }
+
+  // Track message count
+  try {
+    const serverStats = await ServerStats.findOne({ where: { ServerId: message.guild.id } });
+    if (serverStats) {
+      serverStats.messageCount = (serverStats.messageCount || 0) + 1;
+      await serverStats.save();
+    }
+  } catch (error) {
+    logger.error(`Error updating message count: ${error.message}`);
   }
 });
 

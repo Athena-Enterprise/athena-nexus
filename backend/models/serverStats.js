@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false,
     },
-    ServerId: { // Foreign key referencing Server
+    ServerId: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
@@ -25,7 +25,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    // Add other server stats fields as necessary
+    messageCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    // Add other stats as necessary
   }, {
     tableName: 'ServerStats',
     timestamps: true,

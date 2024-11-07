@@ -1236,3 +1236,649 @@
 2024-11-06 23:13:19 [info]: Updated onlineMembers for guild: Athena Network
 2024-11-06 23:13:21 [info]: Updated onlineMembers for guild: Athena Network
 2024-11-06 23:13:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:14:40 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-06 23:14:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:36 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:15:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:16:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:17:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-06 23:17:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:49:38 [info]: Loaded command: ping
+2024-11-07 19:49:38 [info]: Loaded command: serverinfo
+2024-11-07 19:49:38 [info]: Loaded command: serverstats
+2024-11-07 19:49:38 [info]: Loaded command: setpremium
+2024-11-07 19:49:38 [info]: Loaded command: updateallcommands
+2024-11-07 19:49:38 [info]: Started refreshing application (/) commands for each guild.
+2024-11-07 19:49:38 [info]: Commands to deploy to guild 771856739956031539: [{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1},{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1}]
+2024-11-07 19:49:38 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-07 19:49:38 [info]: Successfully reloaded application (/) commands for guild 771856739956031539. Discord response:
+2024-11-07 19:49:38 [info]: Successfully deployed commands for guild: Athena Network (771856739956031539)
+2024-11-07 19:49:38 [info]: Commands to deploy to guild 1302211314910888028: [{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1},{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1}]
+2024-11-07 19:49:38 [info]: Started refreshing application (/) commands for guild 1302211314910888028.
+2024-11-07 19:49:38 [info]: Bot database synchronized.
+2024-11-07 19:49:39 [info]: Bot logged in successfully.
+2024-11-07 19:49:39 [info]: Successfully reloaded application (/) commands for guild 1302211314910888028. Discord response:
+2024-11-07 19:49:39 [info]: Successfully deployed commands for guild: ItzDusty's server (1302211314910888028)
+2024-11-07 19:49:39 [info]: Successfully reloaded application (/) commands for all guilds.
+2024-11-07 19:49:48 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:48 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:49:48 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:48 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:49:48 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:48 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:49:48 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:48 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:49:50 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:49:50 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 19:49:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 19:50:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:50:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:50:58 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-07 19:50:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:50:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:50:58 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-07 19:50:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:51:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:51:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:51:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:51:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:52:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:52:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:53:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:53:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:53:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:54:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:54:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:54:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:54:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:55:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:56:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:57:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:57:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:57:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:57:27 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:58:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:59:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:59:27 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:59:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 19:59:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:00:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:00:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:00:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:00:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:00:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:01:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:01:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:01:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:01:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:01:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:02:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:02:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:02:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:03:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:04:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:05:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:06:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:06:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:06:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:06:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:07:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:07:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:08:54 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:09:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:10:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:11:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:11:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:11:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:12:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:12:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:12:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:13:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:13:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:14:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:14:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:14:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:15:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:16:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:17:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:17:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:17:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:17:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:17:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:18:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:18:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:19:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:20:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:20:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:20:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:20:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:20:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:21:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:21:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:22:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:23:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:23:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:23:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:24:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:24:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:24:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:24:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:24:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:25:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:25:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:25:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:26:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:26:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:27:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:28:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:28:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:28:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:29:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:30:43 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:30:43 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:30:43 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:30:43 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:30:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:31:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:31:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:31:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:31:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:32:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:32:27 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:32:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:32:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:32:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:33:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:33:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:33:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:33:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:34:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:34:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:34:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:34:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:34:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:35:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:35:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:38:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:38:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:38:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:39:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:39:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:40:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:40:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:40:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:41:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:42:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:43:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:44:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:44:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:45:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:45:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:46:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:47:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:47:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:49:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:49:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:52:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:54:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:55:15 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:15 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:29 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:29 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:29 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:29 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:31 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:31 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:31 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:31 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:31 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:31 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:31 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:31 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:33 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:33 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:33 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:33 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 20:55:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 20:55:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:56:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:58:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 20:59:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:00:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:03:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:03:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:04:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:05:28 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:05:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:06:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:06:51 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:10:02 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:10:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:10:02 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:10:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:10:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:11:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:12:50 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:12:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:13:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:13:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:15:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:16:29 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:16:29 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:16:29 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:16:29 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:17:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:17:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:17:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:17:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:17:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:17:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:18:51 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:18:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:18:51 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:18:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:19:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:19:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:20:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:21:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:21:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:21:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:21:45 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 21:21:45 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:21:45 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 21:21:45 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:21:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:22:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:22:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:22:59 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 21:22:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:22:59 [info]: User 228658618684276736 owns servers: [{"id":"771856739956031539","name":"Athena Network"},{"id":"1302211314910888028","name":"ItzDusty's server"}]
+2024-11-07 21:22:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:23:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:23:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:24:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:26:04 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:26:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:26:04 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:26:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:27:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:28:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:28:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:28:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:28:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:29:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:30:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:30:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:31:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:31:45 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:31:45 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:31:45 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:31:45 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:31:56 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:31:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:31:56 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:31:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:32:21 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:21 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:30 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:30 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:30 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:30 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:44 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:44 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:32:44 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:32:44 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:33:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:37:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:37:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:38:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:38:06 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:41:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:42:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:43:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:43:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:43:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:43:25 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:43:25 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:43:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:46:13 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:47:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:47:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:47:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:47:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:51:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:51:24 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:51:24 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:51:24 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 21:51:24 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 21:54:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:55:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:56:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:57:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:58:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 21:58:31 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:00:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:02:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:02:50 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:02:50 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:02:51 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:02:51 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:02:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:02:56 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:02:56 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:02:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:03:01 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:03:01 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:03:01 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:03:01 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:04:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:05:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:06:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:06:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:06:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:08:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:08:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:10:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:12:20 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:15:19 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:15:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:16:05 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:16:05 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:16:05 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:16:05 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:16:38 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:16:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:16:38 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:16:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:17:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:17:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:17:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:17:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:17:41 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:17:41 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:17:41 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:17:41 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:17:55 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:18:23 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:23 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:26 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:28 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:32 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:32 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:32 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:18:32 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:18:51 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:19:05 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:05 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:05 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:05 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:08 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:08 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:08 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:08 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:10 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:19:27 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:19:43 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:43 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:43 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:43 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:49 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:49 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:49 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:49 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:53 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:53 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:19:53 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:19:53 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:20:11 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:20:11 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:20:11 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:20:11 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:20:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:20:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:20:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:20:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:21:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:21:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:21:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:21:34 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:21:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:21:42 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:21:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:21:42 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:21:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:22:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:22:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:23:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:23:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:23:20 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:23:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:23:22 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:23:22 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:23:22 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:23:22 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:24:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:26:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:27:15 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:27:15 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:27:15 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:27:15 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:27:17 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:27:17 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:27:17 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:27:17 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:27:48 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:28:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:29:23 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:29:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:29:23 [info]: User 228658618684276736 owns servers: [{"id":"1302211314910888028","name":"ItzDusty's server"},{"id":"771856739956031539","name":"Athena Network"}]
+2024-11-07 22:29:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:29:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:30:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:30:04 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:30:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:33:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:33:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:35:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:35:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:35:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:36:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:36:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:37:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:37:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:37:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:37:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:38:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:38:04 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:38:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:38:24 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:38:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:38:50 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:38:54 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:39:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:46 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:46 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:39:53 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:41:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:42:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:42:23 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:42:40 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:42:40 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:43:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:46:08 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:46:56 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:46:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:48:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:48:34 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:49:08 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:49:08 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 22:49:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:50:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:52:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:52:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:52:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:52:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:54:11 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:54:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:54:44 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:55:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:55:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 22:57:00 [info]: Removed from guild: Athena Network (ID: 771856739956031539)
+2024-11-07 22:57:00 [info]: Server Athena Network and its associated data removed from the database.
+2024-11-07 22:57:04 [info]: Removed from guild: ItzDusty's server (ID: 1302211314910888028)
+2024-11-07 22:57:04 [info]: Server ItzDusty's server and its associated data removed from the database.
+2024-11-07 23:24:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:24:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:24:33 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:24:33 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:27:18 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:27:18 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:28:56 [info]: Joined new guild: Athena Network (ID: 771856739956031539)
+2024-11-07 23:28:56 [info]: Server Athena Network (771856739956031539) added to the database.
+2024-11-07 23:28:56 [info]: ServerStats for Athena Network created.
+2024-11-07 23:28:56 [info]: ServerCommands for Athena Network created.
+2024-11-07 23:28:56 [info]: Commands to deploy to guild 771856739956031539: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-07 23:28:56 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-07 23:28:57 [info]: Successfully reloaded application (/) commands for guild 771856739956031539. Discord response:
+2024-11-07 23:28:57 [info]: Commands deployed for guild: Athena Network (771856739956031539)
+2024-11-07 23:29:03 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:29:03 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:29:12 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:29:23 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:30:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:30:40 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:30:40 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:30:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:30:42 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:31:35 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:31:35 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:33:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:33:14 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:33:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:33:38 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:34:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:34:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:35:30 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:35:30 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:36:09 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:37:09 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:37:09 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:37:18 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:37:18 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:37:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:37:59 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:38:29 [info]: Updated onlineMembers for guild: Athena Network

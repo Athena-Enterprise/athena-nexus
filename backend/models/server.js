@@ -25,19 +25,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    memberCount: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    onlineMembers: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    tier: {
+      type: DataTypes.ENUM('free', 'community', 'enterprise'),
+      defaultValue: 'free',
     },
     iconUrl: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // Add other server fields as necessary
   }, {
     tableName: 'Servers',
     timestamps: true,
@@ -47,9 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     Server.belongsTo(models.User, { as: 'owner', foreignKey: 'ownerId' });
     Server.hasOne(models.ServerStats, { as: 'stats', foreignKey: 'ServerId' });
     Server.belongsToMany(models.Feature, { through: 'ServerFeatures', as: 'features', foreignKey: 'ServerId' });
-    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' }); // Existing association
-
-    // Define belongsToMany association
+    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' });
     Server.belongsToMany(models.Command, {
       through: models.ServerCommand,
       as: 'commands',

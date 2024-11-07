@@ -2,87 +2,41 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+import DashboardLayout from './components/DashboardLayout';
+import PublicLayout from './components/PublicLayout';
+
+// Import your pages
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
-import UserSettings from './pages/UserSettings';
-import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
-import Signup from './pages/Signup';
-import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from './components/PrivateRoute'; // Ensure this file exists
-import AdminRoute from './components/AdminRoute'; // Ensure this file exists
-import VerifyEmail from './pages/VerifyEmail';
-import Navbar from './components/Navbar';
-import ThemeSelector from './components/ThemeSelector';
-import Footer from './components/Footer';
-import { ThemeProvider } from './context/ThemeContext';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// Documentation Components
-import DocsSection from './components/DocsSection';
-import DocViewer from './components/DocViewer';
-import DocEditor from './components/DocEditor';
+import Login from './pages/Login';
+import UserSettings from './pages/UserSettings';
 
 function App() {
   return (
     <AuthProvider>
       <ThemeProvider>
         <Router>
-          {/* Toast Notifications */}
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
-
-          {/* Navbar and ThemeSelector are placed outside Routes to persist across pages */}
-          <Navbar />
-          <ThemeSelector />
-
           <Routes>
             {/* Public Routes */}
             <Route
               path="/"
               element={
-                <>
+                <PublicLayout>
                   <LandingPage />
-                  <Footer />
-                </>
+                </PublicLayout>
               }
             />
             <Route
               path="/login"
               element={
-                <>
+                <PublicLayout>
                   <Login />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <>
-                  <Signup />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/verify-email"
-              element={
-                <>
-                  <VerifyEmail />
-                  <Footer />
-                </>
+                </PublicLayout>
               }
             />
 
@@ -91,8 +45,19 @@ function App() {
               path="/dashboard/*"
               element={
                 <PrivateRoute>
-                  <Dashboard />
-                  <Footer />
+                  <DashboardLayout>
+                    <Dashboard />
+                  </DashboardLayout>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <PrivateRoute>
+                  <DashboardLayout>
+                    <UserSettings />
+                  </DashboardLayout>
                 </PrivateRoute>
               }
             />
@@ -102,7 +67,9 @@ function App() {
               path="/admin/*"
               element={
                 <AdminRoute>
-                  <AdminDashboard />
+                  <DashboardLayout>
+                    <AdminDashboard />
+                  </DashboardLayout>
                 </AdminRoute>
               }
             />
