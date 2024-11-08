@@ -15,6 +15,14 @@ import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Login from './pages/Login';
 import UserSettings from './pages/UserSettings';
+import UserManagement from './components/UserManagement';
+import ServerManagement from './components/ServerManagement';
+import BotManagement from './components/BotManagement';
+import CommandsEnabled from './components/CommandsEnabled';
+import DeveloperSection from './components/DeveloperSection';
+import ServerUserManagement from './components/ServerUserManagement';
+import AdminManagement from './components/AdminManagement';
+// ... other imports ...
 
 function App() {
   return (
@@ -61,14 +69,84 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/dashboard/commands"
+              element={
+                <PrivateRoute>
+                  <DashboardLayout>
+                    <CommandsEnabled />
+                  </DashboardLayout>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/dashboard/servers"
+              element={
+                <PrivateRoute>
+                  <DashboardLayout>
+                    <ServerUserManagement />
+                  </DashboardLayout>
+                </PrivateRoute>
+              }
+            />
 
             {/* Admin Routes */}
             <Route
-              path="/admin/*"
+              path="/admin/dashboard"
               element={
                 <AdminRoute>
                   <DashboardLayout>
                     <AdminDashboard />
+                  </DashboardLayout>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <AdminRoute>
+                  <DashboardLayout>
+                    <UserManagement />
+                  </DashboardLayout>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/servers"
+              element={
+                <AdminRoute>
+                  <DashboardLayout>
+                    <ServerManagement />
+                  </DashboardLayout>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/bot"
+              element={
+                <AdminRoute>
+                  <DashboardLayout>
+                    <BotManagement />
+                  </DashboardLayout>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/commands"
+              element={
+                <AdminRoute>
+                  <DashboardLayout>
+                    <DeveloperSection />
+                  </DashboardLayout>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/admins"
+              element={
+                <AdminRoute>
+                  <DashboardLayout>
+                    <AdminManagement />
                   </DashboardLayout>
                 </AdminRoute>
               }

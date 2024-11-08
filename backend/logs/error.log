@@ -54,3 +54,4 @@
 2024-11-06 23:05:31 [error]: Error executing command "serverstats": logger is not defined
 2024-11-06 23:05:41 [error]: Error executing command "serverstats": logger is not defined
 2024-11-06 23:08:40 [error]: Error executing command "serverstats": logger is not defined
+2024-11-08 23:13:22 [error]: Error deploying commands: SequelizeDatabaseError: column "tier" does not exist

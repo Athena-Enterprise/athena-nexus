@@ -1,39 +1,58 @@
 // frontend/src/components/DeveloperSection.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CodeEditor from './CodeEditor';
-import axios from 'axios';
+import api from '../services/api';
 import { toast } from 'react-toastify';
 
 const DeveloperSection = () => {
   const [commandName, setCommandName] = useState('');
   const [commandDescription, setCommandDescription] = useState('');
   const [commandCode, setCommandCode] = useState('');
-  const [creating, setCreating] = useState(false);
+  const [featureId, setFeatureId] = useState('');
+  const [features, setFeatures] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch features on component mount
+  useEffect(() => {
+    const fetchFeatures = async () => {
+      try {
+        const response = await api.get('/api/features');
+        setFeatures(response.data);
+      } catch (error) {
+        console.error('Error fetching features:', error);
+        toast.error('Failed to fetch features.');
+      }
+    };
+
+    fetchFeatures();
+  }, []);
 
   const handleCreateCommand = async () => {
-    if (!commandName || !commandDescription || !commandCode) {
+    if (!commandName || !commandDescription || !commandCode || !featureId) {
       toast.warn('Please fill in all fields.');
       return;
     }
 
-    setCreating(true);
+    setLoading(true);
     try {
-      const response = await axios.post('/api/admin/commands', {
+      const response = await api.post('/api/commands', {
         name: commandName,
         description: commandDescription,
         code: commandCode,
-      }, { withCredentials: true });
+        featureId: featureId,
+      });
       toast.success('Command created successfully.');
       // Reset fields
       setCommandName('');
       setCommandDescription('');
       setCommandCode('');
+      setFeatureId('');
     } catch (error) {
       console.error('Error creating command:', error);
       toast.error('Failed to create command.');
     } finally {
-      setCreating(false);
+      setLoading(false);
     }
   };
 
@@ -65,6 +84,23 @@ const DeveloperSection = () => {
       </div>
       <div className="mb-4">
         <label className="label">
+          <span className="label-text">Feature</span>
+        </label>
+        <select
+          value={featureId}
+          onChange={(e) => setFeatureId(e.target.value)}
+          className="select select-bordered w-full"
+        >
+          <option value="">Select Feature</option>
+          {features.map((feature) => (
+            <option key={feature.id} value={feature.id}>
+              {feature.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="label">
           <span className="label-text">Command Code</span>
         </label>
         <CodeEditor
@@ -75,8 +111,8 @@ const DeveloperSection = () => {
       </div>
       <button
         onClick={handleCreateCommand}
-        className={`btn btn-primary ${creating ? 'loading' : ''}`}
-        disabled={creating}
+        className={`btn btn-primary ${loading ? 'loading' : ''}`}
+        disabled={loading}
       >
         Create Command
       </button>

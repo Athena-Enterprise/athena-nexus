@@ -1,7 +1,7 @@
 // frontend/src/components/ServerManagement.js
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { toast } from 'react-toastify';
 
 const ServerManagement = () => {
@@ -14,7 +14,7 @@ const ServerManagement = () => {
 
   const fetchServers = async () => {
     try {
-      const response = await axios.get('/api/admins/servers', { withCredentials: true });
+      const response = await api.get('/api/admins/servers');
       setServers(response.data);
     } catch (error) {
       console.error('Error fetching servers:', error);
@@ -49,7 +49,7 @@ const ServerManagement = () => {
                   <td>{server.name}</td>
                   <td>{server.id}</td>
                   <td>{server.memberCount}</td>
-                  <td>{server.isPremium ? 'Premium' : 'Free'}</td>
+                  <td>{server.premium ? 'Premium' : 'Free'}</td>
                   <td>
                     {/* Implement server-specific actions */}
                     <button className="btn btn-sm btn-info">View Details</button>

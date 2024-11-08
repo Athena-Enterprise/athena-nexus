@@ -7,7 +7,7 @@ import api from '../services/api';
 
 const UserManagement = () => {
   const { data: users, loading, error } = useFetch('/api/users');
-  
+
   const deleteUser = async (userId) => {
     try {
       await api.delete(`/api/users/${userId}`);
@@ -46,7 +46,6 @@ const UserManagement = () => {
           <thead>
             <tr>
               <th>Username</th>
-              <th>Discriminator</th>
               <th>Discord ID</th>
               <th>Is Admin</th>
               <th>Actions</th>
@@ -56,7 +55,6 @@ const UserManagement = () => {
             {users.map((user) => (
               <tr key={user.id}>
                 <td>{user.username}</td>
-                <td>{user.discriminator}</td>
                 <td>{user.discordId}</td>
                 <td>{user.isAdmin ? 'Yes' : 'No'}</td>
                 <td>

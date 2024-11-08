@@ -1882,3 +1882,144 @@
 2024-11-07 23:37:59 [info]: User data sent for user ID: 228658618684276736
 2024-11-07 23:37:59 [info]: User data sent for user ID: 228658618684276736
 2024-11-07 23:38:29 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:39:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:39:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:39:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-07 23:39:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:40:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:40:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:40:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-07 23:40:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:13:22 [info]: Loaded command: ping
+2024-11-08 23:13:22 [info]: Loaded command: serverinfo
+2024-11-08 23:13:22 [info]: Loaded command: serverstats
+2024-11-08 23:13:22 [info]: Loaded command: setpremium
+2024-11-08 23:13:22 [info]: Loaded command: updateallcommands
+2024-11-08 23:13:22 [info]: Started refreshing application (/) commands for each guild.
+2024-11-08 23:13:22 [error]: Error deploying commands: SequelizeDatabaseError: column "tier" does not exist
+2024-11-08 23:13:23 [info]: Bot database synchronized.
+2024-11-08 23:13:23 [info]: Bot logged in successfully.
+2024-11-08 23:13:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:13:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:13:49 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:13:49 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:15:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:16:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:17:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:17:02 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:17:18 [info]: Joined new guild: ItzDusty's server (ID: 1302211314910888028)
+2024-11-08 23:17:18 [info]: Server ItzDusty's server (1302211314910888028) added to the database.
+2024-11-08 23:17:18 [info]: ServerStats for ItzDusty's server created.
+2024-11-08 23:17:18 [info]: ServerCommands for ItzDusty's server created.
+2024-11-08 23:17:18 [info]: Commands to deploy to guild 1302211314910888028: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-08 23:17:18 [info]: Started refreshing application (/) commands for guild 1302211314910888028.
+2024-11-08 23:17:18 [info]: Successfully reloaded application (/) commands for guild 1302211314910888028. Discord response:
+2024-11-08 23:17:18 [info]: Commands deployed for guild: ItzDusty's server (1302211314910888028)
+2024-11-08 23:17:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:18:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:18:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:18:21 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:18:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:18:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:19:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:19:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:19:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:21:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:21:07 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:22:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:23:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:25:15 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:25:17 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:25:42 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:25:43 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:26:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:27:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:28:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:28:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:29:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:29:25 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:29:26 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:30:41 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:32:01 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:34:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:34:54 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:35:19 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:35:19 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:35:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:35:20 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:36:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:36:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:37:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:38:21 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:38:25 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:38:40 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:39:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:39:38 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:39:57 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:40:18 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:40:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:40:22 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:40:40 [info]: Commands to deploy to guild 771856739956031539: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-08 23:40:40 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-08 23:40:40 [info]: Successfully reloaded application (/) commands for guild 771856739956031539. Discord response:
+2024-11-08 23:40:40 [info]: Commands to deploy to guild 1302211314910888028: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-08 23:40:40 [info]: Started refreshing application (/) commands for guild 1302211314910888028.
+2024-11-08 23:40:40 [info]: Successfully reloaded application (/) commands for guild 1302211314910888028. Discord response:
+2024-11-08 23:40:46 [info]: Executed command "ping" (ID: 2) by user "228658618684276736" on server "1302211314910888028".
+2024-11-08 23:40:59 [info]: Commands to deploy to guild 771856739956031539: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1}]
+2024-11-08 23:40:59 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-08 23:40:59 [info]: Successfully reloaded application (/) commands for guild 771856739956031539. Discord response:
+2024-11-08 23:40:59 [info]: Commands to deploy to guild 1302211314910888028: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1}]
+2024-11-08 23:40:59 [info]: Started refreshing application (/) commands for guild 1302211314910888028.
+2024-11-08 23:40:59 [info]: Successfully reloaded application (/) commands for guild 1302211314910888028. Discord response:
+2024-11-08 23:41:16 [info]: Commands to deploy to guild 771856739956031539: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-08 23:41:16 [info]: Started refreshing application (/) commands for guild 771856739956031539.
+2024-11-08 23:41:16 [info]: Successfully reloaded application (/) commands for guild 771856739956031539. Discord response:
+2024-11-08 23:41:16 [info]: Commands to deploy to guild 1302211314910888028: [{"options":[],"name":"serverstats","description":"Displays statistics about the server.","type":1},{"options":[],"name":"ping","description":"Replies with Pong! and some fun stats.","type":1}]
+2024-11-08 23:41:16 [info]: Started refreshing application (/) commands for guild 1302211314910888028.
+2024-11-08 23:41:17 [info]: Successfully reloaded application (/) commands for guild 1302211314910888028. Discord response:
+2024-11-08 23:41:22 [info]: Executed command "ping" (ID: 2) by user "228658618684276736" on server "1302211314910888028".
+2024-11-08 23:41:52 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:42:05 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:43:46 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:43:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:00 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:02 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:30 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:33 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:47 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:47 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-08 23:44:51 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:44:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:51 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:52 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:52 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:55 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:55 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:44:56 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:03 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:45:16 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:45:26 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-08 23:45:26 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:45:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:28 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:32 [info]: Updated onlineMembers for guild: ItzDusty's server
+2024-11-08 23:45:32 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:45:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:36 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:45:45 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:45:50 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:46:49 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:47:24 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:48:35 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:48:37 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:50:10 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:50:10 [info]: User data sent for user ID: 228658618684276736
+2024-11-08 23:50:39 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:50:58 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:50:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:52:59 [info]: Updated onlineMembers for guild: Athena Network
+2024-11-08 23:55:06 [info]: Updated onlineMembers for guild: Athena Network

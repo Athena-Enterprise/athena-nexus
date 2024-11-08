@@ -1,25 +1,25 @@
 // frontend/src/context/AuthContext.js
 
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isAdminMode, setIsAdminMode] = useState(true);
+  const [isAdminMode, setIsAdminMode] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const toggleAdminMode = () => {
-    setIsAdminMode(prevMode => !prevMode);
+    setIsAdminMode(!isAdminMode);
   };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await api.get('/api/users/me', { withCredentials: true });
+        const response = await api.get('/api/users/me');
         setUser(response.data);
-        setIsAdminMode(response.data.isAdmin); // Initialize isAdminMode based on user's admin status
+        setIsAdminMode(response.data.isAdmin);
       } catch (error) {
         console.error('Error fetching user:', error);
         setUser(null);
@@ -32,7 +32,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, isAdminMode, toggleAdminMode, loading }}>
+    <AuthContext.Provider
+      value={{ user, setUser, isAdminMode, toggleAdminMode, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

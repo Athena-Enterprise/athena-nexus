@@ -3,12 +3,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { FaHome, FaServer, FaCog, FaSignOutAlt, FaThList } from 'react-icons/fa';
+import { FaHome, FaServer, FaThList, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import api from '../services/api';
 
 const Sidebar = () => {
-  const location = useLocation();
   const { user, setUser } = useAuth();
+  const location = useLocation();
 
   const menuItems = [
     { name: 'Dashboard', path: '/dashboard', icon: <FaHome /> },
@@ -30,19 +30,27 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col h-full bg-base-200 w-64 shadow-lg">
       {/* User Info */}
-      <div className="flex items-center p-4 bg-base-300">
-        <img
-          src={
-            user.avatar
-              ? `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`
-              : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`
-          }
-          alt="User Avatar"
-          className="w-12 h-12 rounded-full"
-        />
-        <div className="ml-3">
-          <p className="text-lg font-semibold">{user.username}</p>
-          <p className="text-sm text-gray-500">#{user.discriminator}</p>
+      <div className="flex p-4 bg-base-300 relative">
+        <div className="relative">
+          <img
+            src={
+              user.avatar
+                ? `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`
+                : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`
+            }
+            alt="User Avatar"
+            className="w-16 h-16 rounded-full"
+          />
+          {/* Status Label */}
+          <span className="absolute bottom-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-full">
+            {user.status}
+          </span>
+        </div>
+        <div className="ml-3 flex flex-col justify-center">
+          <div className="flex items-center">
+            <p className="text-lg font-semibold">{user.username}</p>
+          </div>
+          {/* Additional controls can go here */}
         </div>
       </div>
 

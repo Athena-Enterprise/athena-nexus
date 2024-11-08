@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const BotManagement = () => {
   const [commands, setCommands] = useState([]);
@@ -16,7 +17,7 @@ const BotManagement = () => {
 
   const fetchCommands = async () => {
     try {
-      const response = await api.get('/commands');
+      const response = await api.get('/api/commands');
       setCommands(response.data);
     } catch (error) {
       console.error('Error fetching commands:', error);
@@ -28,7 +29,7 @@ const BotManagement = () => {
 
   const fetchFeatures = async () => {
     try {
-      const response = await api.get('/features'); // Ensure you have a /features endpoint
+      const response = await api.get('/api/features');
       setFeatures(response.data);
     } catch (error) {
       console.error('Error fetching features:', error);
@@ -36,26 +37,9 @@ const BotManagement = () => {
     }
   };
 
-  const handleToggle = async (id, currentEnabled) => {
-    try {
-      await api.put(`/commands/${id}`, { enabled: !currentEnabled });
-      // Optimistically update the state
-      setCommands((prevCommands) =>
-        prevCommands.map((cmd) =>
-          cmd.id === id ? { ...cmd, enabled: !currentEnabled } : cmd
-        )
-      );
-      toast.success('Command status updated successfully.');
-    } catch (error) {
-      console.error('Error toggling command:', error);
-      toast.error('Failed to toggle command.');
-    }
-  };
-
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await api.put(`/commands/${id}`, { status: newStatus });
-      // Update the state
+      await api.put(`/api/commands/${id}`, { status: newStatus });
       setCommands((prevCommands) =>
         prevCommands.map((cmd) => (cmd.id === id ? { ...cmd, status: newStatus } : cmd))
       );
@@ -66,10 +50,22 @@ const BotManagement = () => {
     }
   };
 
+  const handleTierChange = async (id, newTier) => {
+    try {
+      await api.put(`/api/commands/${id}`, { tier: newTier });
+      setCommands((prevCommands) =>
+        prevCommands.map((cmd) => (cmd.id === id ? { ...cmd, tier: newTier } : cmd))
+      );
+      toast.success('Command tier updated successfully.');
+    } catch (error) {
+      console.error('Error updating command tier:', error);
+      toast.error('Failed to update command tier.');
+    }
+  };
+
   const handleFeatureChange = async (id, newFeatureId) => {
     try {
-      await api.put(`/commands/${id}`, { featureId: newFeatureId });
-      // Update the state
+      await api.put(`/api/commands/${id}`, { featureId: newFeatureId });
       setCommands((prevCommands) =>
         prevCommands.map((cmd) => (cmd.id === id ? { ...cmd, featureId: newFeatureId } : cmd))
       );
@@ -91,6 +87,11 @@ const BotManagement = () => {
   return (
     <div className="pt-20 card shadow-lg p-6 bg-base-100">
       <h2 className="text-2xl font-semibold mb-4">Bot Management</h2>
+      <div className="mb-4">
+        <Link to="/admin/commands" className="btn btn-primary">
+          Add New Command
+        </Link>
+      </div>
       <div className="overflow-x-auto">
         <table className="table w-full table-zebra">
           <thead>
@@ -99,8 +100,8 @@ const BotManagement = () => {
               <th>Description</th>
               <th>Premium Only</th>
               <th>Feature</th>
-              <th>Enabled</th>
               <th>Status</th>
+              <th>Tier</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -117,18 +118,12 @@ const BotManagement = () => {
                     className="select select-bordered select-sm"
                   >
                     <option value="">Select Feature</option>
-                    {features.map(feature => (
-                      <option key={feature.id} value={feature.id}>{feature.name}</option>
+                    {features.map((feature) => (
+                      <option key={feature.id} value={feature.id}>
+                        {feature.name}
+                      </option>
                     ))}
                   </select>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleToggle(cmd.id, cmd.enabled)}
-                    className={`btn btn-sm ${cmd.enabled ? 'btn-error' : 'btn-success'}`}
-                  >
-                    {cmd.enabled ? 'Disable' : 'Enable'}
-                  </button>
                 </td>
                 <td>
                   <select
@@ -142,8 +137,21 @@ const BotManagement = () => {
                   </select>
                 </td>
                 <td>
-                  {/* Placeholder for additional actions */}
-                  <button className="btn btn-sm btn-info">Edit</button>
+                  <select
+                    value={cmd.tier}
+                    onChange={(e) => handleTierChange(cmd.id, e.target.value)}
+                    className="select select-bordered select-sm"
+                  >
+                    <option value="free">Free</option>
+                    <option value="community">Community</option>
+                    <option value="enterprise">Enterprise</option>
+                  </select>
+                </td>
+                <td>
+                  <Link to={`/admin/commands/${cmd.id}/edit`} className="btn btn-sm btn-info">
+                    Edit
+                  </Link>
+                  {/* Implement the edit functionality as needed */}
                 </td>
               </tr>
             ))}

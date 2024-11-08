@@ -8,6 +8,7 @@ const { body, validationResult } = require('express-validator');
 const { updateAllGuildCommands } = require('../utils/updateAllGuildCommands'); // Import the function
 const { isAuthenticated } = require('../middleware/auth');
 const deployCommands = require('../utils/deployCommands'); // Correct import
+const commandController = require('../controllers/commandController');
 
 
 // Apply isAdmin middleware to all routes in this router
@@ -162,5 +163,24 @@ router.get('/enabled', isAuthenticated, async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+// POST /api/commands - Create a new command
+router.post(
+  '/',
+  [
+    body('name').notEmpty().withMessage('Name is required.'),
+    body('description').notEmpty().withMessage('Description is required.'),
+    body('code').notEmpty().withMessage('Code is required.'),
+    body('featureId').notEmpty().withMessage('Feature ID is required.'),
+  ],
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
+  commandController.createCommand
+);
 
 module.exports = router;

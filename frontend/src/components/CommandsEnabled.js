@@ -1,7 +1,7 @@
 // frontend/src/components/CommandsEnabled.js
 
 import React, { useEffect, useState } from 'react';
-import axios from '../services/api';
+import api from '../services/api';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 
@@ -18,9 +18,7 @@ const CommandsEnabled = () => {
     }
 
     try {
-      console.log(`Fetching commands for server ID: ${selectedServerId}`);
-      const response = await axios.get(`/servers/${selectedServerId}/commands`, { withCredentials: true });
-      console.log('Commands fetched:', response.data);
+      const response = await api.get(`/servers/${selectedServerId}/commands`);
       setCommands(response.data);
     } catch (error) {
       console.error('Error fetching commands:', error);
@@ -39,8 +37,7 @@ const CommandsEnabled = () => {
 
   const handleToggle = async (commandId, currentEnabled) => {
     try {
-      console.log(`Toggling command ID: ${commandId}, Current Enabled: ${currentEnabled}`);
-      await axios.put(`/servers/${selectedServerId}/commands/${commandId}`, { enabled: !currentEnabled }, { withCredentials: true });
+      await api.put(`/servers/${selectedServerId}/commands/${commandId}`, { enabled: !currentEnabled });
 
       // Optimistically update the state
       setCommands((prevCommands) =>
@@ -49,7 +46,6 @@ const CommandsEnabled = () => {
         )
       );
       toast.success('Command status updated successfully.');
-      console.log(`Command ID: ${commandId} toggled to ${!currentEnabled}`);
     } catch (error) {
       console.error('Error toggling command:', error);
       toast.error('Failed to toggle command.');
@@ -58,7 +54,6 @@ const CommandsEnabled = () => {
 
   const handleServerChange = (e) => {
     const newServerId = e.target.value;
-    console.log(`Selected new server ID: ${newServerId}`);
     setSelectedServerId(newServerId);
     setLoading(true);
     fetchCommands();
@@ -75,14 +70,16 @@ const CommandsEnabled = () => {
         <div className="mb-4">
           <label className="mr-2">Select Server:</label>
           <select value={selectedServerId} onChange={handleServerChange} className="select select-bordered">
-            {servers.map(server => (
-              <option key={server.id} value={server.id}>{server.name}</option>
+            {servers.map((server) => (
+              <option key={server.id} value={server.id}>
+                {server.name}
+              </option>
             ))}
           </select>
         </div>
       )}
       {commands.length === 0 ? (
-        <p>No commands enabled.</p>
+        <p>No commands available.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full table-zebra">
@@ -106,6 +103,7 @@ const CommandsEnabled = () => {
                     <button
                       onClick={() => handleToggle(cmd.id, cmd.enabled)}
                       className={`btn btn-sm ${cmd.enabled ? 'btn-error' : 'btn-success'}`}
+                      disabled={cmd.status !== 'active'} // Disable button if command is not active
                     >
                       {cmd.enabled ? 'Disable' : 'Enable'}
                     </button>

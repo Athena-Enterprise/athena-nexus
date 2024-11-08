@@ -12,11 +12,11 @@ import {
   FaListAlt,
   FaCogs,
   FaSignOutAlt,
-  FaToggleOn,
-  FaUser,
+  FaUserShield,
   FaThList,
   FaCog,
 } from 'react-icons/fa';
+import { Switch } from '@headlessui/react'; // Using Headless UI for toggle switch
 import api from '../services/api';
 
 const AdminSidebar = () => {
@@ -53,8 +53,8 @@ const AdminSidebar = () => {
   return (
     <div className="flex flex-col h-full bg-base-200 w-64 shadow-lg">
       {/* User Info */}
-      <div className="flex items-center justify-between p-4 bg-base-300">
-        <div className="flex items-center">
+      <div className="flex p-4 bg-base-300 relative">
+        <div className="relative">
           <img
             src={
               user.avatar
@@ -62,24 +62,45 @@ const AdminSidebar = () => {
                 : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`
             }
             alt="User Avatar"
-            className="w-12 h-12 rounded-full"
+            className="w-16 h-16 rounded-full"
           />
-          <div className="ml-3">
-            <p className="text-lg font-semibold">{user.username}</p>
-            <p className="text-sm text-gray-500">#{user.discriminator}</p>
-          </div>
+          {/* Status Label */}
+          <span className="absolute bottom-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-full">
+            {user.status}
+          </span>
         </div>
-        {/* Admin Mode Switch */}
-        {user.isAdmin && (
-          <button
-            onClick={toggleAdminMode}
-            className="btn btn-sm btn-primary flex items-center"
-          >
-            <FaToggleOn className="mr-1" />
-            {isAdminMode ? 'Admin' : 'User'}
-          </button>
-        )}
+        <div className="ml-3 flex flex-col justify-center">
+          <div className="flex items-center">
+            <p className="text-lg font-semibold">{user.username}</p>
+          </div>
+          {user.isAdmin && (
+            <div className="flex items-center mt-2">
+              <Switch
+                checked={isAdminMode}
+                onChange={toggleAdminMode}
+                className={`${
+                  isAdminMode ? 'bg-blue-600' : 'bg-gray-400'
+                } relative inline-flex h-5 w-10 items-center rounded-full`}
+              >
+                <span className="sr-only">Toggle Admin Mode</span>
+                <span
+                  className={`${
+                    isAdminMode ? 'translate-x-5' : 'translate-x-1'
+                  } inline-block h-3 w-3 transform bg-white rounded-full transition-transform`}
+                />
+              </Switch>
+              <FaUserShield className="text-lg text-gray-700 ml-2" title="Admin Mode" />
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Admin Mode Banner */}
+      {user.isAdmin && isAdminMode && (
+        <div className="bg-red-600 text-white text-center py-1">
+          <p className="text-sm font-bold">Admin Mode</p>
+        </div>
+      )}
 
       {/* Menu Items */}
       <nav className="flex-1 p-4 overflow-y-auto">

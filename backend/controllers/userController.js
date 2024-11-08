@@ -10,7 +10,7 @@ exports.getUser = async (req, res) => {
       include: [{
         model: Server,
         as: 'ownedServers',
-        attributes: ['id', 'name'],
+        attributes: ['id', 'username', 'discordId', 'avatar', 'isAdmin', 'status'],
       }],
     });
 
