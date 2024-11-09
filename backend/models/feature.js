@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true, // Ensure feature names are unique
+      unique: true,
     },
     description: {
       type: DataTypes.STRING,
@@ -34,12 +34,13 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'free',
     },
   }, {
-    tableName: 'Features',
+    tableName: 'features',
     timestamps: true,
   });
 
   Feature.associate = (models) => {
     Feature.hasMany(models.Command, { foreignKey: 'featureId', as: 'commands' });
+    Feature.belongsToMany(models.Server, { through: 'ServerFeatures', as: 'servers', foreignKey: 'FeatureId' });
   };
 
   return Feature;

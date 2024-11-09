@@ -1,7 +1,7 @@
 // frontend/src/components/ServerManagement.js
 
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import api from '../../services/api';
 import { toast } from 'react-toastify';
 
 const ServerManagement = () => {
@@ -14,7 +14,7 @@ const ServerManagement = () => {
 
   const fetchServers = async () => {
     try {
-      const response = await api.get('/api/admins/servers');
+      const response = await api.get('/admins/servers');
       setServers(response.data);
     } catch (error) {
       console.error('Error fetching servers:', error);

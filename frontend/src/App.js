@@ -1,164 +1,81 @@
 // frontend/src/App.js
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+// Context Providers
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
-import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute';
-import DashboardLayout from './components/DashboardLayout';
-import PublicLayout from './components/PublicLayout';
 
-// Import your pages
+// Layouts
+import PublicLayout from './components/layout/PublicLayout';
+import DashboardLayout from './components/layout/DashboardLayout';
+
+// Common Components
+import ErrorBoundary from './components/common/ErrorBoundary';
+
+// Pages
 import LandingPage from './pages/LandingPage';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
-import Login from './pages/Login';
-import UserSettings from './pages/UserSettings';
-import UserManagement from './components/UserManagement';
-import ServerManagement from './components/ServerManagement';
-import BotManagement from './components/BotManagement';
-import CommandsEnabled from './components/CommandsEnabled';
-import DeveloperSection from './components/DeveloperSection';
-import ServerUserManagement from './components/ServerUserManagement';
-import AdminManagement from './components/AdminManagement';
-// ... other imports ...
 
-function App() {
+// Admin Components
+import UserManagement from './components/admin/UserManagement';
+import ServerManagement from './components/admin/ServerManagement';
+import CommandFeatureManagement from './components/admin/CommandFeatureManagement';
+import GlobalBotManagement from './components/admin/GlobalBotManagement';
+
+// Route Guards
+import PrivateRoute from './components/utils/PrivateRoute';
+import AdminRoute from './components/utils/AdminRoute';
+
+// Notifications
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const App = () => {
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <Router>
-          <Routes>
-            {/* Public Routes */}
-            <Route
-              path="/"
-              element={
-                <PublicLayout>
-                  <LandingPage />
-                </PublicLayout>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PublicLayout>
-                  <Login />
-                </PublicLayout>
-              }
-            />
+    <Router>
+      <AuthProvider>
+        <ThemeProvider>
+          <ErrorBoundary>
+            <Routes>
+              {/* Public Routes */}
+              <Route element={<PublicLayout />}>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+              </Route>
 
-            {/* Protected Routes */}
-            <Route
-              path="/dashboard/*"
-              element={
-                <PrivateRoute>
-                  <DashboardLayout>
-                    <Dashboard />
-                  </DashboardLayout>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/settings"
-              element={
-                <PrivateRoute>
-                  <DashboardLayout>
-                    <UserSettings />
-                  </DashboardLayout>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard/commands"
-              element={
-                <PrivateRoute>
-                  <DashboardLayout>
-                    <CommandsEnabled />
-                  </DashboardLayout>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard/servers"
-              element={
-                <PrivateRoute>
-                  <DashboardLayout>
-                    <ServerUserManagement />
-                  </DashboardLayout>
-                </PrivateRoute>
-              }
-            />
+              {/* Private Routes */}
+              <Route element={<PrivateRoute />}>
+                <Route element={<DashboardLayout />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  {/* Add more private routes here if needed */}
+                </Route>
+              </Route>
 
-            {/* Admin Routes */}
-            <Route
-              path="/admin/dashboard"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <AdminDashboard />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <UserManagement />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/servers"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <ServerManagement />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/bot"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <BotManagement />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/commands"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <DeveloperSection />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/admins"
-              element={
-                <AdminRoute>
-                  <DashboardLayout>
-                    <AdminManagement />
-                  </DashboardLayout>
-                </AdminRoute>
-              }
-            />
+              {/* Admin Routes */}
+              <Route element={<AdminRoute />}>
+                <Route element={<DashboardLayout />}>
+                  <Route path="/admin" element={<AdminDashboard />} />
+                  <Route path="/admin/user-management" element={<UserManagement />} />
+                  <Route path="/admin/server-management" element={<ServerManagement />} />
+                  <Route path="/admin/command-feature-management" element={<CommandFeatureManagement />} />
+                  <Route path="/admin/bot-management" element={<GlobalBotManagement />} />
+                  {/* Add more admin routes here if needed */}
+                </Route>
+              </Route>
 
-            {/* Redirect unknown routes */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Router>
-      </ThemeProvider>
-    </AuthProvider>
+              {/* Redirect unmatched routes to Home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </ErrorBoundary>
+        </ThemeProvider>
+      </AuthProvider>
+      <ToastContainer />
+    </Router>
   );
-}
+};
 
 export default App;

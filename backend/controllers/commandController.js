@@ -105,3 +105,59 @@ module.exports = {
     return res.status(500).json({ error: 'Internal server error.' });
   }
 };
+
+exports.updateCommand = async (req, res) => {
+  const { id } = req.params; // Command ID
+  const { name, description, status, tier, premiumOnly, featureId } = req.body;
+
+  try {
+    // Find the command by ID
+    const command = await Command.findByPk(id);
+
+    if (!command) {
+      logger.warn(`Command not found with ID: ${id}`);
+      return res.status(404).json({ error: 'Command not found.' });
+    }
+
+    // Update command details
+    if (name) command.name = name;
+    if (description) command.description = description;
+    if (status) command.status = status;
+    if (tier) command.tier = tier;
+    if (premiumOnly !== undefined) command.premiumOnly = premiumOnly;
+    if (featureId !== undefined) command.featureId = featureId;
+
+    await command.save();
+    logger.info(`Command updated in database: ${command.name} (ID: ${command.id})`);
+
+    // Update the command file
+    const commandsDir = path.join(__dirname, '../bot/commands');
+    const commandFilePath = path.join(commandsDir, `${command.name}.js`);
+
+    if (fs.existsSync(commandFilePath)) {
+      // Read existing command file
+      let commandFileContent = fs.readFileSync(commandFilePath, 'utf-8');
+
+      // Update the description and other details as needed
+      // This is a simplistic approach; for more complex updates, consider parsing the file
+      commandFileContent = commandFileContent.replace(
+        /setDescription\('.*?'\)/,
+        `setDescription('${description}')`
+      );
+
+      // Optionally, update other fields like premiumOnly, status, tier, etc.
+      // This requires a more sophisticated approach, potentially using AST parsing
+
+      fs.writeFileSync(commandFilePath, commandFileContent);
+      logger.info(`Command file updated: ${commandFilePath}`);
+    } else {
+      logger.warn(`Command file not found: ${commandFilePath}`);
+      return res.status(404).json({ error: 'Command file not found.' });
+    }
+
+    res.json({ message: 'Command updated successfully.', command });
+  } catch (error) {
+    logger.error(`Error updating command (ID: ${id}): ${error.message}`);
+    res.status(500).json({ error: 'Internal server error.' });
+  }
+};

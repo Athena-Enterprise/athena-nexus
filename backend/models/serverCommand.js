@@ -2,43 +2,33 @@
 
 module.exports = (sequelize, DataTypes) => {
   const ServerCommand = sequelize.define('ServerCommand', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    serverId: { // Foreign key to Server
+    serverId: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: 'Servers',
+        model: 'servers',
         key: 'id',
       },
       onDelete: 'CASCADE',
+      primaryKey: true,
     },
-    commandId: { // Foreign key to Command
+    commandId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Commands',
+        model: 'commands',
         key: 'id',
       },
       onDelete: 'CASCADE',
+      primaryKey: true,
     },
     enabled: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
   }, {
-    tableName: 'ServerCommands',
+    tableName: 'servercommands',
     timestamps: true,
-    indexes: [
-      {
-        unique: true,
-        fields: ['serverId', 'commandId'],
-      },
-    ],
   });
 
   ServerCommand.associate = (models) => {

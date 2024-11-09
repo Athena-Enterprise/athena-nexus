@@ -1,11 +1,11 @@
-// frontend/src/components/Navbar.js
+// frontend/src/components/common/Navbar.js
 
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
-import axios from '../services/api';
-import ThemeSelector from './ThemeSelector'; // Import the ThemeSelector
+import { useAuth } from '../../context/AuthContext'; // Corrected path
+import { useTheme } from '../../context/ThemeContext';
+import axios from '../../services/api';
+import ThemeSelector from '../utils/ThemeSelector'; // Corrected path
 
 function Navbar() {
   const { user, setUser } = useAuth();
@@ -58,7 +58,7 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      await axios.get('/api/auth/logout', { withCredentials: true });
+      await axios.get('/auth/logout', { withCredentials: true });
       setUser(null); // Update the user context
       navigate('/'); // Redirect to home page
     } catch (error) {
@@ -185,14 +185,7 @@ function Navbar() {
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                 >
                   <div className="w-10 rounded-full">
-                    <img
-                      src={
-                        user.avatar
-                          ? `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`
-                          : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`
-                      }
-                      alt="User Avatar"
-                    />
+                    <img src={`https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`} alt="User Avatar"/>
                   </div>
                 </label>
                 {dropdownOpen && (
@@ -200,11 +193,6 @@ function Navbar() {
                     tabIndex={0}
                     className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                   >
-                    <li>
-                      <Link to="/settings" className="text-base-content">
-                        User Settings
-                      </Link>
-                    </li>
                     <li>
                       <button onClick={handleLogout} className="text-base-content">
                         Logout

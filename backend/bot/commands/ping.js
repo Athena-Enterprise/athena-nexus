@@ -6,12 +6,14 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('ping')
     .setDescription('Replies with Pong! and some fun stats.'),
-  
+  premiumOnly: false,
+  status: 'active',
+  tier: 'free',
   async execute(interaction) {
     try {
       const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true });
       const latency = sent.createdTimestamp - interaction.createdTimestamp;
-      const apiLatency = interaction.client.ws.ping;
+      const apiLatency = Math.round(interaction.client.ws.ping);
 
       // Create an embed with latency information
       const embed = new EmbedBuilder()
@@ -41,7 +43,10 @@ module.exports = {
       await interaction.followUp({ content: randomMessage, ephemeral: true });
     } catch (error) {
       console.error(`Error executing 'ping' command:`, error);
-      await interaction.reply({ content: 'There was an error executing that command.', ephemeral: true });
+      await interaction.reply({
+        content: 'There was an error executing that command.',
+        ephemeral: true,
+      });
     }
   },
 };

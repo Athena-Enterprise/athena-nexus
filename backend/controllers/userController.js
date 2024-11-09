@@ -1,23 +1,41 @@
 // backend/controllers/userController.js
 
-const { User, Server, ServerStats } = require('../models');
+const { User, ServerMember, Server } = require('../models');
 const logger = require('../utils/logger');
 const { validationResult } = require('express-validator');
 
+// Update getUser function
 exports.getUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
-      include: [{
-        model: Server,
-        as: 'ownedServers',
-        attributes: ['id', 'username', 'discordId', 'avatar', 'isAdmin', 'status'],
-      }],
+      include: [
+        {
+          model: ServerMember,
+          as: 'serverMemberships',
+          include: [
+            {
+              model: Server,
+              as: 'server',
+              attributes: ['id', 'name', 'tier', 'premium', 'iconUrl'],
+            },
+          ],
+        },
+      ],
     });
 
     if (!user) {
       logger.warn(`User not found with ID: ${req.user.id}`);
       return res.status(404).json({ error: 'User not found.' });
     }
+
+    const servers = user.serverMemberships.map((membership) => ({
+      id: membership.server.id,
+      name: membership.server.name,
+      role: membership.role,
+      tier: membership.server.tier,
+      premium: membership.server.premium,
+      iconUrl: membership.server.iconUrl,
+    }));
 
     res.json({
       id: user.id,
@@ -26,9 +44,8 @@ exports.getUser = async (req, res) => {
       isAdmin: user.isAdmin,
       isPremium: user.isPremium,
       avatar: user.avatar,
-      discriminator: user.discriminator,
       discordId: user.discordId,
-      servers: user.ownedServers.map(server => ({ id: server.id, name: server.name })),
+      servers,
     });
     logger.info(`User data sent for user ID: ${user.id}`);
   } catch (error) {
@@ -67,15 +84,14 @@ exports.getUserStats = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    // Fetch total number of servers the user owns
-    const totalServers = await Server.count({ where: { ownerId: userId } });
+    // Fetch total number of servers where the user is an owner
+    const totalServers = await ServerMember.count({
+      where: { userId, role: 'owner' },
+    });
 
     // If you don't have `memberCount` and `activeMemberCount` fields, set defaults
     const totalMembers = 0;
     const activeMembers = 0;
-
-    // Optionally, if you have associations, you could fetch related data
-    // For example, sum up members from servers the user owns
 
     // Fetch member growth over time (use real data if available)
     const memberGrowth = []; // Empty array if no data
@@ -96,6 +112,7 @@ exports.getUserStats = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 // Admin-only functions
 exports.getAllUsers = async (req, res) => {
@@ -158,7 +175,7 @@ exports.promoteUser = async (req, res) => {
     await user.save();
 
     logger.info(`User promoted to admin. Discord ID: ${discordId}`);
-    res.json({ message: `User ${user.username}#${user.discriminator} is now an admin.` });
+    res.json({ message: `User ${user.username} is now an admin.` });
   } catch (error) {
     logger.error('Error promoting user to admin:', error);
     res.status(500).json({ error: 'Internal server error' });

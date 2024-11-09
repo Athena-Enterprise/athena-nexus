@@ -1,6 +1,6 @@
 // backend/middleware/auth.js
 
-const { Server } = require('../models');
+const { ServerMember, Server } = require('../models');
 const logger = require('../utils/logger');
 
 /**
@@ -15,29 +15,38 @@ const isAuthenticated = (req, res, next) => {
 };
 
 /**
- * Middleware to check if the authenticated user owns the server.
+ * Middleware to check if the authenticated user has a certain role on the server.
  */
-const ownsServer = async (req, res, next) => {
-  const { serverId } = req.params;
-  try {
-    const server = await Server.findByPk(serverId);
-    if (!server) {
-      logger.warn(`Server not found: ${serverId}`);
-      return res.status(404).json({ error: 'Server not found.' });
-    }
+const hasRole = (roles) => {
+  return async (req, res, next) => {
+    const { serverId } = req.params;
+    const userId = req.user.id;
 
-    if (server.ownerId !== req.user.id) {
-      logger.warn(`User ${req.user.id} does not own server ${serverId}`);
-      return res.status(403).json({ error: 'Forbidden: You do not own this server.' });
-    }
+    try {
+      const membership = await ServerMember.findOne({
+        where: { serverId, userId },
+        include: [{ model: Server, as: 'server' }],
+      });
 
-    // Attach server to req for later use
-    req.server = server;
-    next();
-  } catch (error) {
-    logger.error(`Error in ownsServer middleware: ${error.message}`);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+      if (!membership || !roles.includes(membership.role)) {
+        return res.status(403).json({ error: 'Forbidden' });
+      }
+
+      // Attach the membership and server to req for later use
+      req.membership = membership;
+      req.server = membership.server;
+
+      next();
+    } catch (error) {
+      console.error('Error checking user role:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
 };
 
-module.exports = { isAuthenticated, ownsServer };
+// Export the middleware functions
+module.exports = {
+  isAuthenticated,
+  hasRole,
+  // ownsServer, // Only include if you still need it elsewhere
+};

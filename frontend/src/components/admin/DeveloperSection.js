@@ -1,32 +1,22 @@
 // frontend/src/components/DeveloperSection.js
 
-import React, { useState, useEffect } from 'react';
-import CodeEditor from './CodeEditor';
-import api from '../services/api';
+import React, { useState } from 'react';
+import CodeEditor from '../utils/CodeEditor';
+import useFetch from '../../hooks/useFetch';
+import api from '../../services/api';
 import { toast } from 'react-toastify';
 
 const DeveloperSection = () => {
+  const {
+    data: features = [],
+    loading,
+    error,
+  } = useFetch('/features');
   const [commandName, setCommandName] = useState('');
   const [commandDescription, setCommandDescription] = useState('');
   const [commandCode, setCommandCode] = useState('');
   const [featureId, setFeatureId] = useState('');
-  const [features, setFeatures] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  // Fetch features on component mount
-  useEffect(() => {
-    const fetchFeatures = async () => {
-      try {
-        const response = await api.get('/api/features');
-        setFeatures(response.data);
-      } catch (error) {
-        console.error('Error fetching features:', error);
-        toast.error('Failed to fetch features.');
-      }
-    };
-
-    fetchFeatures();
-  }, []);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   const handleCreateCommand = async () => {
     if (!commandName || !commandDescription || !commandCode || !featureId) {
@@ -34,16 +24,15 @@ const DeveloperSection = () => {
       return;
     }
 
-    setLoading(true);
+    setLoadingSubmit(true);
     try {
-      const response = await api.post('/api/commands', {
+      await api.post('/commands', {
         name: commandName,
         description: commandDescription,
         code: commandCode,
         featureId: featureId,
       });
       toast.success('Command created successfully.');
-      // Reset fields
       setCommandName('');
       setCommandDescription('');
       setCommandCode('');
@@ -52,9 +41,18 @@ const DeveloperSection = () => {
       console.error('Error creating command:', error);
       toast.error('Failed to create command.');
     } finally {
-      setLoading(false);
+      setLoadingSubmit(false);
     }
   };
+
+  if (loading) {
+    return <div className="text-center">Loading Developer Section...</div>;
+  }
+
+  if (error) {
+    toast.error('Failed to fetch features.');
+    return <div className="text-center text-error">Error loading features.</div>;
+  }
 
   return (
     <div className="pt-20 shadow rounded-lg p-6">
@@ -100,9 +98,6 @@ const DeveloperSection = () => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="label">
-          <span className="label-text">Command Code</span>
-        </label>
         <CodeEditor
           language="javascript"
           value={commandCode}
@@ -111,8 +106,8 @@ const DeveloperSection = () => {
       </div>
       <button
         onClick={handleCreateCommand}
-        className={`btn btn-primary ${loading ? 'loading' : ''}`}
-        disabled={loading}
+        className={`btn btn-primary ${loadingSubmit ? 'loading' : ''}`}
+        disabled={loadingSubmit}
       >
         Create Command
       </button>

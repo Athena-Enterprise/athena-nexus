@@ -1,57 +1,343 @@
-2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:09:18 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:09:44 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:13:22 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:17:41 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:17:58 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:18:05 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:18:14 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You must use the 'as' keyword to specify the alias within your include statement.
-2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
-2024-11-05 23:37:12 [error]: Error fetching commands for server ID: 771856739956031539: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
-2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
-    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
-    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
-    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
-    at Array.map (<anonymous>)
-    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
-    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+2024-11-09 13:45:34 [error]: Error deploying commands: SequelizeDatabaseError: relation "Servers" does not exist
+2024-11-09 13:45:34 [error]: Error synchronizing bot database: SequelizeDatabaseError: foreign key constraint "ServerMembers_userId_fkey" cannot be implemented
+2024-11-09 13:45:40 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:45:54 [error]: Error synchronizing bot database: SequelizeDatabaseError: foreign key constraint "ServerMembers_userId_fkey" cannot be implemented
+2024-11-09 13:46:23 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:23 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:31 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:31 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:39 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:46:48 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:48 [error]: Error fetching user (ID: 58b36388-2413-4bd2-be4b-1e133e82969c): relation "ServerMembers" does not exist
+2024-11-09 13:46:59 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:47:42 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:48:22 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:48:44 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:50:24 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:53:26 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:56:56 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 13:57:14 [error]: Error updating online members on presence update: relation "ServerStats" does not exist
+2024-11-09 14:00:32 [error]: Error deploying commands: SequelizeDatabaseError: relation "servers" does not exist
+2024-11-09 14:00:32 [error]: Error synchronizing bot database: SequelizeDatabaseError: relation "Servers" does not exist
+2024-11-09 14:01:34 [error]: Error fetching user (ID: 2886e3a8-ccaa-439b-bb0b-53be63a468fd): relation "servermembers" does not exist
+2024-11-09 14:01:34 [error]: Error fetching user (ID: 2886e3a8-ccaa-439b-bb0b-53be63a468fd): relation "servermembers" does not exist
+2024-11-09 14:02:01 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:02:02 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:02:02 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:03:43 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:04:03 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:04:39 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:04:44 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:04:48 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:05:33 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:05:34 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:05:35 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:06:16 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:06:25 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:06:55 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:08:34 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:09:49 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:09:53 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:09:59 [error]: unhandledRejection: relation "Servers" does not exist
+Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
-    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
-    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
-2024-11-05 23:38:25 [error]: Error fetching commands for server ID: 771856739956031539: SequelizeEagerLoadingError: ServerCommand is associated to Server using an alias. You've included an alias (ServerCommands), but it does not match the alias(es) defined in your association (serverCommands).
-    at Server._getIncludedAssociation (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:574:15)
-    at Server._validateIncludedElement (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:502:53)
-    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:421:37
-    at Array.map (<anonymous>)
-    at Server._validateIncludedElements (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:417:39)
-    at Server.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1124:12)
+    at async PostgresQueryInterface.createTable (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:98:12)
+    at async ServerMember.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:942:7)
+    at async Sequelize.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:377:9)
+2024-11-09 14:10:06 [error]: Error synchronizing bot database: SequelizeDatabaseError: relation "Servers" does not exist
+2024-11-09 14:10:07 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:10:08 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:10:13 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:10:13 [error]: Error updating online members on presence update: relation "serverstats" does not exist
+2024-11-09 14:11:28 [error]: unhandledRejection: relation "Servers" does not exist
+Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Server.findOne (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1240:12)
-    at async Server.findByPk (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1221:12)
-    at async exports.getServerCommands (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:13:24)
-2024-11-05 23:48:29 [error]: Error updating server-specific command: require(...) is not a function
-2024-11-06 21:25:48 [error]: Error updating server-specific command: require(...) is not a function
-2024-11-06 21:26:32 [error]: Error updating server-specific command: require(...) is not a function
-2024-11-06 21:27:46 [error]: Error updating server-specific command: require(...) is not a function
-2024-11-06 21:42:41 [error]: Error updating server-specific command: require(...) is not a function
-2024-11-06 21:51:43 [error]: Error updating server-specific command: TypeError: deployCommands is not a function
-    at exports.updateServerCommand (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\serverCommandController.js:113:11)
+    at async PostgresQueryInterface.createTable (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:98:12)
+    at async ServerMember.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:942:7)
+    at async Sequelize.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:377:9)
+2024-11-09 14:11:31 [error]: Error synchronizing bot database: SequelizeDatabaseError: relation "Servers" does not exist
+2024-11-09 16:26:11 [error]: unhandledRejection: logger is not defined
+ReferenceError: logger is not defined
+    at exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:52:5)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-2024-11-06 21:56:43 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
-2024-11-06 21:56:58 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
-2024-11-06 21:57:01 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
-2024-11-06 21:58:29 [error]: Error deploying global commands: TypeError: deployCommands is not a function
-2024-11-06 21:59:07 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
-2024-11-06 21:59:22 [error]: Error executing command "ping": WHERE parameter "commandId" has invalid "undefined" value
-2024-11-06 23:01:35 [error]: Error fetching server stats: MessageEmbed is not a constructor
-2024-11-06 23:01:38 [error]: Error fetching server stats: MessageEmbed is not a constructor
-2024-11-06 23:03:01 [error]: Error fetching server stats: EmbedBuilder is not defined
-2024-11-06 23:05:31 [error]: Error executing command "serverstats": logger is not defined
-2024-11-06 23:05:41 [error]: Error executing command "serverstats": logger is not defined
-2024-11-06 23:08:40 [error]: Error executing command "serverstats": logger is not defined
-2024-11-08 23:13:22 [error]: Error deploying commands: SequelizeDatabaseError: column "tier" does not exist
+2024-11-09 16:27:06 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:27:06 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:16 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:16 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:18 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:18 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:19 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:19 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:20 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:20 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:20 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:20 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:21 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:21 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:22 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:30:22 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 16:38:08 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:14:59 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:25:21 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:27:57 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:35:24 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:35:37 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:37:00 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:40:55 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:40:55 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:41:12 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:41:12 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:42:21 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:42:21 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:44:17 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:44:17 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:47:18 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:47:18 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:48:12 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:48:12 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:48:50 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:48:50 [error]: Error fetching statistics: Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async User.findAll (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:1140:21)
+    at async exports.getStatistics (D:\Projects\Private - GitHub\athena-nexus-react\backend\controllers\adminController.js:35:27)
+2024-11-09 17:52:40 [error]: unhandledRejection: column "discriminator" contains null values
+Error
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:50:25)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.addColumn (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:184:12)
+    at async User.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:958:11)
+    at async Sequelize.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:377:9)
+2024-11-09 17:56:32 [error]: unhandledRejection: logger is not defined
+ReferenceError: logger is not defined
+    at Object.logging (D:\Projects\Private - GitHub\athena-nexus-react\backend\models\index.js:14:28)
+    at Sequelize.log (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:552:15)
+    at Query._logQuery (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query.js:268:22)
+    at Query.run (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\postgres\query.js:48:27)
+    at D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.tableExists (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\dialects\abstract\query-interface.js:102:17)
+    at async Session.sync (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\sequelize\lib\model.js:939:21)

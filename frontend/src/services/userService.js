@@ -1,10 +1,10 @@
-// src/services/userService.js
+// frontend/src/services/userService.js
 
 import api from './api';
 
 export const fetchUserStats = async () => {
   try {
-    const response = await api.get('/users/me/stats', { withCredentials: true });
+    const response = await api.get('/users/me/stats');
     return response.data;
   } catch (error) {
     console.error('Error fetching user stats:', error);

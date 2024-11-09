@@ -6,14 +6,18 @@ const { User } = require('../models');
 const crypto = require('crypto');
 
 passport.serializeUser((user, done) => {
-  done(null, user.id); // Serialize by User's primary key
+  console.log('Serializing user:', user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
+  console.log('Deserializing user with id:', id);
   try {
     const user = await User.findByPk(id);
-    return done(null, user); // The entire user object is available in req.user
+    console.log('Found user:', user);
+    return done(null, user);
   } catch (err) {
+    console.error('Error in deserializeUser:', err);
     return done(err, null);
   }
 });
@@ -37,19 +41,18 @@ passport.use(
           // Update user data
           await user.update({
             username: profile.username,
+            discriminator: profile.discriminator, // Ensure discriminator is updated
             avatar: profile.avatar,
-            discriminator: profile.discriminator,
-            email: profile.email || user.email, // Update email if available
+            email: profile.email || user.email,
           });
         } else {
           // Create a new user
           user = await User.create({
-            id: crypto.randomUUID(),
             discordId: profile.id,
             username: profile.username,
+            discriminator: profile.discriminator, // Ensure discriminator is set
             avatar: profile.avatar,
-            discriminator: profile.discriminator,
-            email: profile.email, // Set email if available
+            email: profile.email,
           });
         }
 

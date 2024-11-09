@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true, // Ensure command names are unique
+      unique: true,
     },
     description: {
       type: DataTypes.STRING,
@@ -35,24 +35,21 @@ module.exports = (sequelize, DataTypes) => {
     },
     featureId: {
       type: DataTypes.INTEGER,
-      allowNull: false, // Now NOT NULL after migration
+      allowNull: true,
       references: {
-        model: 'Features',
+        model: 'features',
         key: 'id',
       },
-      onDelete: 'CASCADE',
+      onDelete: 'SET NULL',
       onUpdate: 'CASCADE',
     },
   }, {
-    tableName: 'Commands',
+    tableName: 'commands',
     timestamps: true,
   });
 
   Command.associate = (models) => {
     Command.belongsTo(models.Feature, { foreignKey: 'featureId', as: 'feature' });
-    Command.hasMany(models.ServerCommand, { foreignKey: 'commandId', as: 'serverCommands' });
-
-    // Define belongsToMany association
     Command.belongsToMany(models.Server, {
       through: models.ServerCommand,
       as: 'servers',

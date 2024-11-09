@@ -17,7 +17,7 @@ const setAdmin = async (id) => {
     user.isAdmin = true;
     await user.save();
 
-    console.log(`User ${user.username}#${user.discriminator} is now an admin.`);
+    console.log(`User ${user.username} is now an admin.`);
     process.exit(0);
   } catch (error) {
     console.error('Error setting admin:', error);

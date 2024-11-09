@@ -7,12 +7,12 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const { Sequelize, DataTypes } = require('sequelize');
 
+// Load environment variables
 dotenv.config({ path: path.resolve(__dirname, './.env') });
 
-// Import Sequelize instance
-const sequelize = require('./config/database');
+// Import Sequelize instance and models
+const { sequelize, Sequelize } = require('./models'); // Import from models/index.js
 
 // Import routes
 const serverRoutes = require('./routes/serverRoutes');
@@ -22,6 +22,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const serverCommandRoutes = require('./routes/serverCommandRoutes');
+const featureRoutes = require('./routes/featureRoutes');
 
 const app = express();
 
@@ -44,22 +45,21 @@ const SessionModel = sequelize.define(
   'SessionStore',
   {
     sid: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       primaryKey: true,
     },
-    expires: DataTypes.DATE,
-    data: DataTypes.TEXT,
+    expires: Sequelize.DATE,
+    data: Sequelize.TEXT,
   },
   {
-    tableName: 'SessionStore',
+    tableName: 'sessionstore',
   }
 );
 
 // Initialize session store with custom model
 const sessionStore = new SequelizeStore({
   db: sequelize,
-  table: 'SessionStore',
-  modelKey: 'SessionStore',
+  tableName: 'sessionstore',
 });
 
 // Sync session store
@@ -72,8 +72,9 @@ app.use(
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
+    proxy: true, // Add this if you're behind a proxy (e.g., Nginx)
     cookie: {
-      secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
+      secure: false, // Set to true if using HTTPS
       httpOnly: true,
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
@@ -93,6 +94,8 @@ app.use('/api/servers', serverCommandRoutes);
 app.use('/api/premium', premiumRoutes);
 app.use('/api/commands', commandRoutes);
 app.use('/api/admins', adminRoutes);
+app.use('/api/features', featureRoutes);
+
 
 // Serve static files from the React app (if needed)
 // app.use(express.static(path.join(__dirname, 'frontend/build')));

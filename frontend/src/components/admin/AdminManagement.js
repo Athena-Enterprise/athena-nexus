@@ -1,29 +1,15 @@
 // frontend/src/components/AdminManagement.js
 
-import React, { useState, useEffect } from 'react';
-import api from '../services/api';
+import React, { useState } from 'react';
+import useFetch from '../../hooks/useFetch'; // Import useFetch hook
+import { addAdmin, removeAdmin } from '../../services/adminService';
 import { toast } from 'react-toastify';
 
 const AdminManagement = () => {
-  const [admins, setAdmins] = useState([]);
   const [newAdminId, setNewAdminId] = useState('');
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchAdmins();
-  }, []);
-
-  const fetchAdmins = async () => {
-    try {
-      const response = await api.get('/admins');
-      setAdmins(response.data);
-    } catch (error) {
-      console.error('Error fetching admins:', error);
-      toast.error('Failed to fetch admins.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Use useFetch to fetch admins
+  const { data: admins, loading, error } = useFetch('/admins');
 
   const handleAddAdmin = async () => {
     if (!newAdminId) {
@@ -31,10 +17,10 @@ const AdminManagement = () => {
       return;
     }
     try {
-      await api.post('/admins', { discordId: newAdminId });
+      await addAdmin(newAdminId);
       toast.success('Admin added successfully.');
       setNewAdminId('');
-      fetchAdmins(); // Refresh the admin list
+      // Optionally, refetch the admins or trigger a re-render
     } catch (error) {
       console.error('Error adding admin:', error);
       toast.error('Failed to add admin.');
@@ -43,9 +29,9 @@ const AdminManagement = () => {
 
   const handleRemoveAdmin = async (discordId) => {
     try {
-      await api.delete(`/admins/${discordId}`);
+      await removeAdmin(discordId);
       toast.success('Admin removed successfully.');
-      fetchAdmins(); // Refresh the admin list
+      // Optionally, refetch the admins or trigger a re-render
     } catch (error) {
       console.error('Error removing admin:', error);
       toast.error('Failed to remove admin.');
@@ -56,7 +42,13 @@ const AdminManagement = () => {
     return <div className="text-center">Loading admins...</div>;
   }
 
-  if (!admins.length) {
+  if (error) {
+    console.error('Error fetching admins:', error);
+    toast.error('Failed to fetch admins.');
+    return <div className="text-center">Error loading admins.</div>;
+  }
+
+  if (!admins || admins.length === 0) {
     return <div className="text-center">No admins available.</div>;
   }
 
@@ -80,7 +72,8 @@ const AdminManagement = () => {
                 <td>{admin.discriminator}</td>
                 <td>{admin.discordId}</td>
                 <td>
-                  {admin.discordId !== '228658618684276736' && ( // Prevent removing yourself if desired
+                  {/* Prevent removing yourself as an admin */}
+                  {admin.discordId !== 'YOUR_DISCORD_ID_HERE' && (
                     <button
                       onClick={() => handleRemoveAdmin(admin.discordId)}
                       className="btn btn-sm btn-error"

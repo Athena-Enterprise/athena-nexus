@@ -3,23 +3,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Server = sequelize.define('Server', {
     id: {
-      type: DataTypes.STRING, // Discord Server ID as string
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    ownerId: {
-      type: DataTypes.STRING, // Foreign key referencing User
-      allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'id',
-      },
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
     },
     premium: {
       type: DataTypes.BOOLEAN,
@@ -34,21 +24,22 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   }, {
-    tableName: 'Servers',
+    tableName: 'servers',
     timestamps: true,
   });
 
   Server.associate = (models) => {
     Server.belongsTo(models.User, { as: 'owner', foreignKey: 'ownerId' });
+    Server.hasMany(models.ServerMember, { foreignKey: 'serverId', as: 'members' });
     Server.hasOne(models.ServerStats, { as: 'stats', foreignKey: 'ServerId' });
     Server.belongsToMany(models.Feature, { through: 'ServerFeatures', as: 'features', foreignKey: 'ServerId' });
-    Server.hasMany(models.ServerCommand, { foreignKey: 'serverId', as: 'serverCommands' });
     Server.belongsToMany(models.Command, {
       through: models.ServerCommand,
       as: 'commands',
       foreignKey: 'serverId',
       otherKey: 'commandId',
     });
+    Server.hasMany(models.CustomCommand, { as: 'customCommands', foreignKey: 'serverId' });
   };
 
   return Server;

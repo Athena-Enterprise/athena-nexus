@@ -1,6 +1,6 @@
 // frontend/src/pages/Dashboard.js
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFetch from '../hooks/useFetch';
 import {
   LineChart,
@@ -14,18 +14,25 @@ import {
 import { FaServer, FaUsers, FaChartLine, FaCircle } from 'react-icons/fa';
 
 const Dashboard = () => {
-  const { data: stats, loading, error } = useFetch('/api/users/me/stats');
+  const { data: stats, loading, error } = useFetch('/users/me/stats');
+
+  useEffect(() => {
+    console.log('Dashboard component rendered.');
+    console.log('Stats:', stats);
+    console.log('Loading:', loading);
+    console.log('Error:', error);
+  }, [stats, loading, error]);
 
   if (loading) {
-    return <div>Loading Dashboard...</div>;
+    return <div className="text-center mt-20 text-xl">Loading Dashboard...</div>;
   }
 
   if (error) {
-    return <div>Error loading dashboard.</div>;
+    return <div className="text-center text-error">Error loading dashboard.</div>;
   }
 
   if (!stats) {
-    return <div>No data available.</div>;
+    return <div className="text-center">No data available.</div>;
   }
 
   return (
@@ -39,7 +46,7 @@ const Dashboard = () => {
       </div>
 
       {/* Statistic Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-base-100 p-6 rounded-lg shadow flex items-center">
           <div className="p-4 bg-primary rounded-full text-white">
             <FaServer className="text-2xl" />

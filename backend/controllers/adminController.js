@@ -2,37 +2,55 @@
 
 const { User, Server, sequelize } = require('../models');
 const { Op } = require('sequelize');
+const logger = require('../utils/logger');
 
 exports.getStatistics = async (req, res) => {
   try {
-    const totalUsers = await User.count();
-    const totalServers = await Server.count();
-    const premiumUsers = await User.count({ where: { isPremium: true } });
-    const freeUsers = totalUsers - premiumUsers;
+    logger.info('Starting to fetch statistics.');
 
-    // User registrations over the past 30 days
+    const totalUsers = await User.count();
+    logger.info(`Total Users: ${totalUsers}`);
+
+    const totalServers = await Server.count();
+    logger.info(`Total Servers: ${totalServers}`);
+
+    const premiumUsers = await User.count({ where: { isPremium: true } });
+    logger.info(`Premium Users: ${premiumUsers}`);
+
+    const freeUsers = totalUsers - premiumUsers;
+    logger.info(`Free Users: ${freeUsers}`);
+
+    // Calculate the date 30 days ago
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    logger.info(`Fetching user registrations since: ${thirtyDaysAgo.toISOString()}`);
+
+    // User registrations over the past 30 days using DATE_TRUNC
     const userRegistrations = await User.findAll({
       attributes: [
-        [sequelize.fn('DATE', sequelize.col('createdAt')), 'date'],
+        [sequelize.fn('DATE_TRUNC', 'day', sequelize.col('createdAt')), 'registration_day'],
         [sequelize.fn('COUNT', sequelize.col('id')), 'users'],
       ],
       where: {
         createdAt: {
-          [Op.gte]: sequelize.literal(`NOW() - INTERVAL '30 DAY'`),
+          [Op.gte]: thirtyDaysAgo,
         },
       },
-      group: ['date'],
-      order: [['date', 'ASC']],
+      group: ['registration_day'],
+      order: [['registration_day', 'ASC']],
       raw: true,
     });
+    logger.info(`User Registrations: ${JSON.stringify(userRegistrations)}`);
 
     // Recent signups
+    logger.info('Fetching recent signups.');
     const recentSignups = await User.findAll({
       attributes: ['id', 'username', 'discriminator', 'createdAt'],
       order: [['createdAt', 'DESC']],
       limit: 10,
       raw: true,
     });
+    logger.info(`Recent Signups: ${JSON.stringify(recentSignups)}`);
 
     res.json({
       totalUsers,
@@ -42,8 +60,10 @@ exports.getStatistics = async (req, res) => {
       userRegistrations,
       recentSignups,
     });
+
+    logger.info('Statistics fetched successfully.');
   } catch (error) {
-    console.error('Error fetching statistics:', error);
+    logger.error(`Error fetching statistics: ${error.stack || error.message}`);
     res.status(500).json({ error: 'Failed to fetch statistics' });
   }
 };
@@ -91,7 +111,7 @@ exports.addAdmin = async (req, res) => {
     user.isAdmin = true;
     await user.save();
 
-    res.json({ message: `User ${user.username}#${user.discriminator} is now an admin.` });
+    res.json({ message: `User ${user.username} is now an admin.` });
   } catch (error) {
     console.error('Error adding admin:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -119,7 +139,7 @@ exports.removeAdmin = async (req, res) => {
     user.isAdmin = false;
     await user.save();
 
-    res.json({ message: `User ${user.username}#${user.discriminator} is no longer an admin.` });
+    res.json({ message: `User ${user.username} is no longer an admin.` });
   } catch (error) {
     console.error('Error removing admin:', error);
     res.status(500).json({ error: 'Internal server error' });

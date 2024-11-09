@@ -1,9 +1,9 @@
 // frontend/src/components/CommandsEnabled.js
 
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import api from '../../services/api';
 import { toast } from 'react-toastify';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 const CommandsEnabled = () => {
   const { selectedServerId, loading: authLoading, servers, setSelectedServerId } = useAuth();
@@ -16,7 +16,7 @@ const CommandsEnabled = () => {
       setLoading(false);
       return;
     }
-
+  
     try {
       const response = await api.get(`/servers/${selectedServerId}/commands`);
       setCommands(response.data);

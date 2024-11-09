@@ -1,247 +1,90 @@
-2024-11-05 21:53:36 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 21:53:40 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 21:53:43 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 21:53:50 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 21:56:39 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:00:16 [error]: uncaughtException: getServerCommands is not defined
-ReferenceError: getServerCommands is not defined
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:52)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-2024-11-05 22:00:38 [error]: uncaughtException: getServerCommands is not defined
-ReferenceError: getServerCommands is not defined
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:10:35)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-2024-11-05 22:01:48 [error]: uncaughtException: ownsServer is not defined
-ReferenceError: ownsServer is not defined
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:52)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-2024-11-05 22:02:04 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:02:48 [error]: uncaughtException: Route.put() requires a callback function but got a [object Undefined]
-Error: Route.put() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as put] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as put] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:50:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:02:58 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:04:10 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:12:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:04:35 [error]: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
-Error: Route.get() requires a callback function but got a [object Undefined]
-    at Route.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\route.js:216:15)
-    at proto.<computed> [as get] (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:521:19)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\serverCommandRoutes.js:14:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
-2024-11-05 22:56:47 [error]: uncaughtException: sequelize is not defined
-ReferenceError: sequelize is not defined
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:40:22)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
-    at node:internal/main/run_main_module:28:49
-2024-11-05 23:00:54 [error]: uncaughtException: Router.use() requires a middleware function
-TypeError: Router.use() requires a middleware function
-    at Function.use (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:462:11)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\userRoutes.js:90:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:24:20)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-2024-11-05 23:01:30 [error]: uncaughtException: Router.use() requires a middleware function
-TypeError: Router.use() requires a middleware function
-    at Function.use (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:462:11)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\userRoutes.js:90:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:24:20)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-2024-11-05 23:01:36 [error]: uncaughtException: Router.use() requires a middleware function
-TypeError: Router.use() requires a middleware function
-    at Function.use (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:462:11)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\userRoutes.js:90:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:24:20)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-2024-11-05 23:01:52 [error]: uncaughtException: Router.use() requires a middleware function
-TypeError: Router.use() requires a middleware function
-    at Function.use (D:\Projects\Private - GitHub\athena-nexus-react\node_modules\express\lib\router\index.js:462:11)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\routes\userRoutes.js:90:8)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Module.require (node:internal/modules/cjs/loader:1235:19)
-    at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:24:20)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-2024-11-06 22:22:27 [error]: uncaughtException: REST is not defined
-ReferenceError: REST is not defined
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js:43:14)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
-    at node:internal/main/run_main_module:28:49
-2024-11-06 22:25:14 [error]: uncaughtException: Cannot access 'rest' before initialization
-ReferenceError: Cannot access 'rest' before initialization
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js:43:14)
-    at Module._compile (node:internal/modules/cjs/loader:1376:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
-    at Module.load (node:internal/modules/cjs/loader:1207:32)
-    at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
-    at node:internal/main/run_main_module:28:49
-2024-11-07 21:58:10 [error]: uncaughtException: Cannot find module './routes/documentationRoutes'
+2024-11-09 14:33:50 [error]: uncaughtException: Cannot find module '../utils/synchronizeCommands'
 Require stack:
-- D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js
-Error: Cannot find module './routes/documentationRoutes'
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+Error: Cannot find module '../utils/synchronizeCommands'
 Require stack:
-- D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
     at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
     at Module._load (node:internal/modules/cjs/loader:985:27)
     at Module.require (node:internal/modules/cjs/loader:1235:19)
     at require (node:internal/modules/helpers:176:18)
-    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\server.js:25:29)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js:4:41)
     at Module._compile (node:internal/modules/cjs/loader:1376:14)
     at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
     at Module.load (node:internal/modules/cjs/loader:1207:32)
     at Module._load (node:internal/modules/cjs/loader:1023:12)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+2024-11-09 14:37:02 [error]: uncaughtException: Cannot find module 'axios'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+Error: Cannot find module 'axios'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Module._load (node:internal/modules/cjs/loader:985:27)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js:4:15)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+2024-11-09 14:37:08 [error]: uncaughtException: Cannot find module 'axios'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+Error: Cannot find module 'axios'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Module._load (node:internal/modules/cjs/loader:985:27)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\inspire.js:4:15)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+2024-11-09 14:37:30 [error]: uncaughtException: Cannot find module '../utils/synchronizeCommands'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+Error: Cannot find module '../utils/synchronizeCommands'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Module._load (node:internal/modules/cjs/loader:985:27)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js:4:41)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+2024-11-09 14:39:37 [error]: uncaughtException: Cannot find module '../utils/synchronizeCommands'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+Error: Cannot find module '../utils/synchronizeCommands'
+Require stack:
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js
+- D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\bot.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Module._load (node:internal/modules/cjs/loader:985:27)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)
+    at require (node:internal/modules/helpers:176:18)
+    at Object.<anonymous> (D:\Projects\Private - GitHub\athena-nexus-react\backend\bot\commands\synccomands.js:4:41)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Module.require (node:internal/modules/cjs/loader:1235:19)

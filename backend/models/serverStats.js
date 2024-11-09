@@ -2,20 +2,13 @@
 
 module.exports = (sequelize, DataTypes) => {
   const ServerStats = sequelize.define('ServerStats', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
     ServerId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      primaryKey: true,
       references: {
-        model: 'Servers',
+        model: 'servers',
         key: 'id',
       },
-      onDelete: 'CASCADE',
     },
     memberCount: {
       type: DataTypes.INTEGER,
@@ -29,14 +22,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    // Add other stats as necessary
+    // Add other statistics fields as needed
   }, {
-    tableName: 'ServerStats',
+    tableName: 'serverstats',
     timestamps: true,
   });
 
   ServerStats.associate = (models) => {
-    ServerStats.belongsTo(models.Server, { foreignKey: 'ServerId' });
+    ServerStats.belongsTo(models.Server, { foreignKey: 'ServerId', as: 'server' });
   };
 
   return ServerStats;

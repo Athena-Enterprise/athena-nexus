@@ -5,19 +5,19 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
 // Import Middleware
-const { isAuthenticated, ownsServer } = require('../middleware/auth');
+const { isAuthenticated, hasRole } = require('../middleware/auth');
 
 // Import Controller Functions
 const { getServerCommands, updateServerCommand } = require('../controllers/serverCommandController');
 
 // GET /servers/:serverId/commands
-router.get('/:serverId/commands', isAuthenticated, ownsServer, getServerCommands);
+router.get('/:serverId/commands', isAuthenticated, hasRole(['owner', 'admin']), getServerCommands);
 
 // PUT /servers/:serverId/commands/:commandId
 router.put(
   '/:serverId/commands/:commandId',
   isAuthenticated,
-  ownsServer,
+  hasRole(['owner', 'admin']),
   [
     body('enabled')
       .isBoolean()
