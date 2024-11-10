@@ -3,44 +3,55 @@
 module.exports = (sequelize, DataTypes) => {
   const CustomCommand = sequelize.define('CustomCommand', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-    },
-    serverId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: 'servers',
-        key: 'id',
-      },
-      onDelete: 'CASCADE',
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
-    response: {
-      type: DataTypes.TEXT,
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    action: { // New Field
+      type: DataTypes.ENUM('Assign Role', 'Remove Role', 'Send Embed'),
+      allowNull: false,
+    },
+    selector: { // New Field
+      type: DataTypes.ENUM('Select User', 'Select Channel', 'Select Role'),
       allowNull: false,
     },
     enabled: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    serverId: { // Association to Server
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: 'servers',
+        key: 'id',
+      },
+    },
+    featureId: { // New Association to Feature
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'features',
+        key: 'id',
+      },
+    },
   }, {
     tableName: 'customcommands',
     timestamps: true,
-    indexes: [
-      {
-        unique: true,
-        fields: ['serverId', 'name'],
-      },
-    ],
   });
 
   CustomCommand.associate = (models) => {
-    CustomCommand.belongsTo(models.Server, { as: 'server', foreignKey: 'serverId' });
+    CustomCommand.belongsTo(models.Server, { foreignKey: 'serverId', as: 'server' });
+    CustomCommand.belongsTo(models.Feature, { foreignKey: 'featureId', as: 'feature' }); // New Association
   };
 
   return CustomCommand;

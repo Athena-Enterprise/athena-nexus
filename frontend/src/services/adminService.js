@@ -2,29 +2,116 @@
 
 import api from './api';
 
-// ----- Commands -----
-export const fetchAdminCommands = () => api.get('/admin/commands');
-export const createAdminCommand = (commandData) => api.post('/admin/commands', commandData);
-export const updateAdminCommand = (id, commandData) => api.put(`/admin/commands/${id}`, commandData);
-export const deleteAdminCommand = (id) => api.delete(`/admin/commands/${id}`);
+// ----- Admin Management -----
 
-// ----- Features -----
-export const fetchAdminFeatures = () => api.get('/admin/features');
-export const createAdminFeature = (featureData) => api.post('/admin/features', featureData);
-export const updateAdminFeature = (id, featureData) => api.put(`/admin/features/${id}`, featureData);
-export const deleteAdminFeature = (id) => api.delete(`/admin/features/${id}`);
+// Add Admin
+export const addAdmin = (adminData) => api.post('/admins/add', adminData);
+
+// Remove Admin
+export const removeAdmin = (adminId) => api.delete(`/admins/remove/${adminId}`);
+
+// ----- Command Management -----
+
+// Fetch Admin Commands
+export const fetchAdminCommands = () => api.get('/admins/commands');
+
+// Create Admin Command
+export const createAdminCommand = (commandData) => api.post('/admins/commands', commandData);
+
+// Update Admin Command
+export const updateAdminCommand = (commandId, updatedData) =>
+  api.put(`/admins/commands/${commandId}`, updatedData);
+
+// Delete Admin Command
+export const deleteAdminCommand = (commandId) =>
+  api.delete(`/admins/commands/${commandId}`);
+
+// ----- Feature Management -----
+
+// Fetch Admin Features
+export const fetchAdminFeatures = () => api.get('/admins/features');
+
+// Create Admin Feature
+export const createAdminFeature = (featureData) => api.post('/admins/features', featureData);
+
+// Update Admin Feature
+export const updateAdminFeature = (featureId, updatedData) =>
+  api.put(`/admins/features/${featureId}`, updatedData);
+
+// Delete Admin Feature
+export const deleteAdminFeature = (featureId) =>
+  api.delete(`/admins/features/${featureId}`);
+
+// ----- Statistics -----
+
+// Fetch Admin Statistics
+export const fetchAdminStats = () => api.get('/admins/statistics');
+
+// Fetch All Users
+export const fetchAllUsers = () => api.get('/admins/users');
 
 // ----- Bot Management -----
-export const fetchBotStatus = () => api.get('/admin/bot/status');
-export const fetchBotDetails = () => api.get('/admin/bot/details');
-export const restartBot = () => api.post('/admin/bot/restart');
-export const stopBot = () => api.post('/admin/bot/stop');
-export const updateBotDetails = (details) => api.put('/admin/bot/details', details);
 
-// ----- Stats -----
-export const fetchAdminStats = () => api.get('/admin/stats');
+// Fetch Bot Status
+export const fetchBotStatus = () => api.get('/admins/bot/status');
 
-// ----- User Management -----
-export const fetchAllUsers = () => api.get('/admin/users');
-export const addAdmin = (userId) => api.post(`/admin/users/${userId}/add-admin`);
-export const removeAdmin = (userId) => api.post(`/admin/users/${userId}/remove-admin`);
+// Fetch Bot Details
+export const fetchBotDetails = () => api.get('/admins/bot/details');
+
+// Restart Bot
+export const restartBot = () => api.post('/admins/bot/restart');
+
+// Stop Bot
+export const stopBot = () => api.post('/admins/bot/stop');
+
+// Update Bot Details
+export const updateBotDetails = (botData) => api.put('/admins/bot/details', botData);
+
+// ----- Activity Log Management -----
+
+// Fetch Activity Logs
+export const fetchActivityLogs = () => api.get('/admins/activity-logs');
+
+// Create Activity Log
+export const createActivityLog = (logData) => api.post('/admins/activity-logs', logData);
+
+// Update Activity Log
+export const updateActivityLog = (logId, updatedData) =>
+  api.put(`/admins/activity-logs/${logId}`, updatedData);
+
+// Delete Activity Log
+export const deleteActivityLog = (logId) => api.delete(`/admins/activity-logs/${logId}`);
+
+// ----- Custom Command Management -----
+
+// Fetch Custom Commands
+export const fetchCustomCommands = () => api.get('/admins/custom-commands');
+
+// Create Custom Command
+export const createCustomCommand = (commandData) =>
+  api.post('/admins/custom-commands', commandData);
+
+// Update Custom Command
+export const updateCustomCommand = (commandId, updatedData) =>
+  api.put(`/admins/custom-commands/${commandId}`, updatedData);
+
+// Delete Custom Command
+export const deleteCustomCommand = (commandId) =>
+  api.delete(`/admins/custom-commands/${commandId}`);
+  
+// ----- Notification Management -----
+
+// Fetch Notifications
+export const fetchNotifications = () => api.get('/admins/notifications');
+
+// Create Notification
+export const createNotification = (notificationData) =>
+  api.post('/admins/notifications', notificationData);
+
+// Update Notification
+export const updateNotification = (notificationId, updatedData) =>
+  api.put(`/admins/notifications/${notificationId}`, updatedData);
+
+// Delete Notification
+export const deleteNotification = (notificationId) =>
+  api.delete(`/admins/notifications/${notificationId}`);

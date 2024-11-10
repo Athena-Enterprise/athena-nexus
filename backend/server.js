@@ -96,7 +96,6 @@ app.use('/api/commands', commandRoutes);
 app.use('/api/admins', adminRoutes);
 app.use('/api/features', featureRoutes);
 
-
 // Serve static files from the React app (if needed)
 // app.use(express.static(path.join(__dirname, 'frontend/build')));
 

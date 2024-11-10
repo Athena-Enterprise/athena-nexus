@@ -10,6 +10,7 @@ import { ThemeProvider } from './context/ThemeContext';
 // Layouts
 import PublicLayout from './components/layout/PublicLayout';
 import DashboardLayout from './components/layout/DashboardLayout';
+import AdminLayout from './components/admin/AdminLayout';
 
 // Common Components
 import ErrorBoundary from './components/common/ErrorBoundary';
@@ -24,6 +25,9 @@ import AdminDashboard from './pages/AdminDashboard';
 import UserManagement from './components/admin/UserManagement';
 import ServerManagement from './components/admin/ServerManagement';
 import CommandFeatureManagement from './components/admin/CommandFeatureManagement';
+import CustomCommandManagement from './components/admin/CustomCommandManagement';
+import NotificationManagement from './components/admin/NotificationManagement';
+import ActivityLogManagement from './components/admin/ActivityLogManagement';
 import GlobalBotManagement from './components/admin/GlobalBotManagement';
 
 // Route Guards
@@ -57,11 +61,14 @@ const App = () => {
 
               {/* Admin Routes */}
               <Route element={<AdminRoute />}>
-                <Route element={<DashboardLayout />}>
+                <Route element={<AdminLayout />}>
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/admin/user-management" element={<UserManagement />} />
                   <Route path="/admin/server-management" element={<ServerManagement />} />
                   <Route path="/admin/command-feature-management" element={<CommandFeatureManagement />} />
+                  <Route path="/admin/custom-command-management" element={<CustomCommandManagement />} />
+                  <Route path="/admin/notification-management" element={<NotificationManagement />} />
+                  <Route path="/admin/activity-log-management" element={<ActivityLogManagement />} />
                   <Route path="/admin/bot-management" element={<GlobalBotManagement />} />
                   {/* Add more admin routes here if needed */}
                 </Route>

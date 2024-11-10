@@ -75,10 +75,16 @@ exports.deleteFeature = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feature = await Feature.findByPk(id);
+    const feature = await Feature.findByPk(id, {
+      include: ['commands', 'customCommands'],
+    });
     if (!feature) {
       logger.warn(`Feature not found with ID: ${id}`);
       return res.status(404).json({ error: 'Feature not found.' });
+    }
+
+    if (feature.commands.length > 0 || feature.customCommands.length > 0) {
+      return res.status(400).json({ error: 'Cannot delete feature with associated commands.' });
     }
 
     await feature.destroy();

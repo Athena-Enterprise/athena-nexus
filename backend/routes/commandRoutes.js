@@ -3,10 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const { Command, Server, ServerCommand, Feature } = require('../models'); // Ensure all necessary models are imported
-const isAdmin = require('../middleware/isAdmin');
 const { body, validationResult } = require('express-validator');
 const { updateAllGuildCommands } = require('../utils/updateAllGuildCommands'); // Import the function
 const { isAuthenticated } = require('../middleware/auth');
+const isAdmin = require('../middleware/isAdmin');
 const deployCommands = require('../utils/deployCommands'); // Correct import
 const commandController = require('../controllers/commandController');
 

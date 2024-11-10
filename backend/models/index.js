@@ -32,6 +32,8 @@ const Feature = require('./feature')(sequelize, DataTypes);
 const ServerCommand = require('./serverCommand')(sequelize, DataTypes);
 const ServerFeature = require('./serverFeature')(sequelize, DataTypes);
 const CustomCommand = require('./customCommand')(sequelize, DataTypes);
+const ActivityLog = require('./activityLog')(sequelize, DataTypes);
+const Notification = require('./notification')(sequelize, DataTypes);
 
 // Collect all models
 const models = {
@@ -44,6 +46,8 @@ const models = {
   ServerCommand,
   ServerFeature,
   CustomCommand,
+  ActivityLog,
+  Notification,
 };
 
 // Initialize associations defined in models

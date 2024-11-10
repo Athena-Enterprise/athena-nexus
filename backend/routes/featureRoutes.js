@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const { body, param, validationResult } = require('express-validator');
-const isAuthenticated = require('../middleware/isAuthenticated');
+const { isAuthenticated } = require('../middleware/auth');
 const isAdmin = require('../middleware/isAdmin');
 const featureController = require('../controllers/featureController');
 

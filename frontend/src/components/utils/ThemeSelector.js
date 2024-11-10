@@ -1,10 +1,10 @@
-// src/components/ThemeSelector.js
+// frontend/src/components/utils/ThemeSelector.js
 
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import { FaPalette } from 'react-icons/fa'; // Palette icon from react-icons
-import { CSSTransition } from 'react-transition-group'; // For transitions
-import '../../styles/ThemeSelector.css'; // Import custom CSS for transitions
+import { FaPalette } from 'react-icons/fa';
+import { CSSTransition } from 'react-transition-group';
+import '../../styles/ThemeSelector.css'; // Ensure this file exists and has necessary styles
 
 function ThemeSelector() {
   const { theme, toggleTheme } = useTheme();

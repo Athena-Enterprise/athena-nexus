@@ -1,7 +1,7 @@
 // backend/middleware/auth.js
 
 const { ServerMember, Server } = require('../models');
-const logger = require('../utils/logger');
+const logger = require('../utils/logger'); // Ensure logger is imported
 
 /**
  * Middleware to check if the user is authenticated.
@@ -48,5 +48,4 @@ const hasRole = (roles) => {
 module.exports = {
   isAuthenticated,
   hasRole,
-  // ownsServer, // Only include if you still need it elsewhere
 };

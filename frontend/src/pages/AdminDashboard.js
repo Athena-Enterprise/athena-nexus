@@ -1,107 +1,170 @@
 // frontend/src/pages/AdminDashboard.js
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaUsers, FaServer, FaCogs, FaRobot } from 'react-icons/fa';
-import StatCard from '../components/common/StatCard';
-import useFetch from '../hooks/useFetch';
+import React, { useEffect, useState } from 'react';
+import { fetchAdminStats } from '../services/adminService';
 import { toast } from 'react-toastify';
+import { Line } from 'react-chartjs-2';
+import 'chart.js/auto'; // Necessary for Chart.js
 
 const AdminDashboard = () => {
-  const {
-    data: stats,
-    loading,
-    error,
-  } = useFetch('/admin/stats');
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isTempData, setIsTempData] = useState(false); // Flag to indicate temporary data usage
 
-  // Debugging: Log the fetched stats
-  console.log('Fetched Admin Stats:', stats);
+  // Define Temporary (Mock) Data
+  const temporaryData = {
+    totalUsers: 150,
+    totalServers: 75,
+    activeServers: 70,
+    premiumUsers: 25,
+    freeUsers: 125,
+    systemMetrics: {
+      cpuUsage: '45%', // Mock CPU usage
+      memoryUsage: '3.2 GB', // Mock Memory usage
+      databaseSize: '200 MB', // Mock Database size
+      uptime: '15 days, 8 hours', // Mock Uptime
+    },
+    userRegistrations: [
+      { registration_day: '2024-10-12', users: 3 },
+      { registration_day: '2024-10-13', users: 5 },
+      { registration_day: '2024-10-14', users: 2 },
+      { registration_day: '2024-10-15', users: 4 },
+      { registration_day: '2024-10-16', users: 6 },
+      // ... Add more mock data as needed
+    ],
+    recentSignups: [
+      {
+        id: 'user1',
+        username: 'JaneDoe',
+        discriminator: '5678',
+        createdAt: '2024-11-10T18:30:00Z',
+      },
+      {
+        id: 'user2',
+        username: 'JohnSmith',
+        discriminator: '1234',
+        createdAt: '2024-11-10T17:45:00Z',
+      },
+      // ... Add more mock data as needed
+    ],
+  };
+
+  const getStats = async () => {
+    try {
+      const response = await fetchAdminStats();
+      console.log('Fetched Admin Stats:', response); // Debugging line
+      if (
+        response &&
+        response.userRegistrations &&
+        Array.isArray(response.userRegistrations)
+      ) {
+        setStats(response);
+      } else {
+        throw new Error('Incomplete data received from the server.');
+      }
+    } catch (error) {
+      console.error('Error fetching admin stats:', error);
+      toast.warn('Displaying temporary data due to data fetch issues.');
+      setStats(temporaryData);
+      setIsTempData(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getStats();
+  }, []);
 
   if (loading) {
     return <div className="text-center">Loading Admin Dashboard...</div>;
   }
 
-  if (error) {
-    toast.error('Failed to load admin statistics.');
-    return <div className="text-center text-error">Error loading dashboard.</div>;
-  }
-
   if (!stats) {
-    toast.error('No statistics data available.');
     return <div className="text-center">No data available.</div>;
   }
 
-  // Optional: Check if expected properties exist
-  const { totalUsers, totalServers, activeFeatures } = stats;
-
-  if (
-    totalUsers === undefined ||
-    totalServers === undefined ||
-    activeFeatures === undefined
-  ) {
-    toast.error('Incomplete statistics data received.');
-    return <div className="text-center">Incomplete data available.</div>;
-  }
+  // Prepare data for charts
+  const registrationChartData = {
+    labels: stats.userRegistrations.map((reg) => reg.registration_day),
+    datasets: [
+      {
+        label: 'User Registrations',
+        data: stats.userRegistrations.map((reg) => reg.users),
+        fill: false,
+        backgroundColor: '#4ade80', // Tailwind's green-400
+        borderColor: '#4ade80',
+      },
+    ],
+  };
 
   return (
-    <div className="p-6 bg-base-100 rounded-lg shadow-md">
+    <div
+      className={`p-6 bg-base-100 rounded-lg shadow-md ${
+        isTempData ? 'border-2 border-red-500' : ''
+      }`}
+    >
+      {/* Notification Banner for Temporary Data */}
+      {isTempData && (
+        <div className="mb-4 p-4 bg-red-100 text-red-800 rounded">
+          <p>
+            Displaying temporary data. Please check back later for updated
+            statistics.
+          </p>
+        </div>
+      )}
+
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
-      {/* Statistics Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <StatCard
-          title="Total Users"
-          value={totalUsers}
-          icon={<FaUsers />}
-          color="primary"
-        />
-        <StatCard
-          title="Total Servers"
-          value={totalServers}
-          icon={<FaServer />}
-          color="secondary"
-        />
-        <StatCard
-          title="Active Features"
-          value={activeFeatures}
-          icon={<FaCogs />}
-          color="accent"
-        />
+      {/* Statistics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <StatCard title="Total Users" value={stats.totalUsers} />
+        <StatCard title="Total Servers" value={stats.totalServers} />
+        <StatCard title="Active Servers" value={stats.activeServers} />
+        <StatCard title="Premium Users" value={stats.premiumUsers} />
+        <StatCard title="Free Users" value={stats.freeUsers} />
+        <StatCard title="Database Size" value={stats.systemMetrics.databaseSize} />
       </div>
 
-      {/* Management Links */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Link to="/admin/user-management" className="card bg-base-200 shadow-xl flex items-center p-4">
-          <FaUsers className="text-4xl mr-4 text-primary" />
-          <div>
-            <h2 className="card-title">User Management</h2>
-            <p>Manage users and their roles.</p>
-          </div>
-        </Link>
-        <Link to="/admin/server-management" className="card bg-base-200 shadow-xl flex items-center p-4">
-          <FaServer className="text-4xl mr-4 text-secondary" />
-          <div>
-            <h2 className="card-title">Server Management</h2>
-            <p>Manage server settings and configurations.</p>
-          </div>
-        </Link>
-        <Link to="/admin/command-feature-management" className="card bg-base-200 shadow-xl flex items-center p-4">
-          <FaCogs className="text-4xl mr-4 text-accent" />
-          <div>
-            <h2 className="card-title">Command & Feature Management</h2>
-            <p>Create and manage bot commands and features.</p>
-          </div>
-        </Link>
-        <Link to="/admin/bot-management" className="card bg-base-200 shadow-xl flex items-center p-4">
-          <FaRobot className="text-4xl mr-4 text-info" />
-          <div>
-            <h2 className="card-title">Bot Management</h2>
-            <p>Control global bot settings and operations.</p>
-          </div>
-        </Link>
+      {/* System Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <MetricCard title="CPU Usage" value={stats.systemMetrics.cpuUsage} />
+        <MetricCard title="Memory Usage" value={stats.systemMetrics.memoryUsage} />
+        <MetricCard title="Uptime" value={formatUptime(stats.systemMetrics.uptime)} />
+      </div>
+
+      {/* User Registrations Chart */}
+      <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+        <h2 className="text-xl font-semibold mb-4">User Registrations (Last 30 Days)</h2>
+        {stats.userRegistrations && stats.userRegistrations.length > 0 ? (
+          <Line data={registrationChartData} />
+        ) : (
+          <p>No user registration data available.</p>
+        )}
       </div>
     </div>
   );
+};
+
+// Utility Components
+const StatCard = ({ title, value }) => (
+  <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+    <h2 className="text-lg font-semibold mb-2">{title}</h2>
+    <p className="text-2xl">{value}</p>
+  </div>
+);
+
+const MetricCard = ({ title, value }) => (
+  <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+    <h2 className="text-lg font-semibold mb-2">{title}</h2>
+    <p className="text-xl">{value}</p>
+  </div>
+);
+
+// Utility function to format uptime
+const formatUptime = (uptimeString) => {
+  // Assuming uptimeString is already formatted, e.g., '15 days, 8 hours'
+  return uptimeString;
 };
 
 export default AdminDashboard;

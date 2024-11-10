@@ -13,6 +13,28 @@ export const fetchServers = async () => {
   }
 };
 
+// Delete a server
+export const deleteServer = async (serverId) => {
+  try {
+    const response = await api.delete(`/servers/${serverId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting server:', error);
+    throw error;
+  }
+};
+
+// Update server status
+export const updateServerStatus = async (serverId, statusData) => {
+  try {
+    const response = await api.put(`/servers/${serverId}/status`, statusData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating server status:', error);
+    throw error;
+  }
+};
+
 // Fetch server stats by id
 export const fetchServerStats = async (id) => {
   try {
