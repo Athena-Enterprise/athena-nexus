@@ -5,6 +5,9 @@ import { fetchAdminStats } from '../services/adminService';
 import { toast } from 'react-toastify';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto'; // Necessary for Chart.js
+import io from 'socket.io-client'; // Import Socket.IO client
+
+const socket = io('http://localhost:5000'); // Adjust the URL based on your backend's address
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -20,9 +23,9 @@ const AdminDashboard = () => {
     freeUsers: 125,
     systemMetrics: {
       cpuUsage: '45%', // Mock CPU usage
-      memoryUsage: '3.2 GB', // Mock Memory usage
-      databaseSize: '200 MB', // Mock Database size
-      uptime: '15 days, 8 hours', // Mock Uptime
+      memoryUsage: '3.2 GB used / 8 GB total', // Mock Memory usage
+      databaseSize: '200 MB',
+      uptime: '15d 8h 30m 20s', // Mock Uptime
     },
     userRegistrations: [
       { registration_day: '2024-10-12', users: 3 },
@@ -49,16 +52,20 @@ const AdminDashboard = () => {
     ],
   };
 
-  const getStats = async () => {
+  const getInitialStats = async () => {
     try {
       const response = await fetchAdminStats();
-      console.log('Fetched Admin Stats:', response); // Debugging line
+      console.log('Fetched Admin Stats:', response);
+
+      const fetchedData = response.data;
+
+      // Validate the response structure
       if (
-        response &&
-        response.userRegistrations &&
-        Array.isArray(response.userRegistrations)
+        fetchedData &&
+        fetchedData.userRegistrations &&
+        Array.isArray(fetchedData.userRegistrations)
       ) {
-        setStats(response);
+        setStats(fetchedData);
       } else {
         throw new Error('Incomplete data received from the server.');
       }
@@ -73,7 +80,27 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    getStats();
+    getInitialStats();
+
+    // Listen for real-time updates
+    socket.on('adminStatsUpdate', (updatedStats) => {
+      console.log('Received real-time admin stats:', updatedStats);
+      setStats(updatedStats);
+      setIsTempData(false); // Since data is now live
+    });
+
+    // Handle socket errors
+    socket.on('connect_error', (err) => {
+      console.error('Socket connection error:', err);
+      toast.error('Real-time updates unavailable.');
+    });
+
+    // Clean up the socket connection on component unmount
+    return () => {
+      socket.off('adminStatsUpdate');
+      socket.off('connect_error');
+      socket.disconnect();
+    };
   }, []);
 
   if (loading) {
@@ -101,15 +128,14 @@ const AdminDashboard = () => {
   return (
     <div
       className={`p-6 bg-base-100 rounded-lg shadow-md ${
-        isTempData ? 'border-2 border-red-500' : ''
+        isTempData ? 'border-4 border-red-500' : ''
       }`}
     >
       {/* Notification Banner for Temporary Data */}
       {isTempData && (
         <div className="mb-4 p-4 bg-red-100 text-red-800 rounded">
           <p>
-            Displaying temporary data. Please check back later for updated
-            statistics.
+            <strong>Temporary Data:</strong> Displaying mock data. Please check back later for updated statistics.
           </p>
         </div>
       )}
@@ -120,7 +146,9 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <StatCard title="Total Users" value={stats.totalUsers} />
         <StatCard title="Total Servers" value={stats.totalServers} />
-        <StatCard title="Active Servers" value={stats.activeServers} />
+        {stats.activeServers !== undefined && (
+          <StatCard title="Active Servers" value={stats.activeServers} />
+        )}
         <StatCard title="Premium Users" value={stats.premiumUsers} />
         <StatCard title="Free Users" value={stats.freeUsers} />
         <StatCard title="Database Size" value={stats.systemMetrics.databaseSize} />
@@ -130,7 +158,7 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <MetricCard title="CPU Usage" value={stats.systemMetrics.cpuUsage} />
         <MetricCard title="Memory Usage" value={stats.systemMetrics.memoryUsage} />
-        <MetricCard title="Uptime" value={formatUptime(stats.systemMetrics.uptime)} />
+        <MetricCard title="Uptime" value={stats.systemMetrics.uptime} />
       </div>
 
       {/* User Registrations Chart */}
@@ -160,11 +188,5 @@ const MetricCard = ({ title, value }) => (
     <p className="text-xl">{value}</p>
   </div>
 );
-
-// Utility function to format uptime
-const formatUptime = (uptimeString) => {
-  // Assuming uptimeString is already formatted, e.g., '15 days, 8 hours'
-  return uptimeString;
-};
 
 export default AdminDashboard;

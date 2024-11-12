@@ -16,6 +16,8 @@ import {
   FaUserShield,
   FaToggleOn,
   FaToggleOff,
+  FaBars, // Importing FaBars for the hamburger menu
+  FaTimes, // Importing FaTimes for the close icon
 } from 'react-icons/fa';
 import { CSSTransition } from 'react-transition-group';
 import { Tooltip } from 'react-tooltip';
@@ -31,6 +33,8 @@ const Sidebar = () => {
     const savedMode = localStorage.getItem('isAdminMode');
     return savedMode === 'true';
   });
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State for sidebar toggle
 
   useEffect(() => {
     localStorage.setItem('isAdminMode', isAdminMode);
@@ -85,9 +89,27 @@ const Sidebar = () => {
     });
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <>
-      <div className="h-full w-64 bg-base-200 shadow-lg flex flex-col">
+      {/* Sidebar Toggle Button (Visible on small screens) */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-60 p-2 bg-primary text-white rounded-md focus:outline-none"
+        onClick={toggleSidebar}
+        aria-label="Toggle Sidebar"
+      >
+        {isSidebarOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Sidebar Container */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-base-200 shadow-lg z-50 transform ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 ease-in-out flex flex-col overflow-y-auto`}
+      >
         {/* Logo Section */}
         <div className="flex items-center justify-center h-16 bg-primary">
           <Link to="/" className="text-2xl font-bold text-white">
@@ -153,7 +175,7 @@ const Sidebar = () => {
         </CSSTransition>
 
         {/* Navigation Menu */}
-        <nav className="flex-1 overflow-y-auto p-4">
+        <nav className="flex-1 p-4">
           <ul className="space-y-2">
             {/* Render Regular Menu Items */}
             {!isAdminMode &&
@@ -204,11 +226,16 @@ const Sidebar = () => {
         </div>
       </div>
 
+      {/* Overlay when Sidebar is Open on Small Screens */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-40 md:hidden"
+          onClick={toggleSidebar}
+        ></div>
+      )}
+
       {/* Initialize React Tooltip */}
       <Tooltip place="right" type="dark" effect="solid" />
-
-      {/* Overlay for Mobile Sidebar (Optional) */}
-      {/* Implement if you have a mobile menu toggle */}
     </>
   );
 };

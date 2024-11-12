@@ -7,6 +7,9 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const passport = require('passport');
+const http = require('http'); // Import HTTP module
+const { Server } = require('socket.io'); // Import Socket.IO server
+const { fetchAdminStats } = require('./services/statsService');
 
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, './.env') });
@@ -25,6 +28,18 @@ const serverCommandRoutes = require('./routes/serverCommandRoutes');
 const featureRoutes = require('./routes/featureRoutes');
 
 const app = express();
+
+// Create HTTP server
+const httpServer = http.createServer(app);
+
+// Initialize Socket.IO server
+const io = new Server(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000', // Adjust based on your frontend's URL
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
 
 // CORS Configuration
 const corsOptions = {
@@ -108,6 +123,47 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
+// Socket.IO Connection Handling
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+
+  // Optionally, handle specific events here
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected:', socket.id);
+  });
+});
+
+// Export io for use in controllers
+app.set('io', io);
+
+// Function to fetch and emit admin stats periodically
+const fetchAndEmitAdminStats = async () => {
+  try {
+    // Assuming you have access to the adminController's fetchAdminStats logic
+    const adminController = require('./controllers/adminController');
+
+    // Create a mock request and response objects
+    const req = { app };
+    const res = {
+      json: () => {},
+      status: () => ({
+        json: () => {},
+      }),
+    };
+
+    await adminController.fetchAdminStats(req, res);
+  } catch (error) {
+    console.error('Error in periodic admin stats fetch:', error);
+  }
+};
+
+// Fetch and emit admin stats every 60 seconds
+setInterval(fetchAndEmitAdminStats, 60 * 1000);
+
+// Optionally, fetch and emit immediately on server start
+fetchAndEmitAdminStats();
+
 // Test database connection and start the server
 sequelize
   .authenticate()
@@ -124,11 +180,11 @@ sequelize
 
       // Start the Express server
       const PORT = process.env.PORT || 5000;
-      app.listen(PORT, () => {
+      httpServer.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
       });
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Error:', err);
   });

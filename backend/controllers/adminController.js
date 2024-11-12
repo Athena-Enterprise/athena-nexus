@@ -1,9 +1,12 @@
 // backend/controllers/adminController.js
 
-const { User, Command, Feature, CustomCommand, ActivityLog, Notification, Server, sequelize } = require('../models');
+const { User, Command, Feature, CustomCommand, ActivityLog, Notification, Server, ServerMember, sequelize } = require('../models');
 const { Op, Sequelize } = require('sequelize');
 const logger = require('../utils/logger');
-const osu = require('node-os-utils');
+const osu = require('node-os-utils'); // Import node-os-utils
+const cpu = osu.cpu;
+const mem = osu.mem;
+const os = osu.os;
 
 /**
  * Admin Management Controllers
@@ -311,13 +314,30 @@ exports.fetchAdminStats = async (req, res) => {
     const premiumUsers = await User.count({ where: { isPremium: true } });
     const freeUsers = totalUsers - premiumUsers;
 
-    // System Metrics (Placeholder Values)
-    const systemMetrics = {
-      cpuUsage: '35%', // Replace with actual CPU usage
-      memoryUsage: '2.5 GB', // Replace with actual memory usage
-      databaseSize: '150 MB', // Replace with actual database size
-      uptime: '10 days, 5 hours', // Replace with actual uptime
-    };
+    // Define Active Servers (Example: Servers with at least one member)
+    const activeServers = await Server.count({
+      include: [{
+        model: ServerMember,
+        as: 'members', // Ensure this alias matches your association
+        required: true, // Only count servers with at least one member
+      }],
+    });
+
+    // System Metrics
+    const cpuUsage = await cpu.usage(); // Returns a percentage
+    const memoryInfo = await mem.info(); // Returns an object with memory details
+    const memoryUsage = `${memoryInfo.usedMemMb} MB used / ${memoryInfo.totalMemMb} MB total`;
+    
+    // Database Size (Assuming PostgreSQL)
+    const databaseSizeResult = await sequelize.query(
+      `SELECT pg_size_pretty(pg_database_size('${process.env.DB_NAME}')) AS size;`,
+      { type: Sequelize.QueryTypes.SELECT }
+    );
+    const databaseSize = databaseSizeResult[0].size;
+
+    // Uptime
+    const uptimeSeconds = os.uptime(); // Returns uptime in seconds
+    const uptime = formatUptime(uptimeSeconds);
 
     // Calculate the date 30 days ago
     const thirtyDaysAgo = new Date();
@@ -350,17 +370,52 @@ exports.fetchAdminStats = async (req, res) => {
     res.json({
       totalUsers,
       totalServers,
+      activeServers,
       premiumUsers,
       freeUsers,
-      systemMetrics,
+      systemMetrics: {
+        cpuUsage: `${cpuUsage}%`,
+        memoryUsage,
+        databaseSize,
+        uptime,
+      },
       userRegistrations,
       recentSignups,
     });
     logger.info(`Admin statistics fetched by ${req.user.username}.`);
+
+    // Emit the updated stats to all connected admin clients
+    const io = req.app.get('io');
+    io.emit('adminStatsUpdate', {
+      totalUsers,
+      totalServers,
+      activeServers,
+      premiumUsers,
+      freeUsers,
+      systemMetrics: {
+        cpuUsage: `${cpuUsage}%`,
+        memoryUsage,
+        databaseSize,
+        uptime,
+      },
+      userRegistrations,
+      recentSignups,
+    });
+
   } catch (error) {
     logger.error(`Error fetching admin statistics: ${error.stack || error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+};
+
+// Utility function to format uptime
+const formatUptime = (seconds) => {
+  const d = Math.floor(seconds / (3600 * 24));
+  const h = Math.floor((seconds % (3600 * 24)) / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+
+  return `${d}d ${h}h ${m}m ${s}s`;
 };
 
 // Fetch All Users

@@ -9,26 +9,26 @@ import ThemeSelector from '../utils/ThemeSelector';
 
 const DashboardLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
-      <Navbar />
+    <div className="flex">
+      {/* Sidebar */}
+      <Sidebar />
 
-      {/* Theme Selector */}
-      <ThemeSelector />
+      {/* Main Content */}
+      <div className="flex-1 ml-0 md:ml-64 flex flex-col"> {/* ml-64 applies from md screens and up */}
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Main Content Area */}
-      <div className="flex flex-1">
-        {/* Sidebar */}
-        <Sidebar />
+        {/* Theme Selector */}
+        <ThemeSelector />
 
-        {/* Outlet for Nested Routes */}
+        {/* Page Content */}
         <main className="flex-1 p-6 bg-base-100 overflow-y-auto">
           <Outlet />
         </main>
-      </div>
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
+      </div>
     </div>
   );
 };
