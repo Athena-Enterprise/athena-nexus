@@ -9,13 +9,14 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 const http = require('http'); // Import HTTP module
 const { Server } = require('socket.io'); // Import Socket.IO server
-const { fetchAdminStats } = require('./services/statsService');
+const { fetchAdminStats } = require('./services/statsService.js'); // Corrected path
+const logger = require('./utils/logger');
 
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 // Import Sequelize instance and models
-const { sequelize, Sequelize } = require('./models'); // Import from models/index.js
+const { sequelize, Sequelize, User } = require('./models'); // Import from models/index.js
 
 // Import routes
 const serverRoutes = require('./routes/serverRoutes');
@@ -127,6 +128,12 @@ app.get('*', (req, res) => {
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
 
+  // Assign user to 'admins' room if authenticated and admin
+  // This requires authentication integration with Socket.IO
+  // For simplicity, we'll assume all connected users are admins
+  socket.join('admins');
+  console.log(`Socket ${socket.id} joined 'admins' room`);
+
   // Optionally, handle specific events here
 
   socket.on('disconnect', () => {
@@ -140,21 +147,11 @@ app.set('io', io);
 // Function to fetch and emit admin stats periodically
 const fetchAndEmitAdminStats = async () => {
   try {
-    // Assuming you have access to the adminController's fetchAdminStats logic
-    const adminController = require('./controllers/adminController');
-
-    // Create a mock request and response objects
-    const req = { app };
-    const res = {
-      json: () => {},
-      status: () => ({
-        json: () => {},
-      }),
-    };
-
-    await adminController.fetchAdminStats(req, res);
+    const stats = await fetchAdminStats();
+    io.to('admins').emit('adminStatsUpdate', stats);
+    logger.info('Admin statistics emitted to admins room.');
   } catch (error) {
-    console.error('Error in periodic admin stats fetch:', error);
+    logger.error(`Error in periodic admin stats fetch: ${error.stack || error.message}`);
   }
 };
 

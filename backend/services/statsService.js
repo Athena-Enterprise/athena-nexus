@@ -25,7 +25,7 @@ const fetchAdminStats = async () => {
     const premiumUsers = await User.count({ where: { isPremium: true } });
     const freeUsers = totalUsers - premiumUsers;
 
-    // Define Active Servers (Example: Servers with at least one member)
+    // Define Active Servers (Servers with at least one member)
     const activeServers = await Server.count({
       include: [{
         model: ServerMember,
@@ -40,6 +40,10 @@ const fetchAdminStats = async () => {
     const memoryUsage = `${memoryInfo.usedMemMb} MB used / ${memoryInfo.totalMemMb} MB total`;
     
     // Database Size (Assuming PostgreSQL)
+    if (!process.env.DB_NAME) {
+      throw new Error('DB_NAME environment variable is not defined.');
+    }
+
     const databaseSizeResult = await sequelize.query(
       `SELECT pg_size_pretty(pg_database_size('${process.env.DB_NAME}')) AS size;`,
       { type: Sequelize.QueryTypes.SELECT }

@@ -3,6 +3,7 @@
 const { User, Command, Feature, CustomCommand, ActivityLog, Notification, Server, ServerMember, sequelize } = require('../models');
 const { Op, Sequelize } = require('sequelize');
 const logger = require('../utils/logger');
+const { fetchAdminStats } = require('../services/statsService'); // Import the stats service
 const osu = require('node-os-utils'); // Import node-os-utils
 const cpu = osu.cpu;
 const mem = osu.mem;
@@ -309,98 +310,14 @@ exports.deleteAdminFeature = async (req, res) => {
 // Fetch Admin Statistics
 exports.fetchAdminStats = async (req, res) => {
   try {
-    const totalUsers = await User.count();
-    const totalServers = await Server.count();
-    const premiumUsers = await User.count({ where: { isPremium: true } });
-    const freeUsers = totalUsers - premiumUsers;
+    const stats = await fetchAdminStats(); // Use the stats service
 
-    // Define Active Servers (Example: Servers with at least one member)
-    const activeServers = await Server.count({
-      include: [{
-        model: ServerMember,
-        as: 'members', // Ensure this alias matches your association
-        required: true, // Only count servers with at least one member
-      }],
-    });
-
-    // System Metrics
-    const cpuUsage = await cpu.usage(); // Returns a percentage
-    const memoryInfo = await mem.info(); // Returns an object with memory details
-    const memoryUsage = `${memoryInfo.usedMemMb} MB used / ${memoryInfo.totalMemMb} MB total`;
-    
-    // Database Size (Assuming PostgreSQL)
-    const databaseSizeResult = await sequelize.query(
-      `SELECT pg_size_pretty(pg_database_size('${process.env.DB_NAME}')) AS size;`,
-      { type: Sequelize.QueryTypes.SELECT }
-    );
-    const databaseSize = databaseSizeResult[0].size;
-
-    // Uptime
-    const uptimeSeconds = os.uptime(); // Returns uptime in seconds
-    const uptime = formatUptime(uptimeSeconds);
-
-    // Calculate the date 30 days ago
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-    // User registrations over the past 30 days
-    const userRegistrations = await User.findAll({
-      attributes: [
-        [Sequelize.fn('DATE_TRUNC', 'day', Sequelize.col('createdAt')), 'registration_day'],
-        [Sequelize.fn('COUNT', Sequelize.col('id')), 'users'],
-      ],
-      where: {
-        createdAt: {
-          [Op.gte]: thirtyDaysAgo,
-        },
-      },
-      group: ['registration_day'],
-      order: [['registration_day', 'ASC']],
-      raw: true,
-    });
-
-    // Recent signups
-    const recentSignups = await User.findAll({
-      attributes: ['id', 'username', 'discriminator', 'createdAt'],
-      order: [['createdAt', 'DESC']],
-      limit: 10,
-      raw: true,
-    });
-
-    res.json({
-      totalUsers,
-      totalServers,
-      activeServers,
-      premiumUsers,
-      freeUsers,
-      systemMetrics: {
-        cpuUsage: `${cpuUsage}%`,
-        memoryUsage,
-        databaseSize,
-        uptime,
-      },
-      userRegistrations,
-      recentSignups,
-    });
+    res.json(stats);
     logger.info(`Admin statistics fetched by ${req.user.username}.`);
 
     // Emit the updated stats to all connected admin clients
     const io = req.app.get('io');
-    io.emit('adminStatsUpdate', {
-      totalUsers,
-      totalServers,
-      activeServers,
-      premiumUsers,
-      freeUsers,
-      systemMetrics: {
-        cpuUsage: `${cpuUsage}%`,
-        memoryUsage,
-        databaseSize,
-        uptime,
-      },
-      userRegistrations,
-      recentSignups,
-    });
+    io.to('admins').emit('adminStatsUpdate', stats);
 
   } catch (error) {
     logger.error(`Error fetching admin statistics: ${error.stack || error.message}`);
@@ -408,7 +325,7 @@ exports.fetchAdminStats = async (req, res) => {
   }
 };
 
-// Utility function to format uptime
+// Utility function to format uptime (if needed elsewhere)
 const formatUptime = (seconds) => {
   const d = Math.floor(seconds / (3600 * 24));
   const h = Math.floor((seconds % (3600 * 24)) / 3600);
@@ -482,7 +399,6 @@ exports.fetchBotDetails = async (req, res) => {
   }
 };
 
-
 // Restart Bot
 exports.restartBot = async (req, res) => {
   try {
@@ -514,7 +430,6 @@ exports.restartBot = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 
 // Stop Bot
 exports.stopBot = async (req, res) => {
@@ -587,16 +502,6 @@ exports.updateBotDetails = async (req, res) => {
     logger.error(`Error updating bot details: ${error.stack || error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-};
-
-// Utility function to format uptime
-const formatUptime = (seconds) => {
-  const d = Math.floor(seconds / (3600 * 24));
-  const h = Math.floor((seconds % (3600 * 24)) / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = Math.floor(seconds % 60);
-
-  return `${d}d ${h}h ${m}m ${s}s`;
 };
 
 /**
